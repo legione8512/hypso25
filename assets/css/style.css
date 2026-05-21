@@ -1,6 +1,74 @@
 /* =========================================================
-   Base page setup
-   I set the general page layout, font and dark background.
+   Hypso25 global stylesheet
+   This file contains the base style, header, hero and story section.
+   ========================================================= */
+
+
+/* =========================================================
+   1. Font import
+   I load the heading font used by the original website.
+   ========================================================= */
+
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,700;1,500;1,700&display=swap");
+
+
+/* =========================================================
+   2. Design variables
+   I keep the main colours close to the original Hypso25 site.
+   ========================================================= */
+
+:root {
+  /* Main brand colours */
+  --colour-accent: #e1ccbe;
+  --colour-light: #eeedeb;
+  --colour-muted: #757263;
+  --colour-black: #000000;
+  --colour-white: #ffffff;
+
+  /* Practical colours */
+  --colour-text: var(--colour-black);
+  --colour-background: var(--colour-light);
+  --colour-border: rgba(0, 0, 0, 0.18);
+  --colour-overlay: rgba(0, 0, 0, 0.2);
+
+  /* Fonts */
+  --font-heading: "Cormorant Garamond", Georgia, serif;
+  --font-body: "adelle-sans", "Helvetica Neue", Arial, sans-serif;
+
+  /* Font sizes */
+  --font-size-base: 16px;
+  --font-size-small: 0.9rem;
+  --font-size-normal: 1rem;
+  --font-size-large: 1.3rem;
+  --font-size-h1: 4rem;
+  --font-size-h2: 2.8rem;
+  --font-size-h3: 2.2rem;
+  --font-size-h4: 1.6rem;
+
+  /* Line heights */
+  --line-height-body: 1.8;
+  --line-height-heading: 1.4;
+
+  /* Layout sizes */
+  --page-padding: 4vw;
+  --container-wide: 1800px;
+  --container-medium: 1100px;
+  --container-narrow: 820px;
+
+  /* Section spacing */
+  --section-padding-y: 6rem;
+
+  /* Buttons and transitions */
+  --button-padding-y: 0.85rem;
+  --button-padding-x: 1.4rem;
+  --transition-fast: 0.2s ease;
+  --transition-medium: 0.3s ease;
+}
+
+
+/* =========================================================
+   3. Basic reset
+   I remove browser defaults that can make layouts inconsistent.
    ========================================================= */
 
 *,
@@ -9,1166 +77,1233 @@
   box-sizing: border-box;
 }
 
+* {
+  margin: 0;
+  padding: 0;
+}
+
 html {
-  min-height: 100%;
-  min-width: 280px;
-  overflow-x: auto;
+  font-size: var(--font-size-base);
+  scroll-behavior: smooth;
 }
 
 body {
   min-height: 100vh;
-  min-width: 280px;
-  margin: 0;
-  overflow-x: hidden;
-  color: #ffffff;
-  background: #111111;
-}
-
-body,
-input,
-select,
-textarea {
-  color: #ffffff;
-  font-family: "Source Sans Pro", Arial, Helvetica, sans-serif;
+  font-family: var(--font-body);
+  font-size: var(--font-size-normal);
   font-weight: 300;
-  font-size: 1rem;
-  line-height: 1.65;
+  line-height: var(--line-height-body);
+  color: var(--colour-text);
+  background: var(--colour-background);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
 }
 
-.site-wrapper {
-  min-height: 100vh;
-}
-
-/* I disable transitions while the page is still preloading. */
-body.is-preload *,
-body.is-preload *::before,
-body.is-preload *::after {
-  animation: none !important;
-  transition: none !important;
-}
 
 /* =========================================================
-   Hero background and intro animation
-   I recreate the Dimension-style black intro and background fade.
+   4. Default typography
+   I prepare the base text style before styling each section.
    ========================================================= */
 
-.hero {
-  position: relative;
-  min-height: 100vh;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 40px 20px;
-  background: #1b1f22;
-}
-
-/* I create the background image as a separate layer. */
-.hero::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  background-image: url("../images/background.jpg");
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  transform: scale(1.125);
-  transition:
-    transform 0.325s ease-in-out,
-    filter 0.325s ease-in-out;
-}
-
-/* I create the dark layer above the background image. */
-.hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  background-color: transparent;
-  background-image:
-    linear-gradient(to top, rgba(19, 21, 25, 0.35), rgba(19, 21, 25, 0.35)),
-    url("../images/overlay.png");
-  background-size:
-    auto,
-    256px 256px;
-  background-repeat: repeat, repeat;
-  transition: background-color 2.5s ease-in-out;
-  transition-delay: 0.75s;
-}
-
-/* I keep the first screen black during preload. */
-body.is-preload .hero::before {
-  background-color: #000000;
-}
-
-/* =========================================================
-   Hero content
-   I style the logo, title panel and decorative lines.
-   ========================================================= */
-
-.hero-content {
-  position: relative;
-  z-index: 2;
-  width: min(900px, 100%);
-  max-width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  background-image: radial-gradient(
-    rgba(0, 0, 0, 0.25) 25%,
-    rgba(0, 0, 0, 0) 55%
-  );
-  transition:
-    transform 0.325s ease-in-out,
-    filter 0.325s ease-in-out,
-    opacity 0.325s ease-in-out;
-}
-
-.hero-content > * {
-  position: relative;
-  transition: opacity 0.325s ease-in-out;
-}
-
-/* I hide the hero parts during preload. */
-body.is-preload .hero-content {
-  filter: blur(0.125rem);
-}
-
-body.is-preload .hero-content > * {
-  opacity: 0;
-}
-
-/* I style the circle logo and allow its vertical line to extend outside it. */
-.hero-logo {
-  position: relative;
-  width: 5.5rem;
-  height: 5.5rem;
-  margin: 0;
-  margin-bottom: 3.5rem !important;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid #ffffff;
-  border-radius: 50%;
-  color: #ffffff;
-  font-size: 2rem;
-  font-weight: 600;
-  line-height: 1;
-  letter-spacing: 0;
-  overflow: visible;
-}
-
-/* I remove any wrong line above the logo. */
-.hero-logo::before {
-  display: none !important;
-}
-
-/* I draw the vertical line from the logo circle to the title panel. */
-.hero-logo::after {
-  content: "";
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  width: 1px;
-  height: 3.5rem;
-  background: #ffffff;
-  transform: translateX(-50%);
-  display: block !important;
-}
-
-.hero-text-panel {
-  width: min(760px, 100%);
-  max-width: 100%;
-  margin: 0;
-  padding: 3rem 2rem;
-  overflow: hidden;
-  max-height: 40rem;
-  border-top: 1px solid #ffffff;
-  border-bottom: 1px solid #ffffff;
-  transition:
-    max-height 0.75s ease,
-    padding 0.75s ease,
-    opacity 0.325s ease-in-out;
-  transition-delay: 0.25s;
-}
-
-/* I collapse only the text panel during preload. */
-body.is-preload .hero-text-panel {
-  max-height: 0;
-  padding-top: 0;
-  padding-bottom: 0;
-  opacity: 0;
-}
-
-.eyebrow {
-  margin: 0;
-  color: rgba(255, 255, 255, 0.85);
-  font-size: 0.75rem;
-  letter-spacing: 0.24em;
-  text-transform: uppercase;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+  font-weight: 500;
+  line-height: var(--line-height-heading);
+  color: var(--colour-text);
 }
 
 h1 {
-  margin: 0;
-  color: #ffffff;
-  font-size: 2.25rem;
-  font-weight: 600;
-  line-height: 1;
-  text-transform: uppercase;
+  font-size: var(--font-size-h1);
 }
 
-/* I replace the first D from DONA with the custom SVG logo. */
-.hero-title {
-  display: inline-flex;
-  align-items: flex-end;
-  gap: 0;
-  margin: 0;
-  color: #ffffff;
-  font-size: 2.25rem;
-  font-weight: 600;
-  line-height: 1;
-  letter-spacing: 0;
-  text-transform: uppercase;
+h2 {
+  font-size: var(--font-size-h2);
 }
 
-/* I style the custom D logo so it matches the title height. */
-.hero-title-icon {
+h3 {
+  font-size: var(--font-size-h3);
+}
+
+h4 {
+  font-size: var(--font-size-h4);
+}
+
+p {
+  margin-bottom: 1.2rem;
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+strong,
+b {
+  font-weight: 700;
+}
+
+em,
+i {
+  font-style: italic;
+}
+
+
+/* =========================================================
+   5. Links and buttons
+   I keep links clean and prepare simple button styles.
+   ========================================================= */
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover {
+  opacity: 0.75;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+  border: 0;
+  background: none;
+  color: inherit;
+}
+
+.button {
   display: inline-flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: center;
-  width: 1.05em;
-  height: 0.96em;
-  flex: 0 0 auto;
-}
-
-/* I use the same SVG mark inside the circle logo and inside the DONA title. */
-.hero-logo-mark {
-  display: block;
-  width: 60%;
-  height: 60%;
-  object-fit: contain;
-}
-
-/* I style the custom D mark inside the main DONA title. */
-.hero-title-mark {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
-/* I keep the remaining letters styled like the template title. */
-.hero-title-text {
-  display: inline-block;
-  letter-spacing: 0.18em;
+  padding: var(--button-padding-y) var(--button-padding-x);
+  border: 1px solid var(--colour-black);
+  background: var(--colour-black);
+  color: var(--colour-white);
+  text-align: center;
   line-height: 1;
+  transition:
+    background var(--transition-fast),
+    color var(--transition-fast),
+    border-color var(--transition-fast),
+    opacity var(--transition-fast);
 }
 
-.hero-description {
-  max-width: 650px;
-  margin: 24px auto 0;
-  color: rgba(255, 255, 255, 0.86);
-  font-size: 0.95rem;
-  line-height: 2;
+.button:hover {
+  opacity: 1;
+  background: var(--colour-white);
+  color: var(--colour-black);
+}
+
+.button--light {
+  border-color: var(--colour-white);
+  background: var(--colour-white);
+  color: var(--colour-black);
+}
+
+.button--light:hover {
+  background: var(--colour-black);
+  color: var(--colour-white);
+}
+
+
+/* =========================================================
+   6. Focus states
+   I make keyboard navigation visible.
+   ========================================================= */
+
+:focus {
+  outline: none;
+}
+
+:focus-visible {
+  outline: 2px solid var(--colour-muted);
+  outline-offset: 4px;
+}
+
+
+/* =========================================================
+   7. Lists, media and forms
+   I remove default list styles and make media responsive.
+   ========================================================= */
+
+ul,
+ol {
+  list-style: none;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+img {
+  height: auto;
+}
+
+address {
+  font-style: normal;
+}
+
+
+/* =========================================================
+   8. Global layout helpers
+   I prepare reusable containers and section spacing.
+   ========================================================= */
+
+.site-main {
+  width: 100%;
+}
+
+.section {
+  padding: var(--section-padding-y) var(--page-padding);
+}
+
+.section__container {
+  width: 100%;
+  max-width: var(--container-wide);
+  margin-inline: auto;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--container-medium);
+  margin-inline: auto;
+  padding-inline: var(--page-padding);
+}
+
+.container--narrow {
+  max-width: var(--container-narrow);
+}
+
+.section__eyebrow {
+  margin-bottom: 1.5rem;
+  font-size: var(--font-size-small);
+  font-weight: 400;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
 /* =========================================================
-   Main navigation
-   I style the menu as connected rectangular buttons.
+   10. Basic hidden states
+   I prepare utility classes for JavaScript later.
    ========================================================= */
 
-.main-nav {
-  position: relative;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 0;
-  margin-top: 3.5rem;
+.is-hidden {
+  display: none !important;
 }
 
-/* I draw the vertical line between the title panel and the navigation menu. */
-.main-nav::before {
-  content: "";
+.no-scroll {
+  overflow: hidden;
+}
+
+
+/* =========================================================
+   11. Global responsive adjustments
+   I reduce spacing and type sizes on smaller screens.
+   ========================================================= */
+
+@media (max-width: 1024px) {
+  :root {
+    --section-padding-y: 4.5rem;
+    --font-size-h1: 3.2rem;
+    --font-size-h2: 2.4rem;
+    --font-size-h3: 1.9rem;
+  }
+}
+
+@media (max-width: 600px) {
+  :root {
+    --page-padding: 6vw;
+    --section-padding-y: 3.5rem;
+    --font-size-h1: 2.8rem;
+    --font-size-h2: 2.1rem;
+    --font-size-h3: 1.7rem;
+    --font-size-large: 1.15rem;
+  }
+
+  body {
+    line-height: 1.7;
+  }
+}
+
+
+/* =========================================================
+   12. Site header
+   I position the header over the hero image, like the original site.
+   ========================================================= */
+
+.site-header {
   position: absolute;
-  top: calc(-3.5rem - 1px);
-  left: 50%;
-  width: 1px;
-  height: calc(3.5rem + 1px);
-  background: #ffffff;
-  transform: translateX(-50%);
-  display: block !important;
+  top: 0;
+  left: 0;
+  z-index: 120;
+  width: 100%;
+  color: var(--colour-white);
 }
 
-.main-nav a {
-  display: block;
-  min-width: 7.5rem;
-  height: 2.75rem;
-  padding: 0 1.25rem 0 1.45rem;
-  border: 1px solid #ffffff;
-  border-left: 0;
-  border-radius: 0;
-  background: transparent;
-  color: #ffffff;
-  font-size: 0.75rem;
-  font-weight: 600;
-  line-height: 2.75rem;
-  letter-spacing: 0.2rem;
-  text-align: center;
-  text-decoration: none;
-  text-transform: uppercase;
+.site-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 2rem;
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 2vw var(--page-padding);
+}
+
+.site-logo {
+  flex: 0 0 auto;
+  margin-right: auto;
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  font-weight: 500;
+  line-height: 1;
+  color: var(--colour-white);
+}
+
+.desktop-nav {
+  margin-left: 0;
+}
+
+.desktop-nav__list {
+  display: flex;
+  align-items: center;
+  gap: 1.8rem;
+}
+
+.desktop-nav__link {
+  font-size: 1.09rem;
+  font-weight: 300;
+  color: var(--colour-white);
+  transition: opacity var(--transition-fast);
+}
+
+.desktop-nav__link:hover {
+  opacity: 0.7;
+}
+
+
+/* =========================================================
+   13. Header actions
+   I style the social links, language link and contact button.
+   ========================================================= */
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-left:1.2rem;
+}
+.header-actions__language {
+  padding: 0 2rem;
+}
+.header-actions__social-link,
+.header-actions__language {
+  font-size: 0.9rem;
+  font-weight: 300;
+  color: var(--colour-white);
+  transition: opacity var(--transition-fast);
+}
+
+.header-actions__social-link:hover,
+.header-actions__language:hover {
+  opacity: 0.7;
+}
+
+.header-actions__contact-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 1.2em 2.2em;
+  min-height: auto;
+  border: 0;
+
+  background: var(--colour-white);
+  color: var(--colour-black);
+
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: 0;
+  text-transform: none;
+
   transition:
-    background-color 0.2s ease-in-out,
-    color 0.2s ease-in-out;
+    background var(--transition-fast),
+    color var(--transition-fast),
+    opacity var(--transition-fast);
 }
 
-.main-nav a:first-child {
-  border-left: 1px solid #ffffff;
-  border-radius: 4px 0 0 4px;
+.header-actions__contact-button:hover {
+  opacity: 1;
+  background: var(--colour-black);
+  color: var(--colour-white);
 }
 
-.main-nav a:last-child {
-  border-radius: 0 4px 4px 0;
-}
-
-.main-nav a:hover {
-  background-color: rgba(255, 255, 255, 0.075);
-}
-
-.main-nav a:active {
-  background-color: rgba(255, 255, 255, 0.175);
-}
 
 /* =========================================================
-   Open section behaviour
-   I fade and blur the hero when a content section is open.
+   14. Mobile menu button
+   I hide the mobile menu button on desktop.
    ========================================================= */
 
-body.section-open .hero-content,
-body.is-article-visible .hero-content {
-  opacity: 0;
-  pointer-events: none;
-  transform: scale(0.95);
-  filter: blur(0.1rem);
+.mobile-menu-toggle {
+  display: none;
+  width: 2.2rem;
+  height: 2.2rem;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 0.45rem;
+  color: var(--colour-white);
 }
 
-body.section-open .hero::after,
-body.is-article-visible .hero::after {
-  transform: scale(1.0825);
-  filter: blur(0.2rem);
+.mobile-menu-toggle__line {
+  display: block;
+  width: 1.7rem;
+  height: 1px;
+  background: currentColor;
 }
+
 
 /* =========================================================
-   Content sections
-   I style the popup content panels.
+   15. Mobile menu overlay
+   I prepare the full-screen mobile menu.
+   JavaScript will add the class .is-open later.
    ========================================================= */
 
-.content-section {
+.mobile-menu {
   position: fixed;
-  top: 50%;
-  left: 50%;
-  z-index: 10;
-  width: 40rem;
-  max-width: calc(100% - 80px);
-  max-height: calc(100vh - 80px);
-  overflow-y: auto;
-  padding: 3.5rem 2.5rem 2.5rem;
-  border-radius: 4px;
-  background-color: rgba(27, 31, 34, 0.88);
-  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.55);
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  background: var(--colour-light);
+  color: var(--colour-black);
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  transform: translate(-50%, -48%);
   transition:
-    opacity 0.325s ease-in-out,
-    transform 0.325s ease-in-out,
-    visibility 0.325s ease-in-out;
+    opacity var(--transition-medium),
+    visibility var(--transition-medium);
 }
 
-.content-section.active {
+.mobile-menu.is-open {
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
-  transform: translate(-50%, -50%);
 }
 
-/* Dimension-style article banner images */
-.image {
-  position: relative;
-  display: inline-block;
-  border: 0;
-  border-radius: 4px;
-}
-
-.image::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  display: block;
-  pointer-events: none;
-  background-image: url("../images/overlay.png");
-  background-color: rgba(19, 21, 25, 0.5);
-  border-radius: 4px;
-  opacity: 0.5;
-}
-
-.image img {
-  display: block;
-  border-radius: 4px;
-}
-
-.image.main {
-  display: block;
-  width: 100%;
-  margin: 2.5rem 0;
-}
-
-.image.main img {
-  width: 100%;
-  height: auto;
-}
-
-/* Section titles styled like the Dimension article headings */
-.content-section h2 {
-  width: max-content;
-  max-width: 100%;
-  margin: 0 0 2rem 0;
-  padding-bottom: 0.5rem;
-  border-bottom: solid 1px #ffffff;
-  color: #ffffff;
-  font-size: 1.5rem;
-  font-weight: 600;
-  line-height: 1.4;
-  letter-spacing: 0.5rem;
-  text-transform: uppercase;
-}
-
-/* Text inside content sections */
-.content-section p,
-.content-section li {
-  color: #ffffff;
-  font-size: 1rem;
-  font-weight: 300;
-  line-height: 1.65;
-}
-
-.content-section ul {
-  padding-left: 1.25rem;
-}
-
-/* I style the close button like a simple Dimension-style X icon. */
-.close-section {
-  position: absolute;
-  top: 0.75rem;
-  right: 0.75rem;
-  width: 2.5rem;
-  height: 2.5rem;
-  border: 0;
-  border-radius: 50%;
-  background: transparent;
-  color: #ffffff;
-  font-size: 0;
-  cursor: pointer;
-}
-
-.close-section::before,
-.close-section::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 20px;
-  height: 1px;
-  background: #ffffff;
-}
-
-.close-section::before {
-  transform: translate(-50%, -50%) rotate(45deg);
-}
-
-.close-section::after {
-  transform: translate(-50%, -50%) rotate(-45deg);
-}
-
-.close-section:hover {
-  background-color: rgba(255, 255, 255, 0.075);
-}
-
-.close-section:active {
-  background-color: rgba(255, 255, 255, 0.175);
-}
-
-/* =========================================================
-   Gallery
-   I style the image grid, category cards and thumbnails.
-   ========================================================= */
-
-.gallery-view[hidden] {
-  display: none !important;
-}
-
-.gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 14px;
-  margin-top: 22px;
-}
-
-.gallery-card {
-  position: relative;
-  min-height: 190px;
-  margin: 0;
-  overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  border-radius: 16px;
-  background: rgba(255, 255, 255, 0.06);
-  cursor: pointer;
-}
-
-.gallery-card:focus-visible {
-  outline: 2px solid #ffffff;
-  outline-offset: 4px;
-}
-
-.gallery-card img {
-  display: block;
-  width: 100%;
-  height: 220px;
-  object-fit: cover;
-  cursor: pointer;
-  transition:
-    transform 0.3s ease,
-    filter 0.3s ease;
-}
-
-.gallery-card:hover img {
-  transform: scale(1.05);
-  filter: brightness(0.82);
-}
-
-.gallery-card figcaption {
-  position: absolute;
-  left: 14px;
-  bottom: 14px;
-  padding: 7px 12px;
-  border-radius: 999px;
-  background: rgba(0, 0, 0, 0.55);
-  backdrop-filter: blur(6px);
-  color: #ffffff;
-  font-size: 14px;
-}
-
-.gallery-album-view {
-  margin-top: 1.5rem;
-}
-
-.gallery-back-button {
-  margin-bottom: 1.5rem;
-}
-
-.gallery-album-title {
-  margin: 0 0 0.75rem 0;
-  color: #ffffff;
-  font-size: 1rem;
-  font-weight: 600;
-  letter-spacing: 0.2rem;
-  text-transform: uppercase;
-}
-
-.gallery-album-description {
-  margin: 0 0 1.5rem 0;
-  color: rgba(255, 255, 255, 0.86);
-}
-
-.gallery-category-card img {
-  height: 220px;
-}
-
-.gallery-thumbnail-grid {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-}
-
-.gallery-thumbnail-card {
-  min-height: 0;
-  padding: 0;
-  border: 0;
-  background: transparent;
-}
-
-.gallery-thumbnail-card img {
-  display: block;
-  height: 150px;
-}
-
-.gallery-thumbnail-card figcaption {
-  display: none !important;
-}
-
-/* =========================================================
-   Location and action buttons
-   I style the map area and contact/location buttons.
-   ========================================================= */
-
-.map-wrapper {
-  margin-top: 20px;
-  overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  border-radius: 14px;
-}
-
-.map-wrapper iframe {
-  display: block;
-}
-
-.location-actions,
-.contact-actions,
-.form-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin-top: 1.25rem;
-}
-
-.contact-actions {
-  margin-bottom: 24px;
-}
-
-/* Dimension-style buttons */
-.action-button {
-  appearance: none;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 8rem;
-  height: 2.75rem;
-  padding: 0 1.35rem;
-  border: 0;
-  border-radius: 4px;
-  box-shadow: inset 0 0 0 1px #ffffff;
-  background-color: transparent;
-  color: #ffffff;
-  font: inherit;
-  font-size: 0.8rem;
-  font-weight: 300;
-  line-height: 2.75rem;
-  letter-spacing: 0.2rem;
-  text-align: center;
-  text-decoration: none;
-  text-transform: uppercase;
-  white-space: nowrap;
-  cursor: pointer;
-  transition:
-    background-color 0.2s ease-in-out,
-    color 0.2s ease-in-out;
-}
-
-.action-button:hover {
-  background-color: rgba(255, 255, 255, 0.075);
-}
-
-.action-button:active {
-  background-color: rgba(255, 255, 255, 0.175);
-}
-
-.primary-button {
-  background-color: #ffffff;
-  box-shadow: none;
-  color: #1b1f22 !important;
-  font-weight: 600;
-}
-
-.primary-button:hover {
-  background-color: rgba(255, 255, 255, 0.875);
-}
-
-/* =========================================================
-   Booking form
-   I style the contact and booking request form.
-   ========================================================= */
-
-.booking-form {
-  margin-top: 24px;
-}
-
-.form-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 18px;
-}
-
-.form-group {
+.mobile-menu__inner {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  margin-bottom: 18px;
-}
-
-.form-group label {
-  color: rgba(255, 255, 255, 0.85);
-  font-size: 0.9rem;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-}
-
-.form-group input,
-.form-group select,
-.form-group textarea {
   width: 100%;
-  padding: 12px 14px;
-  border: 1px solid rgba(255, 255, 255, 0.35);
-  border-radius: 6px;
-  outline: none;
-  background: rgba(255, 255, 255, 0.08);
-  color: #ffffff;
-  font: inherit;
+  min-height: 100%;
+  padding: clamp(1.8rem, 6vw, 4rem) var(--page-padding);
 }
 
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus {
-  border-color: #ffffff;
-  background: rgba(255, 255, 255, 0.14);
+.mobile-menu__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.form-group select option {
-  color: #111111;
+.mobile-menu__logo {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  font-weight: 500;
+  line-height: 1;
+  color: var(--colour-black);
 }
 
-.form-group textarea {
-  min-height: 120px;
-  resize: vertical;
+.mobile-menu__close {
+  font-size: 1.2rem;
+  font-weight: 300;
+  line-height: 1;
+  color: var(--colour-black);
 }
 
-.form-actions {
-  margin-top: 12px;
+.mobile-menu__nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
 }
 
-/* I style the success message shown after the booking form is sent. */
-.form-success-message {
-  margin-bottom: 20px;
-  padding: 14px 16px;
-  border: 1px solid rgba(120, 255, 180, 0.45);
-  border-radius: 8px;
-  background: rgba(30, 120, 70, 0.25);
-  color: #ffffff;
+.mobile-menu__nav-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(1.2rem, 3vmin, 2rem);
+}
+
+.mobile-menu__nav-link {
+  font-family: var(--font-heading);
+  font-size: clamp(1.9rem, 8vmin, 4rem);
+  font-weight: 500;
+  line-height: 1.1;
+  color: var(--colour-black);
+  transition: opacity var(--transition-fast);
+}
+
+.mobile-menu__nav-link:hover {
+  opacity: 0.65;
+}
+
+.mobile-menu__socials {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.mobile-menu__social-link {
   font-size: 0.95rem;
-  line-height: 1.5;
+  color: var(--colour-black);
+}
+
+.mobile-menu__language {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.mobile-menu__language-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--colour-black);
+}
+
+.mobile-menu__language-flag {
+  font-size: 1rem;
+}
+
+.mobile-menu__language-text {
+  font-size: 0.95rem;
+}
+
+.mobile-menu__language-arrow {
+  font-size: 1.3rem;
+  line-height: 1;
+}
+
+.mobile-menu__contact-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: min(100%, 420px);
+  min-height: 3.2rem;
+  margin-inline: auto;
+  padding: 0.9rem 1.4rem;
+  background: var(--colour-black);
+  color: var(--colour-white);
+  font-size: 1rem;
+  line-height: 1;
+  transition:
+    background var(--transition-fast),
+    color var(--transition-fast);
+}
+
+.mobile-menu__contact-button:hover {
+  opacity: 1;
+  background: var(--colour-muted);
+  color: var(--colour-white);
+}
+
+
+/* =========================================================
+   16. Header responsive behaviour
+   I switch to the burger menu from 1024px down.
+   ========================================================= */
+
+@media (max-width: 1024px) {
+  .desktop-nav,
+  .header-actions {
+    display: none;
+  }
+
+  .mobile-menu-toggle {
+    display: flex;
+  }
+
+  .site-header__inner {
+    padding-top: clamp(1.4rem, 4vw, 3rem);
+    padding-bottom: clamp(1.4rem, 4vw, 3rem);
+  }
+
+  .site-logo {
+    font-size: clamp(1.8rem, 3vw, 2rem);
+  }
+}
+
+@media (max-width: 600px) {
+  .mobile-menu__inner {
+    padding-top: 7vw;
+    padding-bottom: 7vw;
+  }
+
+  .mobile-menu__socials,
+  .mobile-menu__language {
+    margin-bottom: 1.6rem;
+  }
+
+  .mobile-menu__nav-link {
+    font-size: clamp(1.7rem, 8.5vmin, 3rem);
+  }
+}
+
+
+/* =========================================================
+   17. Hero section
+   I rebuild the opening image section close to the original site.
+   ========================================================= */
+
+.hero {
+  position: relative;
+  width: 100%;
+  height: clamp(420px, 41vw, 750px);
+  overflow: hidden;
+  background: var(--colour-black);
+}
+
+.hero__media {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.hero__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+}
+
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: var(--colour-black);
+  opacity: 0.2;
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   18. Hero responsive behaviour
+   I keep the hero proportional as the screen gets smaller.
+   ========================================================= */
+
+@media (max-width: 1024px) {
+  .hero {
+    height: clamp(390px, 58vw, 600px);
+  }
+}
+
+@media (max-width: 767px) {
+  .hero {
+    height: clamp(330px, 74vw, 470px);
+  }
+
+  .hero__image {
+    object-position: center center;
+  }
+}
+
+
+/* =========================================================
+   19. Our Story section
+   I keep the story section left aligned and justified on desktop.
+   ========================================================= */
+
+.story {
+  padding: 7.5rem 15vw 6rem;
+  background: var(--colour-light);
+  color: var(--colour-black);
+  padding-bottom: 0px;
+}
+
+.story__container {
+  width: 100%;
+  max-width: 1350px;
+  margin-inline: auto;
+  text-align: left;
+}
+
+.story .section__eyebrow {
+  margin-bottom: 2rem;
+  font-family: var(--font-heading);
+  font-size: 1.6rem;
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--colour-black);
+  text-align: left;
+}
+
+.story__content {
+  max-width: 100%;
+  font-family: var(--font-heading);
+  font-size: clamp(1.85rem, 2.6vw, 2.19rem);
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--colour-black);
+  text-align: justify;
+}
+
+.story__content p {
+  margin-bottom: 0;
+}
+
+
+/* =========================================================
+   20. Our Story responsive behaviour
+   I reduce padding and text size smoothly on smaller screens.
+   ========================================================= */
+
+@media (max-width: 1024px) {
+  .story {
+    padding: 6rem 10vw 5rem;
+  }
+
+  .story__container {
+    max-width: 900px;
+  }
+
+  .story__content {
+    font-size: clamp(1.55rem, 3.2vw, 1.9rem);
+    line-height: 1.42;
+  }
+}
+
+@media (max-width: 767px) {
+  .story {
+    padding: 4.5rem 6vw 4rem;
+  }
+
+  .story .section__eyebrow {
+    margin-bottom: 1.5rem;
+    font-size: 1.45rem;
+  }
+
+  .story__content {
+    font-size: clamp(1.2rem, 5vw, 1.45rem);
+    line-height: 1.5;
+    text-align: left;
+  }
 }
 
 /* =========================================================
-   Gallery lightbox
-   I style the larger image preview.
+   21. Coffee Preview section
+   I style the coffee section for large desktop first.
+   Responsive rules will be added later.
    ========================================================= */
 
-.image-lightbox {
-  position: fixed;
-  inset: 0;
-  z-index: 999;
-  display: none;
-  align-items: center;
-  justify-content: center;
-  padding: 24px;
-  background: rgba(0, 0, 0, 0.88);
+.coffee-preview {
+  padding: 7rem var(--page-padding) 7rem;
+  background: var(--colour-light);
+  color: var(--colour-black);
+  padding-top: 11.5rem;
 }
 
-.image-lightbox.active {
-  display: flex;
-}
-
-.lightbox-content {
+/* I use a two-column layout like the original desktop version. */
+.coffee-preview__container {
+  display: grid;
+  grid-template-columns: minmax(600px, 1.20fr) minmax(300px, 0.55fr);
+  align-items: start;
+  gap: clamp(5rem, 6vw, 8rem);
   width: 100%;
-  max-width: 900px;
+  max-width: 1550px;
+  margin-inline: auto;
+}
+
+/* I keep the coffee image large and tall, closer to the original crop. */
+.coffee-preview__media {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  transform: translateX(-125px);
+
+}
+
+/* The original image appears much taller than 16:9, so I use a near-square crop. */
+.coffee-preview__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  transform-origin: center center;
+}
+
+/* I move the menu content slightly down, like in the original. */
+.coffee-preview__content {
+  width: 100%;
+  max-width: 250px;
+  padding-top: 3.5rem;
+}
+
+/* I keep the Coffee title elegant, but not oversized. */
+.coffee-preview__title {
+  margin-bottom: 2.4rem;
+  font-family: var(--font-heading);
+  font-size: 2.8rem;
+  font-weight: 500;
+  line-height: 1.1;
+  color: var(--colour-black);
+  padding-top: 3rem;
+}
+
+/* I keep each menu group separated but compact. */
+.coffee-menu-preview__group {
+  margin-bottom: 1.9rem;
+}
+
+/* I style category titles closer to the original. */
+.coffee-menu-preview__group-title {
+  margin-bottom: 0.7rem;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--colour-black);
+}
+
+/* I keep the product list clean and compact. */
+.coffee-menu-preview__list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+/* I place the product name on the left and the price on the right. */
+.coffee-menu-preview__item {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 2rem;
+  font-size: 0.95rem;
+  line-height: 1.45;
+}
+
+/* I prevent product names from touching the price. */
+.coffee-menu-preview__item dt {
+  flex: 1;
+  font-weight: 300;
+}
+
+/* I keep prices aligned and easy to scan. */
+.coffee-menu-preview__item dd {
+  flex: 0 0 auto;
   margin: 0;
+  font-weight: 300;
+  white-space: nowrap;
+}
+
+/* I style the full menu link as a simple text link. */
+.coffee-preview__full-menu-link {
+  display: inline-block;
+  margin-top: 0.6rem;
+  font-size: 0.95rem;
+  font-weight: 300;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  transition: opacity var(--transition-fast);
+}
+
+.coffee-preview__full-menu-link:hover {
+  opacity: 0.65;
+}
+
+/* =========================================================
+   22. Testimonial section
+   I recreate the original testimonial as a centred h2-like text block.
+   ========================================================= */
+
+.testimonial {
+  padding: 10.6rem var(--page-padding) 14.3rem;
+  background: var(--colour-white);
+  color: var(--colour-black);
+}
+
+.testimonial__container {
+  width: 100%;
+  max-width: 1350px;
+  margin-inline: auto;
   text-align: center;
 }
 
-.lightbox-image {
-  max-width: 100%;
-  max-height: 80vh;
-  border-radius: 14px;
-  object-fit: contain;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+.testimonial__quote {
+  margin: 0;
 }
 
-.lightbox-caption {
-  display: none;
-}
-
-.lightbox-close {
-  position: absolute;
-  top: 24px;
-  right: 28px;
-  width: 44px;
-  height: 44px;
-  border: 1px solid rgba(255, 255, 255, 0.35);
-  border-radius: 50%;
-  background: rgba(0, 0, 0, 0.4);
-  color: #ffffff;
-  font-size: 2rem;
-  line-height: 1;
-  cursor: pointer;
-}
-
-.lightbox-close:hover {
-  background: rgba(255, 255, 255, 0.18);
-}
-
-/* I style the previous and next buttons inside the image lightbox. */
-.lightbox-nav {
-  position: absolute;
-  top: 50%;
-  z-index: 1000;
-  width: 3rem;
-  height: 3rem;
-  border: 1px solid rgba(255, 255, 255, 0.35);
-  border-radius: 50%;
-  background: rgba(0, 0, 0, 0.4);
-  color: #ffffff;
-  font-size: 1.8rem;
-  line-height: 1;
-  cursor: pointer;
-  transform: translateY(-50%);
-}
-
-.lightbox-prev {
-  left: 24px;
-}
-
-.lightbox-next {
-  right: 24px;
-}
-
-.lightbox-nav:hover {
-  background: rgba(255, 255, 255, 0.18);
-}
-
-@media (max-width: 700px) {
-  .lightbox-nav {
-    width: 2.5rem;
-    height: 2.5rem;
-    font-size: 1.4rem;
-  }
-
-  .lightbox-prev {
-    left: 10px;
-  }
-
-  .lightbox-next {
-    right: 10px;
-  }
+.testimonial__quote p {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: clamp(2.1rem, 2.45vw, 2.8rem);
+  font-weight: 500;
+  line-height: 1.35;
+  color: var(--colour-black);
+  text-align: center;
 }
 
 /* =========================================================
-   Social icons
-   I style the social icons in the contact section.
+   23. Atmosphere image section
+   I recreate the original full-bleed bar image section.
+   The original has no overlay and uses the image centred.
    ========================================================= */
 
-.content-section .social-icons {
+.atmosphere {
+  width: 100%;
+  background: var(--colour-black);
+  overflow: hidden;
+}
+
+.atmosphere__media {
+  width: 100%;
+  height: clamp(535px, 40vw, 785px);
+  overflow: hidden;
+}
+
+.atmosphere__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 50%;
+}
+/* =========================================================
+   24. Footer / Contact section
+   I style the footer for large desktop first.
+   Responsive rules will be added later.
+   ========================================================= */
+
+.site-footer {
+  padding: 8.5rem var(--page-padding) 4.5rem;
+  background: var(--colour-light);
+  color: var(--colour-black);
+  padding-bottom: 7rem;
+}
+
+/* I recreate the original footer layout: contact on the left, socials on the right. */
+.site-footer__container {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: start;
+  gap: 4rem;
+  width: 100%;
+  max-width: var(--container-wide);
+  margin-inline: auto;
+}
+
+/* I keep the contact block simple and aligned left. */
+.site-footer__contact {
+  max-width: 520px;
+}
+
+/* I style the Hypso25 footer title like the original h4 block. */
+.site-footer__brand {
+  font-family: var(--font-heading);
+  font-size: 1.6rem;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--colour-black);
+}
+
+/* I keep address and phone small, like the original footer text. */
+.site-footer__address,
+.site-footer__phone {
+  margin-bottom: 0.8rem;
+  font-size: 0.9rem;
+  font-weight: 300;
+  line-height: 1.6;
+  color: var(--colour-black);
+}
+.site-footer__address {
+  padding-top: 1rem;
+  line-height: 2;
+}
+
+.site-footer__phone a {
+  color: var(--colour-black);
+}
+
+/* I align social links to the right, like the original footer icon block. */
+.site-footer__socials {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  gap: 0.75rem;
-  margin: 2rem 0 0 0;
-  padding: 0;
-  list-style: none;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1rem;
+  padding-top: 0.4rem;
 }
 
-.content-section .social-icons li {
-  margin: 0;
-  padding: 0;
+/* For now these are text links. Later we can replace them with SVG icons. */
+.site-footer__social-link {
+  font-size: 0.85rem;
+  font-weight: 300;
+  color: var(--colour-black);
+  transition: opacity var(--transition-fast);
 }
 
-.content-section .social-icons a {
+.site-footer__social-link:hover {
+  opacity: 0.65;
+}
+/* =========================================================
+   25. Cookie banner
+   I recreate the original Squarespace cookie banner style.
+   This is desktop-first. JavaScript will hide it after Accept later.
+   ========================================================= */
+
+.cookie-banner {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 300000;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2vw;
+
+  padding: 10px 15px;
+  background: var(--colour-black);
+  color: var(--colour-white);
+
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+/* I keep the text small and compact like the original banner. */
+.cookie-banner__text {
+  margin: 10px 2vw 10px 10px;
+  max-width: 75%;
+
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 0.05em;
+  color: var(--colour-white);
+}
+
+/* I style Accept as a text-style CTA, not as a boxed button. */
+.cookie-banner__button {
+  flex: 0 0 auto;
+  margin: 10px;
+  padding: 0;
+
+  border: 0;
+  border-bottom: 1px solid #777;
+  background: transparent;
+
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 0.05em;
+  color: var(--colour-white);
+
+  cursor: pointer;
+  transition: opacity var(--transition-fast);
+}
+
+.cookie-banner__button:hover {
+  opacity: 0.7;
+}
+
+/* I prepare this class for JavaScript later. */
+.cookie-banner.is-hidden {
+  display: none;
+}
+/* =========================================================
+   26. Social icons
+   I style the SVG social icons separately for header, footer and mobile menu.
+   The icons use currentColor, so header icons stay white and footer/mobile icons follow their parent colour.
+   ========================================================= */
+
+.social-icon {
+  display: block;
+  width: 30px;
+  height: 30px;
+  fill: currentColor;
+}
+
+/* I keep all social links aligned nicely around the SVG icons. */
+.header-actions__social-link,
+.mobile-menu__social-link,
+.site-footer__social-link {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 2.25rem;
-  height: 2.25rem;
-  border-radius: 100%;
-  box-shadow: inset 0 0 0 1px #ffffff;
-  color: #ffffff;
-  text-decoration: none;
-  transition:
-    background-color 0.2s ease-in-out,
-    color 0.2s ease-in-out;
+  color: inherit;
+  line-height: 1;
+  transition: opacity var(--transition-fast);
 }
 
-.content-section .social-icons a:hover {
-  background-color: rgba(255, 255, 255, 0.075);
+/* Header social icons.
+   The original header icons are smaller than the mobile menu icons. */
+.header-actions__social-link .social-icon {
+  width: 24px;
+  height: 24px;
 }
 
-.content-section .social-icons a:active {
-  background-color: rgba(255, 255, 255, 0.175);
+/* I control the spacing between the header social icons. */
+.header-actions__social-link + .header-actions__social-link {
+  margin-left: 0.4rem;
 }
 
-.content-section .social-icons i {
-  font-size: 0.95rem;
+/* Footer social icons.
+   I keep these slightly larger than the original, based on your current preference. */
+.site-footer .social-icon {
+  width: 30px;
+  height: 30px;
 }
 
-/* =========================================================
-   Responsive layout
-   I make the website work better on smaller screens.
-   ========================================================= */
-
-@media (max-width: 700px) {
-  .hero {
-    padding: 2rem 1rem;
-  }
-
-  .hero-logo {
-    width: 4.75rem;
-    height: 4.75rem;
-    margin-bottom: 2rem !important;
-  }
-
-  .hero-logo::after {
-    height: 2rem;
-  }
-
-  .hero-text-panel {
-    padding: 2.25rem 1.25rem;
-  }
-
-  .main-nav {
-    width: auto;
-    min-width: 10rem;
-    max-width: 100%;
-    flex-direction: column;
-    align-items: stretch;
-    margin-top: 2rem;
-  }
-
-  .main-nav::before {
-    top: calc(-2rem - 1px);
-    height: calc(2rem + 1px);
-  }
-
-  .main-nav a {
-    width: 100%;
-    min-width: 0;
-    border-left: 1px solid #ffffff;
-    border-top: 0;
-    border-radius: 0;
-  }
-
-  .main-nav a:first-child {
-    border-top: 1px solid #ffffff;
-    border-radius: 4px 4px 0 0;
-  }
-
-  .main-nav a:last-child {
-    border-radius: 0 0 4px 4px;
-  }
-
-  .content-section {
-    width: calc(100% - 40px);
-    max-height: calc(100vh - 40px);
-    padding: 3.5rem 1.5rem 1.5rem;
-  }
-
-  .content-section h2 {
-    font-size: 1.25rem;
-    letter-spacing: 0.35rem;
-  }
-
-  .gallery-grid,
-  .form-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .gallery-thumbnail-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .gallery-thumbnail-card img {
-    height: 135px;
-  }
-
-  .location-actions,
-  .contact-actions,
-  .form-actions {
-    flex-direction: column;
-  }
-
-  .location-actions .action-button,
-  .contact-actions .action-button,
-  .form-actions .action-button {
-    width: 100%;
-    text-align: center;
-  }
-
-  .image.main {
-    margin: 2rem 0;
-  }
-}
-
-@media (max-width: 480px) {
-  h1,
-  .hero-title {
-    font-size: 1.75rem;
-  }
-
-  .hero-description {
-    font-size: 0.8rem;
-    letter-spacing: 0.05em;
-  }
-
-  .content-section h2 {
-    font-size: 1.1rem;
-    letter-spacing: 0.25rem;
-  }
-
-  .main-nav {
-    min-width: 0;
-  }
-
-  .main-nav a {
-    width: 8.7rem;
-    min-width: 0;
-  }
-
-  .gallery-thumbnail-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .gallery-thumbnail-card img {
-    height: 180px;
-  }
+/* Mobile menu social icons.
+   I keep these larger because they sit inside the full-screen menu. */
+.mobile-menu .social-icon {
+  width: 40px;
+  height: 40px;
 }
 /* =========================================================
-   Rooms
-   I style the room cards and room photo thumbnails.
+   27. Language picker
+   I recreate the original language selector with flag, text and dropdown arrow.
+   The dropdown opens only on hover.
    ========================================================= */
 
-.rooms-view[hidden] {
-  display: none !important;
-}
-
-.rooms-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 14px;
-  margin-top: 24px;
-}
-
-.room-card {
+.language-picker {
   position: relative;
-  overflow: hidden;
-  margin: 0;
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  border-radius: 16px;
-  background: rgba(255, 255, 255, 0.06);
-  cursor: pointer;
-  transition:
-    background-color 0.2s ease-in-out,
-    transform 0.2s ease-in-out;
+  display: inline-flex;
+  align-items: center;
+  margin: 0 1vw;
+
+  /* I create a small invisible hover bridge between the button and the dropdown. */
+  padding-bottom: 0.5rem;
+  margin-bottom: -0.5rem;
+
+  color: var(--colour-white);
 }
 
-.room-card:focus-visible {
-  outline: 2px solid #ffffff;
-  outline-offset: 4px;
+.language-picker__button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.1em 0;
+  color: var(--colour-white);
+  cursor: default;
 }
 
-.room-card-body {
-  padding: 0 1rem;
+.language-picker__flag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  font-size: 18px;
+  line-height: 1;
 }
 
-.room-card-body h3 {
-  margin: 0;
-  color: #ffffff;
-  font-size: 1rem;
-  font-weight: 600;
-  letter-spacing: 0.16rem;
-  text-transform: uppercase;
+.language-picker__flag-img {
+  display: block;
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  flex: 0 0 auto;
 }
 
-.room-card-button {
+.mobile-menu__language-flag-img {
+  display: block;
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  flex: 0 0 auto;
+}
+
+.language-picker__current {
+  font-size: 1.09rem;
+  font-weight: 300;
+  line-height: 1;
+}
+
+.language-picker__arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5em;
+  height: 1.5em;
+  margin-left: 0.2rem;
+}
+
+.language-picker__arrow-icon {
+  width: 100%;
+  height: 100%;
+  transition: transform var(--transition-fast);
+}
+
+/* I keep the dropdown attached to the button so it does not disappear when moving the mouse down. */
+.language-picker__menu {
   position: absolute;
-  right: 0.85rem;
-  bottom: 2rem;
-  z-index: 2;
-  min-width: 0;
-  height: 2.35rem;
-  padding: 0 0.9rem;
-  background-color: rgba(27, 31, 34, 0.72);
-  backdrop-filter: blur(6px);
-  font-size: 0.7rem;
-  line-height: 2.35rem;
+  top: 100%;
+  right: -1rem;
+  z-index: 150;
+
+  min-width: 135px;
+  padding: 0.55rem 0;
+
+  background: var(--colour-black);
+  color: var(--colour-white);
+  text-align: left;
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  transition:
+    opacity var(--transition-fast),
+    visibility var(--transition-fast);
 }
 
-.room-gallery-view {
-  margin-top: 1.5rem;
+/* I open the dropdown only when the mouse is over the picker area. */
+.language-picker:hover .language-picker__menu {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
 }
 
-.rooms-back-button {
-  margin-bottom: 1.5rem;
+.language-picker:hover .language-picker__arrow-icon {
+  transform: rotate(180deg);
 }
 
-.room-gallery-title {
-  margin: 0 0 0.75rem 0;
-  color: #ffffff;
-  font-size: 1rem;
-  font-weight: 600;
-  letter-spacing: 0.2rem;
-  text-transform: uppercase;
-}
+.language-picker__option {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
 
-.room-gallery-subtitle {
-  margin: 0 0 1.5rem 0;
-  color: rgba(255, 255, 255, 0.86);
-}
+  padding: 0.45rem 1rem;
 
-.room-thumbnail-grid {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-}
+  font-size: 0.9rem;
+  font-weight: 300;
+  line-height: 1.2;
+  white-space: nowrap;
 
-.room-thumbnail-card {
-  min-height: 0;
-  padding: 0;
-  border: 0;
+  color: var(--colour-white);
   background: transparent;
 }
 
-.room-thumbnail-card img {
-  display: block;
-  height: 150px;
-}
-
-.room-thumbnail-card figcaption {
-  display: none !important;
-}
-
-@media (max-width: 700px) {
-  .rooms-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .room-thumbnail-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .room-thumbnail-card img {
-    height: 135px;
-  }
-}
-
-@media (max-width: 480px) {
-  .room-thumbnail-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .room-thumbnail-card img {
-    height: 180px;
-  }
-}
-/* I change the mouse cursor to a magnifying glass on images that can be enlarged. */
-.gallery-thumbnail-card,
-.gallery-thumbnail-card img,
-.room-thumbnail-card,
-.room-thumbnail-card img {
-  cursor: zoom-in;
+.language-picker__option:hover {
+  opacity: 1;
+  background: rgba(255, 255, 255, 0.14);
+  color: var(--colour-white);
 }
