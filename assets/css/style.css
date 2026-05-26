@@ -285,7 +285,7 @@ address {
 }
 
 /* =========================================================
-   10. Basic hidden states
+   9. Basic hidden states
    I prepare utility classes for JavaScript later.
    ========================================================= */
 
@@ -298,7 +298,7 @@ address {
 }
 
 /* =========================================================
-   11. Global responsive adjustments
+   10. Global responsive adjustments
    I reduce spacing and type sizes on smaller screens.
    ========================================================= */
 
@@ -327,7 +327,7 @@ address {
 }
 
 /* =========================================================
-   12. Site header
+   11. Site header
    I position the header over the hero image, like the original site.
    ========================================================= */
 
@@ -382,7 +382,7 @@ address {
 }
 
 /* =========================================================
-   13. Header actions
+   12. Header actions
    I style the social links, language link and contact button.
    ========================================================= */
 
@@ -392,15 +392,13 @@ address {
   gap: 1.5rem;
   margin-left: 1.2rem;
 }
-.header-actions__language {
-  padding: 0 2rem;
-}
-.header-actions__social-link,
+
 .header-actions__language {
   font-size: 0.9rem;
   font-weight: 300;
   color: var(--colour-white);
   transition: opacity var(--transition-fast);
+  padding: 0 2rem;
 }
 
 .header-actions__social-link:hover,
@@ -440,7 +438,7 @@ address {
 }
 
 /* =========================================================
-   14. Mobile menu button
+   13. Mobile menu button
    I hide the mobile menu button on desktop.
    ========================================================= */
 
@@ -463,7 +461,7 @@ address {
 }
 
 /* =========================================================
-   15. Mobile menu overlay
+   14. Mobile menu overlay
    I prepare the full-screen mobile menu.
    JavaScript will add the class .is-open later.
    ========================================================= */
@@ -607,7 +605,7 @@ address {
 }
 
 /* =========================================================
-   16. Header responsive behaviour
+   15. Header responsive behaviour
    I switch to the burger menu from 1024px down.
    ========================================================= */
 
@@ -648,7 +646,7 @@ address {
 }
 
 /* =========================================================
-   17. Hero section
+   16. Hero section
    I rebuild the opening image section close to the original site.
    ========================================================= */
 
@@ -684,7 +682,7 @@ address {
 }
 
 /* =========================================================
-   18. Hero responsive behaviour
+   17. Hero responsive behaviour
    I keep the hero proportional as the screen gets smaller.
    ========================================================= */
 
@@ -694,18 +692,8 @@ address {
   }
 }
 
-@media (max-width: 767px) {
-  .hero {
-    height: clamp(330px, 74vw, 470px);
-  }
-
-  .hero__image {
-    object-position: center center;
-  }
-}
-
 /* =========================================================
-   19. Our Story section
+   18. Our Story section
    I keep the story section left aligned and justified on desktop.
    ========================================================= */
 
@@ -749,7 +737,7 @@ address {
 }
 
 /* =========================================================
-   20. Our Story responsive behaviour
+   19. Our Story responsive behaviour
    I reduce padding and text size smoothly on smaller screens.
    ========================================================= */
 
@@ -763,34 +751,16 @@ address {
   }
 }
 
-@media (max-width: 767px) {
-  .story {
-    padding: 4.5rem 6vw 4rem;
-  }
-
-  .story .section__eyebrow {
-    margin-bottom: 1.5rem;
-    font-size: 1.45rem;
-  }
-
-  .story__content {
-    font-size: clamp(1.2rem, 5vw, 1.45rem);
-    line-height: 1.5;
-    text-align: left;
-  }
-}
-
 /* =========================================================
-   21. Coffee Preview section
+   20. Coffee Preview section
    I style the coffee section for large desktop first.
    Responsive rules will be added later.
    ========================================================= */
 
 .coffee-preview {
-  padding: 7rem var(--page-padding) 7rem;
+  padding: 11.5rem var(--page-padding) 7rem;
   background: var(--colour-light);
   color: var(--colour-black);
-  padding-top: 11.5rem;
 }
 
 /* I use a two-column layout like the original desktop version. */
@@ -903,7 +873,7 @@ address {
   width: 100%;
 }
 /* =========================================================
-   22. Testimonial section
+   21. Testimonial section
    I recreate the original testimonial as a centred h2-like text block.
    ========================================================= */
 
@@ -935,7 +905,7 @@ address {
 }
 
 /* =========================================================
-   23. Atmosphere image section
+   22. Atmosphere image section
    I recreate the original full-bleed bar image section.
    The original has no overlay and uses the image centred.
    ========================================================= */
@@ -959,7 +929,7 @@ address {
   object-position: 50% 0%;
 }
 /* =========================================================
-   24. Footer / Contact section
+   23. Footer / Contact section
    I style the footer for large desktop first.
    Responsive rules will be added later.
    ========================================================= */
@@ -1027,14 +997,13 @@ address {
   font-size: 0.85rem;
   font-weight: 300;
   color: var(--colour-black);
-  transition: opacity var(--transition-fast);
 }
 
 .site-footer__social-link:hover {
   opacity: 0.65;
 }
 /* =========================================================
-   25. Cookie banner
+   24. Cookie banner
    I recreate the original Squarespace cookie banner style.
    This is desktop-first. JavaScript will hide it after Accept later.
    ========================================================= */
@@ -1095,7 +1064,7 @@ address {
 }
 
 /* =========================================================
-   26. Social icons
+   25. Social icons
    I style the SVG social icons separately for header, footer and mobile menu.
    The icons use currentColor, so header icons stay white and footer/mobile icons follow their parent colour.
    ========================================================= */
@@ -1114,7 +1083,6 @@ address {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  color: inherit;
   line-height: 1;
   transition: opacity var(--transition-fast);
 }
@@ -1145,9 +1113,9 @@ address {
   height: 40px;
 }
 /* =========================================================
-   27. Language picker
+   26. Language picker
    I recreate the original language selector with flag, text and dropdown arrow.
-   The dropdown opens only on hover.
+   The dropdown opens on hover and keyboard focus.
    ========================================================= */
 
 .language-picker {
@@ -1168,7 +1136,7 @@ address {
   gap: 0.45rem;
   padding: 0.1em 0;
   color: var(--colour-white);
-  cursor: default;
+  cursor: pointer;
 }
 
 .language-picker__flag {
@@ -1276,13 +1244,13 @@ address {
   color: var(--colour-white);
 }
 /* =========================================================
-   28. Tablet landscape corrections: 768px - 1024px
-   I fix header spacing, hero height, story width/text and coffee proportions.
-   This does not affect the 1440px+ desktop version.
+   27. Tablet layout: 768px - 1024px
+   I keep all tablet-specific rules in one place for easier maintenance.
+   This controls header, hero, story, coffee, testimonial and atmosphere.
    ========================================================= */
 
 @media (min-width: 768px) and (max-width: 1024px) {
-  /* 1. Header spacing */
+  /* Header */
   .site-header__inner {
     padding-top: 3.5rem;
     padding-right: 3.6rem;
@@ -1306,12 +1274,12 @@ address {
     background: var(--colour-white);
   }
 
-  /* 2. Hero height */
+  /* Hero */
   .hero {
     height: clamp(390px, 50vw, 520px);
   }
 
-  /* 3. Our Story width and text */
+  /* Our Story */
   .story {
     padding: 4.7rem 16.5vw 4.5rem;
   }
@@ -1329,39 +1297,8 @@ address {
     line-height: 1.35;
     text-align: justify;
   }
-}
-/* =========================================================
-   29. Tablet landscape corrections: Testimonial / Atmosphere text
-   I make the testimonial text container shrink gradually from 1024px to 768px.
-   ========================================================= */
 
-@media (min-width: 768px) and (max-width: 1024px) {
-  .testimonial {
-    padding: 6.5rem 10vw 8.5rem;
-  }
-
-  .testimonial__container {
-    width: clamp(560px, 62vw, 640px);
-    max-width: 100%;
-    margin-inline: auto;
-  }
-
-  .testimonial__quote p {
-    font-size: clamp(1.95rem, 3.4vw, 2.25rem);
-    line-height: 1.35;
-    text-align: center;
-  }
-}
-/* =========================================================
-   30. Tablet landscape correction: Atmosphere image
-   I keep the atmosphere image proportional to the desktop rule.
-   ========================================================= */
-
-@media (min-width: 768px) and (max-width: 1024px) {
-  .atmosphere__media {
-    height: 50vw;
-  }
-
+  /* Coffee */
   .coffee-preview {
     padding-top: 0.5rem;
     padding-right: 4vw;
@@ -1463,101 +1400,32 @@ address {
     margin-top: 0.8rem;
     text-align: left;
   }
-}
 
-/* =========================================================
-   31. Coffee mobile layout: 768px and below
-   I switch Coffee to one column when two columns no longer fit cleanly.
-   ========================================================= */
-
-@media (max-width: 767px) {
-  .coffee-preview {
-    padding: 4rem 7vw 4.5rem;
+  /* Testimonial */
+  .testimonial {
+    padding: 6.5rem 10vw 8.5rem;
   }
 
-  .coffee-preview__container {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 3rem;
-    width: 100%;
+  .testimonial__container {
+    width: clamp(560px, 62vw, 640px);
     max-width: 100%;
     margin-inline: auto;
   }
 
-  .coffee-preview__media {
-    width: min(100%, 430px);
-    aspect-ratio: 1 / 1.35;
-    margin-inline: auto;
-    overflow: hidden;
-    transform: none;
+  .testimonial__quote p {
+    font-size: clamp(1.95rem, 3.4vw, 2.25rem);
+    line-height: 1.35;
+    text-align: center;
   }
 
-  .coffee-preview__image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center center;
-    transform: none;
-  }
-
-  .coffee-preview__content {
-    width: 100%;
-    max-width: 100%;
-    padding-top: 0;
-
-    display: flex;
-    justify-content: center;
-  }
-
-  .coffee-preview__menu-panel {
-    width: 210px;
-    max-width: 210px;
-  }
-
-  .coffee-preview__title {
-    padding-top: 0;
-    margin-bottom: 1.6rem;
-    font-size: 2.2rem;
-    text-align: left;
-  }
-
-  .coffee-menu-preview__group {
-    margin-bottom: 1.4rem;
-  }
-
-  .coffee-menu-preview__group-title {
-    text-align: left;
-  }
-
-  .coffee-menu-preview__item {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) max-content;
-    column-gap: 0.8rem;
-    align-items: baseline;
-    width: 100%;
-    font-size: 0.88rem;
-    line-height: 1.45;
-  }
-
-  .coffee-menu-preview__item dt {
-    min-width: 0;
-    text-align: left;
-  }
-
-  .coffee-menu-preview__item dd {
-    margin: 0;
-    text-align: right;
-    white-space: nowrap;
-  }
-
-  .coffee-preview__full-menu-link {
-    display: inline-block;
-    margin-top: 0.8rem;
-    text-align: left;
+  /* Atmosphere */
+  .atmosphere__media {
+    height: 50vw;
   }
 }
+
 /* =========================================================
-   33. Laptop / normal desktop corrections: 1025px - 1440px
+   28. Laptop / normal desktop corrections: 1025px - 1440px
    I adjust the layout between large desktop and tablet.
    This keeps 2560px and 768-1024px untouched.
    ========================================================= */
@@ -1666,24 +1534,30 @@ address {
   }
 }
 /* =========================================================
-   34. Large desktop Coffee continuation: 1441px and above
-   I continue the same Coffee image transition after 1440px.
-   This prevents the image from jumping back to the old global Coffee style.
+   29. Large desktop Coffee layout: 1441px and above
+   I control the large desktop Coffee section with shared variables.
+   This avoids repeated correction blocks for padding, image width and image height.
    ========================================================= */
 
 @media (min-width: 1441px) {
   .coffee-preview {
-    padding-top: clamp(6.5rem, calc(1px + 7.14vw), 11.5rem);
-    padding-right: var(--page-padding);
-    padding-bottom: clamp(6.5rem, 4.5vw, 7rem);
-    padding-left: var(--page-padding);
-  }
-
-  .coffee-preview__container {
+    --coffee-left-padding: clamp(
+      var(--page-padding),
+      calc(50vw - 900px),
+      350px
+    );
     --coffee-image-column: clamp(720px, calc(60vw - 202px), 1090px);
+    --coffee-media-height: clamp(780px, calc(52vw - 27px), 1020px);
     --coffee-menu-column: 360px;
     --coffee-gap: clamp(4.5rem, 5vw, 8rem);
 
+    padding-top: clamp(6.5rem, calc(1px + 7.14vw), 11.5rem);
+    padding-right: var(--page-padding);
+    padding-bottom: clamp(6.5rem, 4.5vw, 7rem);
+    padding-left: var(--coffee-left-padding);
+  }
+
+  .coffee-preview__container {
     display: grid;
     grid-template-columns: var(--coffee-image-column) var(--coffee-menu-column);
     align-items: start;
@@ -1697,7 +1571,7 @@ address {
 
   .coffee-preview__media {
     width: 100%;
-    height: clamp(780px, calc(52vw - 27px), 1020px);
+    height: var(--coffee-media-height);
     aspect-ratio: auto;
     overflow: hidden;
     transform: none;
@@ -1732,9 +1606,10 @@ address {
     text-align: left;
   }
 }
+
 /* =========================================================
-   36. Hero correction: 1441px - 2200px
-   I reduce the hero height slightly on normal large desktop screens.
+   30. Large desktop Hero correction: 1441px - 2200px
+   I reduce the Hero height slightly on normal large desktop screens.
    ========================================================= */
 
 @media (min-width: 1441px) and (max-width: 2200px) {
@@ -1742,51 +1617,380 @@ address {
     height: clamp(575px, 39vw, 720px);
   }
 }
+
 /* =========================================================
-   35. Very large desktop Coffee correction: 2000px and above
-   I stop the Coffee image from becoming too large on very wide screens
-   and I restore more left padding.
+   31. Very large desktop Coffee size correction: 2000px and above
+   I keep the tested Coffee image size on very wide screens.
+   The left spacing is already handled by --coffee-left-padding above.
    ========================================================= */
 
-@media (min-width: 2000px) and (max-width: 2299px) {
+@media (min-width: 2000px) {
   .coffee-preview {
-    padding-left: clamp(100px, calc(50vw - 900px), 240px);
-  }
-
-  .coffee-preview__container {
     --coffee-image-column: clamp(720px, calc(60vw - 232px), 1000px);
-  }
-
-  .coffee-preview__media {
-    height: clamp(780px, calc(52vw - 47px), 980px);
+    --coffee-media-height: clamp(780px, calc(52vw - 47px), 980px);
   }
 }
 /* =========================================================
-   36. Ultra-wide Coffee correction: 2300px and above
-   I move the whole Coffee group to the right on very wide screens
-   without changing the image size.
+   32. Mobile layout: 767px and below
+   I control the full mobile layout after the tablet breakpoint.
    ========================================================= */
 
-@media (min-width: 2300px) {
+@media (max-width: 767px) {
+  html,
+  body {
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+  /* Header */
+  .site-header__inner {
+    padding-top: clamp(1.8rem, 5.2vw, 2.7rem);
+    padding-right: clamp(1.8rem, 5.5vw, 2.9rem);
+    padding-left: clamp(1.8rem, 5.5vw, 2.9rem);
+    padding-bottom: clamp(1rem, 2.6vw, 1.4rem);
+  }
+
+  .site-logo {
+    font-size: clamp(1.55rem, 6vw, 1.8rem);
+  }
+
+  .mobile-menu-toggle {
+    width: 2.7rem;
+    height: 2.7rem;
+  }
+
+  .mobile-menu-toggle__line {
+    width: 2rem;
+    height: 2px;
+  }
+
+  /* Hero */
+  .hero {
+    height: clamp(310px, calc(52vw + 20px), 440px);
+  }
+
+  .hero__image {
+    object-position: center center;
+  }
+
+  /* Our Story */
+  .story {
+    padding: 4.5rem 6vw 0rem;
+  }
+
+  .story__container {
+    max-width: 100%;
+  }
+
+  .story .section__eyebrow {
+    margin-bottom: 1.5rem;
+    font-size: 1.4rem;
+  }
+
+  .story__content {
+    font-size: clamp(1.6rem, 6vw, 1.84rem);
+    line-height: 1.4;
+    text-align: justify;
+    text-align-last: left;
+    word-spacing: -0.02em;
+  }
+  /* Coffee */
   .coffee-preview {
-    padding-left: clamp(250px, calc(70vw - 1380px), 350px);
+    padding: 4rem 7vw 4.5rem;
   }
 
   .coffee-preview__container {
-    --coffee-image-column: clamp(720px, calc(60vw - 232px), 1000px);
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0rem;
+    width: 100%;
+    max-width: 100%;
+    margin-inline: auto;
   }
 
   .coffee-preview__media {
-    height: clamp(780px, calc(52vw - 47px), 980px);
+    width: min(100%, 520px);
+    aspect-ratio: 4 / 3;
+    margin-inline: auto;
+    overflow: hidden;
+    transform: none;
+  }
+
+  .coffee-preview__image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center center;
+    transform: none;
+  }
+
+  .coffee-preview__content {
+    width: 100%;
+    max-width: 100%;
+    padding-top: 0;
+
+    display: flex;
+    justify-content: center;
+  }
+
+  .coffee-preview__menu-panel {
+    width: clamp(280px, 86vw, 380px);
+    max-width: 380px;
+  }
+
+  .coffee-preview__title {
+    padding-top: 0;
+    margin-bottom: 1.6rem;
+    font-size: 2.2rem;
+    text-align: left;
+  }
+
+  .coffee-menu-preview__group {
+    margin-bottom: 1.4rem;
+  }
+
+  .coffee-menu-preview__group-title {
+    text-align: left;
+  }
+
+  .coffee-menu-preview__item {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) max-content;
+    column-gap: 0.8rem;
+    align-items: baseline;
+    width: 100%;
+    font-size: 0.88rem;
+    line-height: 1.45;
+  }
+
+  .coffee-menu-preview__item dt {
+    min-width: 0;
+    text-align: left;
+  }
+
+  .coffee-menu-preview__item dd {
+    margin: 0;
+    text-align: right;
+    white-space: nowrap;
+  }
+
+  .coffee-preview__full-menu-link {
+    display: inline-block;
+    margin-top: 0.8rem;
+    text-align: left;
+  }
+  /* Testimonial */
+  .testimonial {
+    padding-top: 5rem;
+    padding-right: 5vw;
+    padding-bottom: 10rem;
+    padding-left: 5vw;
+  }
+
+  .testimonial__container {
+    width: 100%;
+    max-width: 750px;
+    margin-inline: auto;
+  }
+
+  .testimonial__quote p {
+    font-size: clamp(1.8rem, 6vw, 2.2rem);
+    line-height: 1.35;
+    text-align: center;
+  }
+
+  /* Atmosphere */
+  .atmosphere__media {
+    height: clamp(300px, 70vw, 430px);
+  }
+
+  /* Footer */
+  .site-footer {
+    padding-top: 4.8rem;
+    padding-right: 7vw;
+    padding-bottom: 5rem;
+    padding-left: 7vw;
+  }
+
+  .site-footer__container {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: start;
+    gap: 1.5rem;
+    max-width: 100%;
+  }
+
+  .site-footer__contact {
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .site-footer__brand {
+    font-size: 1.5rem;
+  }
+
+  .site-footer__address,
+  .site-footer__phone {
+    font-size: 0.9rem;
+    line-height: 1.75;
+  }
+
+  .site-footer__socials {
+    justify-content: flex-end;
+    gap: 1rem;
+    padding-top: 0.4rem;
+  }
+
+  .site-footer .social-icon {
+    width: 30px;
+    height: 30px;
+  }
+
+  /* Cookie banner */
+  .cookie-banner {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.8rem;
+    padding: 1rem 1.1rem;
+  }
+
+  .cookie-banner__text {
+    max-width: 100%;
+    margin: 0;
+    font-size: 11px;
+    line-height: 1.5;
+  }
+
+  .cookie-banner__button {
+    margin: 0;
+    font-size: 11px;
+  }
+}
+
+/* =========================================================
+   Mobile refinement: 600px and below
+   ..
+   ========================================================= */
+
+@media (max-width: 600px) {
+  /* Hero */
+  .hero {
+    height: clamp(390px, calc(50vw + 100px), 410px);
+  }
+
+  .story {
+    padding-right: 6vw;
+    padding-left: 6vw;
+  }
+
+  .story__content {
+    font-size: clamp(1.66rem, 6vw, 1.85rem);
+    line-height: 1.3;
+  }
+
+  .coffee-preview__media {
+    width: min(100%, 430px);
+    aspect-ratio: 4 / 3;
+    margin-inline: auto;
+    overflow: hidden;
+    transform: none;
+  }
+
+  .coffee-preview__image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center center;
+    transform: none;
+  }
+  /* Atmosphere */
+  .atmosphere__media {
+    height: clamp(245px, 47vw, 282px);
+  }
+}
+
+/* =========================================================
+   Small mobile refinement: 480px and below
+   I tune the 430px mobile layout without changing the 600px version.
+   ========================================================= */
+
+@media (max-width: 480px) {
+  /* Our Story */
+  .story__content {
+    font-size: clamp(1.86rem, 6.8vw, 1.9rem);
+    line-height: 1.3;
+  }
+
+  /* Coffee */
+  .coffee-preview__media {
+    width: min(100%, 390px);
+    aspect-ratio: 1 / 1;
+    padding: 3rem 3rem;
+  }
+
+  .coffee-preview__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+  }
+
+  .coffee-preview__menu-panel {
+    width: clamp(280px, 82vw, 350px);
+    max-width: 350px;
+    padding: 2.5rem 2.5rem;
+  }
+
+  /* Testimonial */
+  .testimonial__quote p {
+    font-size: clamp(2.25rem, 9vw, 2.25rem);
+    line-height: 1.33;
+  }
+
+  /* Atmosphere */
+  .atmosphere__media {
+    height: clamp(285px, 68vw, 305px);
+  }
+}
+
+/* =========================================================
+   Very small mobile Coffee image refinement: 340px and below
+   I stop the Coffee image from becoming too large on very small screens.
+   ========================================================= */
+
+@media (max-width: 340px) {
+  .coffee-preview__media {
+    width: min(100%, 300px);
+  }
+}
+@media (min-width: 601px) and (max-width: 767px) {
+  .atmosphere__media {
+    height: clamp(270px, 37.7vw, 290px);
   }
 }
 /* =========================================================
-   Coffee position correction: 1921px - 1999px
-   I add a small amount of left padding before the 2000px breakpoint.
+   Extra small mobile Hero refinement: 400px and below
+   I reduce the Hero slightly after the 430px layout.
    ========================================================= */
 
-@media (min-width: 1921px) and (max-width: 1999px) {
-  .coffee-preview {
-    padding-left: clamp(87px, calc(16.7vw - 234px), 100px);
+@media (max-width: 400px) {
+  .hero {
+    height: 370px;
+  }
+}
+/* =========================================================
+   Extra small mobile Coffee refinement: 380px and below
+   I reduce the Coffee image and menu side padding on narrow phones.
+   ========================================================= */
+
+@media (max-width: 380px) {
+  .coffee-preview__media {
+    padding-right: 2rem;
+    padding-left: 2rem;
+  }
+
+  .coffee-preview__menu-panel {
+    padding-right: 1.6rem;
+    padding-left: 1.6rem;
   }
 }

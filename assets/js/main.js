@@ -3,32 +3,91 @@
    I keep the JavaScript simple and easy to understand.
    ========================================================= */
 
-
-/* =========================================================
-   1. Cookie banner
-   I hide the cookie banner after the user clicks Accept.
-   I save the choice in localStorage so the banner stays hidden.
-   ========================================================= */
-
 document.addEventListener("DOMContentLoaded", function () {
+  /* =========================================================
+     1. Mobile menu
+     I open and close the mobile menu on smaller screens.
+     ========================================================= */
+
+  const mobileMenuToggle = document.querySelector(".mobile-menu-toggle");
+  const mobileMenu = document.getElementById("mobile-menu");
+  const mobileMenuClose = document.querySelector(".mobile-menu__close");
+  const mobileMenuLinks = document.querySelectorAll(
+    ".mobile-menu__nav-link, .mobile-menu__contact-button, .mobile-menu__logo",
+  );
+
+  function openMobileMenu() {
+    if (!mobileMenu || !mobileMenuToggle) {
+      return;
+    }
+
+    mobileMenu.classList.add("is-open");
+    document.body.classList.add("no-scroll");
+
+    mobileMenu.setAttribute("aria-hidden", "false");
+    mobileMenuToggle.setAttribute("aria-expanded", "true");
+    mobileMenuToggle.setAttribute("aria-label", "Close menu");
+  }
+
+  function closeMobileMenu() {
+    if (!mobileMenu || !mobileMenuToggle) {
+      return;
+    }
+
+    mobileMenu.classList.remove("is-open");
+    document.body.classList.remove("no-scroll");
+
+    mobileMenu.setAttribute("aria-hidden", "true");
+    mobileMenuToggle.setAttribute("aria-expanded", "false");
+    mobileMenuToggle.setAttribute("aria-label", "Open menu");
+  }
+
+  if (mobileMenuToggle && mobileMenu) {
+    mobileMenuToggle.addEventListener("click", function () {
+      const menuIsOpen = mobileMenu.classList.contains("is-open");
+
+      if (menuIsOpen) {
+        closeMobileMenu();
+      } else {
+        openMobileMenu();
+      }
+    });
+  }
+
+  if (mobileMenuClose) {
+    mobileMenuClose.addEventListener("click", closeMobileMenu);
+  }
+
+  mobileMenuLinks.forEach(function (link) {
+    link.addEventListener("click", closeMobileMenu);
+  });
+
+  document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape") {
+      closeMobileMenu();
+    }
+  });
+
+  /* =========================================================
+     2. Cookie banner
+     I hide the cookie banner after the user clicks Accept.
+     I save the choice in localStorage so the banner stays hidden.
+     ========================================================= */
+
   const cookieBanner = document.getElementById("cookie-banner");
   const cookieAcceptButton = document.getElementById("cookie-accept-button");
 
-  // I stop here if the cookie banner or button does not exist.
   if (!cookieBanner || !cookieAcceptButton) {
     return;
   }
 
-  // I check if the user already accepted cookies before.
   const cookiesAccepted = localStorage.getItem("hypso25CookiesAccepted");
 
-  // I hide the banner if the user already accepted cookies.
   if (cookiesAccepted === "true") {
     cookieBanner.classList.add("is-hidden");
     return;
   }
 
-  // I save the choice and hide the banner when the user clicks Accept.
   cookieAcceptButton.addEventListener("click", function () {
     localStorage.setItem("hypso25CookiesAccepted", "true");
     cookieBanner.classList.add("is-hidden");
