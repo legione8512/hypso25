@@ -1276,7 +1276,7 @@ address {
 
   /* Hero */
   .hero {
-    height: clamp(390px, 50vw, 520px);
+    height: clamp(425px, calc(34vw + 164px), 512px);
   }
 
   /* Our Story */
@@ -1294,6 +1294,7 @@ address {
   }
 
   .story__content {
+    font-size: clamp(1.63rem, calc(0.34rem + 2.65vw), 1.87rem);
     line-height: 1.35;
     text-align: justify;
   }
@@ -1407,13 +1408,13 @@ address {
   }
 
   .testimonial__container {
-    width: clamp(560px, 62vw, 640px);
+    width: clamp(525px, calc(70vw - 15px), 685px);
     max-width: 100%;
     margin-inline: auto;
   }
 
   .testimonial__quote p {
-    font-size: clamp(1.95rem, 3.4vw, 2.25rem);
+    font-size: clamp(2rem, calc(0.3rem + 3.3vw), 2.4rem);
     line-height: 1.35;
     text-align: center;
   }
@@ -1438,15 +1439,15 @@ address {
 
   /* Our Story */
   .story {
-    padding: 4.5rem 15vw 0;
+    padding: 4.5rem calc(15vw + 2px) 0;
   }
 
   .story__container {
-    max-width: 985px;
+    max-width: 960px;
   }
 
   .story__content {
-    font-size: clamp(2rem, 2.75vw, 2.29rem);
+    font-size: clamp(2rem, 2.75vw, 2.25rem);
     line-height: 1.35;
     word-spacing: -0.03em;
   }
@@ -1515,11 +1516,14 @@ address {
   }
 
   .testimonial__container {
-    max-width: 980px;
+    width: clamp(690px, min(calc(160vw - 955px), calc(70vw - 30px)), 975px);
+    max-width: 100%;
+    margin-inline: auto;
   }
 
   .testimonial__quote p {
-    font-size: clamp(2rem, 2.35vw, 2.45rem);
+    font-size: clamp(2.42rem, calc(0.88rem + 2.35vw), 2.8rem);
+    line-height: 1.35;
   }
 
   /* Atmosphere */
@@ -1540,6 +1544,39 @@ address {
    ========================================================= */
 
 @media (min-width: 1441px) {
+  /* Our Story */
+  .story {
+    padding-top: 7.5rem;
+    padding-right: 15vw;
+    padding-bottom: 0;
+    padding-left: calc(15vw - 10px);
+  }
+
+  .story__container {
+    max-width: clamp(1005px, calc(40vw + 429px), 1170px);
+  }
+
+  .story__content {
+    font-size: clamp(2.29rem, calc(0.8rem + 1.66vw), 2.45rem);
+    line-height: 1.35;
+    word-spacing: -0.03em;
+  }
+  /* Testimonial */
+  .testimonial {
+    padding: 10.6rem var(--page-padding) 14.3rem;
+  }
+
+  .testimonial__container {
+    width: clamp(985px, calc(42vw + 380px), 1350px);
+    max-width: 100%;
+    margin-inline: auto;
+  }
+
+  .testimonial__quote p {
+    font-size: clamp(2.8rem, calc(4vw - 12.8px), 3.3rem);
+    line-height: 1.35;
+    text-align: center;
+  }
   .coffee-preview {
     --coffee-left-padding: clamp(
       var(--page-padding),

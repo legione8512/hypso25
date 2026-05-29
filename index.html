@@ -1,461 +1,540 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en-GB">
-<head>
-  <!-- Basic character and responsive setup -->
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <!-- Basic character and responsive setup -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- Page title shown in the browser tab -->
-  <title>Hypso25</title>
+    <!-- Page title shown in the browser tab -->
+    <title>Hypso25</title>
 
-  <!-- Basic SEO description -->
-  <meta
-    name="description"
-    content="Hypso25 is a specialty coffee, cocktail and wine bar with a steampunk industrial atmosphere, located in the old town of Constanta."
-  >
+    <!-- Basic SEO description -->
+    <meta
+      name="description"
+      content="Hypso25 is a specialty coffee, cocktail and wine bar with a steampunk industrial atmosphere, located in the old town of Constanta."
+    />
 
-  <!-- Social sharing information -->
-  <meta property="og:title" content="Hypso25">
-  <meta property="og:description" content="Specialty coffee, cocktails and wine bar in Constanta old town.">
-  <meta property="og:type" content="website">
-  <meta property="og:image" content="assets/images/logo.webp">
+    <!-- Social sharing information -->
+    <meta property="og:title" content="Hypso25" />
+    <meta
+      property="og:description"
+      content="Specialty coffee, cocktails and wine bar in Constanta old town."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="assets/images/logo.webp" />
 
-  <!-- Favicon saved locally inside the images folder -->
-  <link rel="icon" href="assets/images/favicon.webp" type="image/webp">
+    <!-- Favicon saved locally inside the images folder -->
+    <link rel="icon" href="assets/images/favicon.webp" type="image/webp" />
 
-  <!-- Main CSS file. I will write all styling here later. -->
-  <link rel="stylesheet" href="assets/css/style.css">
+    <!-- Main CSS file. I will write all styling here later. -->
+    <link rel="stylesheet" href="assets/css/style.css" />
 
-  <!-- Main JavaScript file. I use defer so the HTML loads before the script runs. -->
-  <script src="assets/js/main.js" defer></script>
-</head>
+    <!-- Main JavaScript file. I use defer so the HTML loads before the script runs. -->
+    <script src="assets/js/main.js" defer></script>
+  </head>
 
-<body>
-
-  <!-- Site header -->
-  <header class="site-header" id="site-header">
-    <div class="site-header__inner">
-      <!-- Brand / logo text -->
-      <a class="site-logo" href="index.html" aria-label="Hypso25 homepage">
-        Hypso25
-      </a>
-
-      <!-- Desktop navigation -->
-      <nav class="desktop-nav" aria-label="Main navigation">
-        <ul class="desktop-nav__list">
-          <li class="desktop-nav__item">
-            <a class="desktop-nav__link" href="menu.html">Menu</a>
-          </li>
-
-          <li class="desktop-nav__item">
-            <a class="desktop-nav__link" href="#our-story">Our Story</a>
-          </li>
-
-          <li class="desktop-nav__item">
-            <a class="desktop-nav__link" href="photo-gallery.html">Photo Gallery</a>
-          </li>
-        </ul>
-      </nav>
-
-      <!-- Desktop header actions -->
-      <div class="header-actions">
-        <a
-          class="header-actions__social-link"
-          href="https://www.facebook.com/hypso25"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Open Hypso25 Facebook page"
-        >
-          <svg class="social-icon social-icon--facebook" viewBox="0 0 64 64" aria-hidden="true">
-  <path d="M34.1 58V35.4h7.6l1.1-8.8h-8.7V21c0-2.5.7-4.3 4.4-4.3h4.7V8.8c-.8-.1-3.6-.3-6.9-.3-6.8 0-11.5 4.2-11.5 11.8v6.6h-7.7v8.8h7.7V58h9.3z"></path>
-</svg>
-        </a>
-
-        <a
-          class="header-actions__social-link"
-          href="https://www.instagram.com/hypso.25"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Open Hypso25 Instagram page"
-        >
-          <svg class="social-icon social-icon--instagram" viewBox="0 0 64 64" aria-hidden="true">
-  <path d="M32 18.6c-7.4 0-13.4 6-13.4 13.4s6 13.4 13.4 13.4 13.4-6 13.4-13.4-6-13.4-13.4-13.4zm0 22.1c-4.8 0-8.7-3.9-8.7-8.7s3.9-8.7 8.7-8.7 8.7 3.9 8.7 8.7-3.9 8.7-8.7 8.7z"></path>
-  <path d="M46 15.1c-1.7 0-3.1 1.4-3.1 3.1s1.4 3.1 3.1 3.1 3.1-1.4 3.1-3.1-1.4-3.1-3.1-3.1z"></path>
-  <path d="M45.2 6H18.8C11.7 6 6 11.7 6 18.8v26.4C6 52.3 11.7 58 18.8 58h26.4C52.3 58 58 52.3 58 45.2V18.8C58 11.7 52.3 6 45.2 6zm8 39.2c0 4.4-3.6 8-8 8H18.8c-4.4 0-8-3.6-8-8V18.8c0-4.4 3.6-8 8-8h26.4c4.4 0 8 3.6 8 8v26.4z"></path>
-</svg>
-        </a>
-
-<div class="language-picker" aria-label="Language selector">
-  <button class="language-picker__button" type="button" aria-expanded="false">
-    <img
-      class="language-picker__flag-img"
-      src="assets/images/gb.svg"
-      alt=""
-      aria-hidden="true"
-    >
-
-    <span class="language-picker__current">English</span>
-
-    <span class="language-picker__arrow" aria-hidden="true">
-      <svg viewBox="0 0 22 22" class="language-picker__arrow-icon">
-        <path d="M6 8.5L11 13.5L16 8.5" fill="none" stroke="currentColor" stroke-width="1.5"></path>
-      </svg>
-    </span>
-  </button>
-
-  <div class="language-picker__menu" aria-label="Available languages">
-    <a class="language-picker__option" href="index.html">
-      <img
-        class="language-picker__flag-img"
-        src="assets/images/gb.svg"
-        alt=""
-        aria-hidden="true"
-      >
-      <span>English</span>
-    </a>
-
-    <a class="language-picker__option" href="ro.html">
-      <img
-        class="language-picker__flag-img"
-        src="assets/images/ro.svg"
-        alt=""
-        aria-hidden="true"
-      >
-      <span>Română</span>
-    </a>
-  </div>
-</div>
-
-        <a class="header-actions__contact-button" href="#contact">
-          Contact
-        </a>
-      </div>
-
-      <!-- Mobile menu button. JavaScript will open the mobile menu later. -->
-      <button
-        class="mobile-menu-toggle"
-        type="button"
-        aria-label="Open menu"
-        aria-controls="mobile-menu"
-        aria-expanded="false"
-      >
-        <span class="mobile-menu-toggle__line"></span>
-        <span class="mobile-menu-toggle__line"></span>
-      </button>
-    </div>
-  </header>
-
-  <!-- Mobile menu overlay -->
-  <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
-    <div class="mobile-menu__inner">
-      <!-- Mobile menu top row -->
-      <div class="mobile-menu__top">
-        <a class="mobile-menu__logo" href="index.html" aria-label="Hypso25 homepage">
+  <body>
+    <!-- Site header -->
+    <header class="site-header" id="site-header">
+      <div class="site-header__inner">
+        <!-- Brand / logo text -->
+        <a class="site-logo" href="index.html" aria-label="Hypso25 homepage">
           Hypso25
         </a>
 
-        <button
-          class="mobile-menu__close"
-          type="button"
-          aria-label="Close menu"
-        >
-          X
-        </button>
-      </div>
+        <!-- Desktop navigation -->
+        <nav class="desktop-nav" aria-label="Main navigation">
+          <ul class="desktop-nav__list">
+            <li class="desktop-nav__item">
+              <a class="desktop-nav__link" href="menu.html">Menu</a>
+            </li>
 
-      <!-- Mobile navigation links -->
-      <nav class="mobile-menu__nav" aria-label="Mobile navigation">
-        <ul class="mobile-menu__nav-list">
-          <li class="mobile-menu__nav-item">
-            <a class="mobile-menu__nav-link" href="menu.html">Menu</a>
-          </li>
+            <li class="desktop-nav__item">
+              <a class="desktop-nav__link" href="#our-story">Our Story</a>
+            </li>
 
-          <li class="mobile-menu__nav-item">
-            <a class="mobile-menu__nav-link" href="#our-story">Our Story</a>
-          </li>
+            <li class="desktop-nav__item">
+              <a class="desktop-nav__link" href="photo-gallery.html"
+                >Photo Gallery</a
+              >
+            </li>
+          </ul>
+        </nav>
 
-          <li class="mobile-menu__nav-item">
-            <a class="mobile-menu__nav-link" href="photo-gallery.html">Photo Gallery</a>
-          </li>
-        </ul>
-      </nav>
-
-      <!-- Mobile social links -->
-      <div class="mobile-menu__socials" aria-label="Social links">
-        <a
-          class="mobile-menu__social-link"
-          href="https://www.facebook.com/hypso25"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Open Hypso25 Facebook page"
-        >
-          Facebook
-        </a>
-
-        <a
-          class="mobile-menu__social-link"
-          href="https://www.instagram.com/hypso.25"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Open Hypso25 Instagram page"
-        >
-          Instagram
-        </a>
-      </div>
-
-      <!-- Mobile language selector -->
-      <div class="mobile-menu__language">
-        <a class="mobile-menu__language-link" href="index.html" aria-label="Current language: English">
-<img
-  class="mobile-menu__language-flag-img"
-  src="assets/images/gb.svg"
-  alt=""
-  aria-hidden="true"
->
-<span class="mobile-menu__language-text">English</span>
-          <span class="mobile-menu__language-arrow" aria-hidden="true">›</span>
-        </a>
-      </div>
-
-      <!-- Mobile contact button -->
-      <a class="mobile-menu__contact-button" href="#contact">
-        Contact
-      </a>
-    </div>
-  </div>
-
-  <!-- Main page content -->
-  <main class="site-main" id="main-content">
-    <!-- Hero section -->
-<!-- Hero section -->
-<section class="hero" id="hero" aria-label="Hypso25 interior">
-  <!-- I keep the hero image as real HTML, not CSS background, for better accessibility and loading. -->
-  <div class="hero__media">
-    <img
-      class="hero__image"
-      src="assets/images/hero-bar.webp"
-      alt="Interior of Hypso25 bar with steampunk industrial decor"
-    >
-  </div>
-
-  <!-- I use a dark overlay to match the original image overlay. -->
-  <div class="hero__overlay" aria-hidden="true"></div>
-</section>
-
-    <!-- Our Story section -->
-    <section class="story section" id="our-story">
-      <div class="story__container section__container">
-        <p class="section__eyebrow">Our Story</p>
-
-        <div class="story__content">
-          <p>
-            In the heart of Constanta, from the depths of the sea, where mysteries
-            abound and creatures of wonder lurk, there lies a hidden gem known as
-            Hypso25. Here, the enchanting fusion of a marine bistro and a steampunk
-            wonderland unfolds. With a passion for the extraordinary, we bring you a
-            unique experience unlike any other. Dive into the depths with our specialty
-            coffees and tantalize your taste buds with our creatively crafted cocktails.
-            Let the enigmas of the deep waters transport you to a realm where the
-            impossible becomes possible. Welcome to Hypso25, where every sip tells a
-            tale and every moment is an adventure.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Coffee preview section -->
-    <section class="coffee-preview section" id="coffee-preview">
-      <div class="coffee-preview__container section__container">
-        <!-- Coffee image -->
-        <div class="coffee-preview__media">
-          <img
-            class="coffee-preview__image"
-            src="assets/images/coffee.webp"
-            alt="Espresso being prepared at Hypso25"
+        <!-- Desktop header actions -->
+        <div class="header-actions">
+          <a
+            class="header-actions__social-link"
+            href="https://www.facebook.com/hypso25"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Open Hypso25 Facebook page"
           >
-        </div>
+            <svg
+              class="social-icon social-icon--facebook"
+              viewBox="0 0 64 64"
+              aria-hidden="true"
+            >
+              <path
+                d="M34.1 58V35.4h7.6l1.1-8.8h-8.7V21c0-2.5.7-4.3 4.4-4.3h4.7V8.8c-.8-.1-3.6-.3-6.9-.3-6.8 0-11.5 4.2-11.5 11.8v6.6h-7.7v8.8h7.7V58h9.3z"
+              ></path>
+            </svg>
+          </a>
 
-        <!-- Coffee menu preview -->
-        <div class="coffee-preview__content">
-  <div class="coffee-preview__menu-panel">
-          <h2 class="coffee-preview__title">Coffee</h2>
+          <a
+            class="header-actions__social-link"
+            href="https://www.instagram.com/hypso.25"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Open Hypso25 Instagram page"
+          >
+            <svg
+              class="social-icon social-icon--instagram"
+              viewBox="0 0 64 64"
+              aria-hidden="true"
+            >
+              <path
+                d="M32 18.6c-7.4 0-13.4 6-13.4 13.4s6 13.4 13.4 13.4 13.4-6 13.4-13.4-6-13.4-13.4-13.4zm0 22.1c-4.8 0-8.7-3.9-8.7-8.7s3.9-8.7 8.7-8.7 8.7 3.9 8.7 8.7-3.9 8.7-8.7 8.7z"
+              ></path>
+              <path
+                d="M46 15.1c-1.7 0-3.1 1.4-3.1 3.1s1.4 3.1 3.1 3.1 3.1-1.4 3.1-3.1-1.4-3.1-3.1-3.1z"
+              ></path>
+              <path
+                d="M45.2 6H18.8C11.7 6 6 11.7 6 18.8v26.4C6 52.3 11.7 58 18.8 58h26.4C52.3 58 58 52.3 58 45.2V18.8C58 11.7 52.3 6 45.2 6zm8 39.2c0 4.4-3.6 8-8 8H18.8c-4.4 0-8-3.6-8-8V18.8c0-4.4 3.6-8 8-8h26.4c4.4 0 8 3.6 8 8v26.4z"
+              ></path>
+            </svg>
+          </a>
 
-          <div class="coffee-menu-preview" aria-label="Coffee menu preview">
-            <!-- Espresso Black category -->
-            <section class="coffee-menu-preview__group" aria-labelledby="espresso-black-title">
-              <h3 class="coffee-menu-preview__group-title" id="espresso-black-title">
-                Espresso - Black
-              </h3>
+          <div class="language-picker" aria-label="Language selector">
+            <button
+              class="language-picker__button"
+              type="button"
+              aria-expanded="false"
+            >
+              <img
+                class="language-picker__flag-img"
+                src="assets/images/gb.svg"
+                alt=""
+                aria-hidden="true"
+              />
 
-              <dl class="coffee-menu-preview__list">
-                <div class="coffee-menu-preview__item">
-                  <dt>Espresso</dt>
-                  <dd>12 lei</dd>
-                </div>
+              <span class="language-picker__current">English</span>
 
-                <div class="coffee-menu-preview__item">
-                  <dt>Double</dt>
-                  <dd>16 lei</dd>
-                </div>
+              <span class="language-picker__arrow" aria-hidden="true">
+                <svg viewBox="0 0 22 22" class="language-picker__arrow-icon">
+                  <path
+                    d="M6 8.5L11 13.5L16 8.5"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                  ></path>
+                </svg>
+              </span>
+            </button>
 
-                <div class="coffee-menu-preview__item">
-                  <dt>Decaf</dt>
-                  <dd>14 lei</dd>
-                </div>
+            <div class="language-picker__menu" aria-label="Available languages">
+              <a class="language-picker__option" href="index.html">
+                <img
+                  class="language-picker__flag-img"
+                  src="assets/images/gb.svg"
+                  alt=""
+                  aria-hidden="true"
+                />
+                <span>English</span>
+              </a>
 
-                <div class="coffee-menu-preview__item">
-                  <dt>Decaf Double</dt>
-                  <dd>18 lei</dd>
-                </div>
-
-                <div class="coffee-menu-preview__item">
-                  <dt>Long Black</dt>
-                  <dd>14 lei</dd>
-                </div>
-              </dl>
-            </section>
-
-            <!-- Espresso White category -->
-            <section class="coffee-menu-preview__group" aria-labelledby="espresso-white-title">
-              <h3 class="coffee-menu-preview__group-title" id="espresso-white-title">
-                Espresso - White
-              </h3>
-
-              <dl class="coffee-menu-preview__list">
-                <div class="coffee-menu-preview__item">
-                  <dt>Cortado</dt>
-                  <dd>13 lei</dd>
-                </div>
-
-                <div class="coffee-menu-preview__item">
-                  <dt>Cappuccino</dt>
-                  <dd>16 lei</dd>
-                </div>
-
-                <div class="coffee-menu-preview__item">
-                  <dt>Flat White</dt>
-                  <dd>19 lei</dd>
-                </div>
-
-                <div class="coffee-menu-preview__item">
-                  <dt>Latte</dt>
-                  <dd>18 lei</dd>
-                </div>
-              </dl>
-            </section>
-
-            <!-- Espresso Menu category -->
-            <section class="coffee-menu-preview__group" aria-labelledby="espresso-menu-title">
-              <h3 class="coffee-menu-preview__group-title" id="espresso-menu-title">
-                Espresso - Menu
-              </h3>
-
-              <dl class="coffee-menu-preview__list">
-                <div class="coffee-menu-preview__item">
-                  <dt>Espresso &amp; Cappuccino</dt>
-                  <dd>25 lei</dd>
-                </div>
-
-                <div class="coffee-menu-preview__item">
-                  <dt>Espresso, Cappuccino, V60</dt>
-                  <dd>42 lei</dd>
-                </div>
-              </dl>
-            </section>
+              <a class="language-picker__option" href="ro.html">
+                <img
+                  class="language-picker__flag-img"
+                  src="assets/images/ro.svg"
+                  alt=""
+                  aria-hidden="true"
+                />
+                <span>Română</span>
+              </a>
+            </div>
           </div>
 
-          <a class="coffee-preview__full-menu-link" href="menu.html">
-            See Full Menu
+          <a class="header-actions__contact-button" href="#contact">
+            Contact
           </a>
         </div>
+
+        <!-- Mobile menu button. JavaScript will open the mobile menu later. -->
+        <button
+          class="mobile-menu-toggle"
+          type="button"
+          aria-label="Open menu"
+          aria-controls="mobile-menu"
+          aria-expanded="false"
+        >
+          <span class="mobile-menu-toggle__line"></span>
+          <span class="mobile-menu-toggle__line"></span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Mobile menu overlay -->
+    <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+      <div class="mobile-menu__inner">
+        <!-- Mobile menu top row -->
+        <div class="mobile-menu__top">
+          <a
+            class="mobile-menu__logo"
+            href="index.html"
+            aria-label="Hypso25 homepage"
+          >
+            Hypso25
+          </a>
+
+          <button
+            class="mobile-menu__close"
+            type="button"
+            aria-label="Close menu"
+          >
+            X
+          </button>
         </div>
-      </div>
-    </section>
 
-    <!-- Testimonial section -->
-    <section class="testimonial section" id="testimonial" aria-label="Customer testimonial">
-      <div class="testimonial__container section__container">
-        <blockquote class="testimonial__quote">
-          <p>
-            “I had a great time at Hypso25! The atmosphere was very pleasant and
-            homely and the staff was very friendly and sociable. The coffee was
-            perfectly balanced, full-bodied and delicious and the cocktails were of
-            superior quality. I will definitely come back!”
-          </p>
-        </blockquote>
-      </div>
-    </section>
+        <!-- Mobile navigation links -->
+        <nav class="mobile-menu__nav" aria-label="Mobile navigation">
+          <ul class="mobile-menu__nav-list">
+            <li class="mobile-menu__nav-item">
+              <a class="mobile-menu__nav-link" href="menu.html">Menu</a>
+            </li>
 
-    <!-- Atmosphere image section -->
-    <section class="atmosphere" id="atmosphere" aria-label="Hypso25 atmosphere">
-      <div class="atmosphere__media">
-        <img
-          class="atmosphere__image"
-          src="assets/images/bar-interior.webp"
-          alt="Warm interior atmosphere at Hypso25"
-        >
-      </div>
-    </section>
-  </main>
+            <li class="mobile-menu__nav-item">
+              <a class="mobile-menu__nav-link" href="#our-story">Our Story</a>
+            </li>
 
-  <!-- Footer / contact section -->
-  <footer class="site-footer" id="contact">
-    <div class="site-footer__container">
-      <!-- Contact details -->
-      <address class="site-footer__contact">
-        <p class="site-footer__brand">Hypso25</p>
+            <li class="mobile-menu__nav-item">
+              <a class="mobile-menu__nav-link" href="photo-gallery.html"
+                >Photo Gallery</a
+              >
+            </li>
+          </ul>
+        </nav>
 
-        <p class="site-footer__address">
-          Piata Ovidiu 11<br>
-          Constanta, Romania
-        </p>
+        <!-- Mobile social links -->
+        <div class="mobile-menu__socials" aria-label="Social links">
+          <a
+            class="mobile-menu__social-link"
+            href="https://www.facebook.com/hypso25"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Open Hypso25 Facebook page"
+          >
+            Facebook
+          </a>
 
-        <p class="site-footer__phone">
-          <a href="tel:+40751880909">+40 751 880 909</a>
-        </p>
-      </address>
+          <a
+            class="mobile-menu__social-link"
+            href="https://www.instagram.com/hypso.25"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Open Hypso25 Instagram page"
+          >
+            Instagram
+          </a>
+        </div>
 
-      <!-- Footer social links -->
-      <div class="site-footer__socials" aria-label="Footer social links">
-        <a
-          class="site-footer__social-link"
-          href="https://www.facebook.com/hypso25"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Open Hypso25 Facebook page"
-        >
-          <svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true">
-  <path d="M15.12 8.13H13.2c-.31 0-.66.41-.66.96v1.38h2.58l-.39 2.13h-2.19V19h-2.26v-6.4H8.4v-2.13h1.88V9.31c0-1.81 1.25-3.31 2.92-3.31h1.92v2.13z"></path>
-</svg>
-        </a>
+        <!-- Mobile language selector -->
+        <div class="mobile-menu__language">
+          <a
+            class="mobile-menu__language-link"
+            href="index.html"
+            aria-label="Current language: English"
+          >
+            <img
+              class="mobile-menu__language-flag-img"
+              src="assets/images/gb.svg"
+              alt=""
+              aria-hidden="true"
+            />
+            <span class="mobile-menu__language-text">English</span>
+            <span class="mobile-menu__language-arrow" aria-hidden="true"
+              >›</span
+            >
+          </a>
+        </div>
 
-        <a
-          class="site-footer__social-link"
-          href="https://www.instagram.com/hypso.25"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Open Hypso25 Instagram page"
-        >
-          <svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true">
-  <path d="M7.75 2h8.5A5.76 5.76 0 0 1 22 7.75v8.5A5.76 5.76 0 0 1 16.25 22h-8.5A5.76 5.76 0 0 1 2 16.25v-8.5A5.76 5.76 0 0 1 7.75 2zm0 2A3.75 3.75 0 0 0 4 7.75v8.5A3.75 3.75 0 0 0 7.75 20h8.5A3.75 3.75 0 0 0 20 16.25v-8.5A3.75 3.75 0 0 0 16.25 4h-8.5z"></path>
-  <path d="M12 7.35A4.65 4.65 0 1 1 7.35 12 4.65 4.65 0 0 1 12 7.35zm0 2A2.65 2.65 0 1 0 14.65 12 2.65 2.65 0 0 0 12 9.35z"></path>
-  <path d="M17.05 6.7a1.05 1.05 0 1 1-1.05 1.05 1.05 1.05 0 0 1 1.05-1.05z"></path>
-</svg>
-        </a>
+        <!-- Mobile contact button -->
+        <a class="mobile-menu__contact-button" href="#contact"> Contact </a>
       </div>
     </div>
-  </footer>
 
-  <!-- Cookie banner. JavaScript will hide it after Accept is clicked. -->
-  <aside class="cookie-banner" id="cookie-banner" aria-label="Cookie notice">
-    <p class="cookie-banner__text">
-      By using this website, you agree to our use of cookies. We use cookies to
-      provide you with a great experience and to help our website run effectively.
-    </p>
+    <!-- Main page content -->
+    <main class="site-main" id="main-content">
+      <!-- Hero section -->
+      <!-- Hero section -->
+      <section class="hero" id="hero" aria-label="Hypso25 interior">
+        <!-- I keep the hero image as real HTML, not CSS background, for better accessibility and loading. -->
+        <div class="hero__media">
+          <img
+            class="hero__image"
+            src="assets/images/hero-bar.webp"
+            alt="Interior of Hypso25 bar with steampunk industrial decor"
+          />
+        </div>
 
-    <button class="cookie-banner__button" id="cookie-accept-button" type="button">
-      Accept
-    </button>
-  </aside>
-</body>
+        <!-- I use a dark overlay to match the original image overlay. -->
+        <div class="hero__overlay" aria-hidden="true"></div>
+      </section>
+
+      <!-- Our Story section -->
+      <section class="story section" id="our-story">
+        <div class="story__container section__container">
+          <p class="section__eyebrow">Our Story</p>
+
+          <div class="story__content">
+            <p>
+              In the heart of Constanta, from the depths of the sea, where
+              mysteries abound and creatures of wonder lurk, there lies a hidden
+              gem known as Hypso25. Here, the enchanting fusion of a marine
+              bistro and a steampunk wonderland unfolds. With a passion for the
+              extraordinary, we bring you a unique experience unlike any other.
+              Dive into the depths with our specialty coffees and tantalize your
+              taste buds with our creatively crafted cocktails. Let the enigmas
+              of the deep waters transport you to a realm where the impossible
+              becomes possible. Welcome to Hypso25, where every sip tells a tale
+              and every moment is an adventure.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Coffee preview section -->
+      <section class="coffee-preview section" id="coffee-preview">
+        <div class="coffee-preview__container section__container">
+          <!-- Coffee image -->
+          <div class="coffee-preview__media">
+            <img
+              class="coffee-preview__image"
+              src="assets/images/coffee.webp"
+              alt="Espresso being prepared at Hypso25"
+            />
+          </div>
+
+          <!-- Coffee menu preview -->
+          <div class="coffee-preview__content">
+            <div class="coffee-preview__menu-panel">
+              <h2 class="coffee-preview__title">Coffee</h2>
+
+              <div class="coffee-menu-preview" aria-label="Coffee menu preview">
+                <!-- Espresso Black category -->
+                <section
+                  class="coffee-menu-preview__group"
+                  aria-labelledby="espresso-black-title"
+                >
+                  <h3
+                    class="coffee-menu-preview__group-title"
+                    id="espresso-black-title"
+                  >
+                    Espresso - Black
+                  </h3>
+
+                  <dl class="coffee-menu-preview__list">
+                    <div class="coffee-menu-preview__item">
+                      <dt>Espresso</dt>
+                      <dd>12 lei</dd>
+                    </div>
+
+                    <div class="coffee-menu-preview__item">
+                      <dt>Double</dt>
+                      <dd>16 lei</dd>
+                    </div>
+
+                    <div class="coffee-menu-preview__item">
+                      <dt>Decaf</dt>
+                      <dd>14 lei</dd>
+                    </div>
+
+                    <div class="coffee-menu-preview__item">
+                      <dt>Decaf Double</dt>
+                      <dd>18 lei</dd>
+                    </div>
+
+                    <div class="coffee-menu-preview__item">
+                      <dt>Long Black</dt>
+                      <dd>14 lei</dd>
+                    </div>
+                  </dl>
+                </section>
+
+                <!-- Espresso White category -->
+                <section
+                  class="coffee-menu-preview__group"
+                  aria-labelledby="espresso-white-title"
+                >
+                  <h3
+                    class="coffee-menu-preview__group-title"
+                    id="espresso-white-title"
+                  >
+                    Espresso - White
+                  </h3>
+
+                  <dl class="coffee-menu-preview__list">
+                    <div class="coffee-menu-preview__item">
+                      <dt>Cortado</dt>
+                      <dd>13 lei</dd>
+                    </div>
+
+                    <div class="coffee-menu-preview__item">
+                      <dt>Cappuccino</dt>
+                      <dd>16 lei</dd>
+                    </div>
+
+                    <div class="coffee-menu-preview__item">
+                      <dt>Flat White</dt>
+                      <dd>19 lei</dd>
+                    </div>
+
+                    <div class="coffee-menu-preview__item">
+                      <dt>Latte</dt>
+                      <dd>18 lei</dd>
+                    </div>
+                  </dl>
+                </section>
+
+                <!-- Espresso Menu category -->
+                <section
+                  class="coffee-menu-preview__group"
+                  aria-labelledby="espresso-menu-title"
+                >
+                  <h3
+                    class="coffee-menu-preview__group-title"
+                    id="espresso-menu-title"
+                  >
+                    Espresso - Menu
+                  </h3>
+
+                  <dl class="coffee-menu-preview__list">
+                    <div class="coffee-menu-preview__item">
+                      <dt>Espresso &amp; Cappuccino</dt>
+                      <dd>25 lei</dd>
+                    </div>
+
+                    <div class="coffee-menu-preview__item">
+                      <dt>Espresso, Cappuccino, V60</dt>
+                      <dd>42 lei</dd>
+                    </div>
+                  </dl>
+                </section>
+              </div>
+
+              <a class="coffee-preview__full-menu-link" href="menu.html">
+                See Full Menu
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Testimonial section -->
+      <section
+        class="testimonial section"
+        id="testimonial"
+        aria-label="Customer testimonial"
+      >
+        <div class="testimonial__container section__container">
+          <blockquote class="testimonial__quote">
+            <p>
+              “I had a great time at Hypso25! The atmosphere was very pleasant
+              and homely and the staff was very friendly and sociable. The
+              coffee was perfectly balanced, full-bodied and delicious and the
+              cocktails were of superior quality. I will definitely come back!”
+            </p>
+          </blockquote>
+        </div>
+      </section>
+
+      <!-- Atmosphere image section -->
+      <section
+        class="atmosphere"
+        id="atmosphere"
+        aria-label="Hypso25 atmosphere"
+      >
+        <div class="atmosphere__media">
+          <img
+            class="atmosphere__image"
+            src="assets/images/bar-interior.webp"
+            alt="Warm interior atmosphere at Hypso25"
+          />
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer / contact section -->
+    <footer class="site-footer" id="contact">
+      <div class="site-footer__container">
+        <!-- Contact details -->
+        <address class="site-footer__contact">
+          <p class="site-footer__brand">Hypso25</p>
+
+          <p class="site-footer__address">
+            Piata Ovidiu 11<br />
+            Constanta, Romania
+          </p>
+
+          <p class="site-footer__phone">
+            <a href="tel:+40751880909">+40 751 880 909</a>
+          </p>
+        </address>
+
+        <!-- Footer social links -->
+        <div class="site-footer__socials" aria-label="Footer social links">
+          <a
+            class="site-footer__social-link"
+            href="https://www.facebook.com/hypso25"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Open Hypso25 Facebook page"
+          >
+            <svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M15.12 8.13H13.2c-.31 0-.66.41-.66.96v1.38h2.58l-.39 2.13h-2.19V19h-2.26v-6.4H8.4v-2.13h1.88V9.31c0-1.81 1.25-3.31 2.92-3.31h1.92v2.13z"
+              ></path>
+            </svg>
+          </a>
+
+          <a
+            class="site-footer__social-link"
+            href="https://www.instagram.com/hypso.25"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Open Hypso25 Instagram page"
+          >
+            <svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M7.75 2h8.5A5.76 5.76 0 0 1 22 7.75v8.5A5.76 5.76 0 0 1 16.25 22h-8.5A5.76 5.76 0 0 1 2 16.25v-8.5A5.76 5.76 0 0 1 7.75 2zm0 2A3.75 3.75 0 0 0 4 7.75v8.5A3.75 3.75 0 0 0 7.75 20h8.5A3.75 3.75 0 0 0 20 16.25v-8.5A3.75 3.75 0 0 0 16.25 4h-8.5z"
+              ></path>
+              <path
+                d="M12 7.35A4.65 4.65 0 1 1 7.35 12 4.65 4.65 0 0 1 12 7.35zm0 2A2.65 2.65 0 1 0 14.65 12 2.65 2.65 0 0 0 12 9.35z"
+              ></path>
+              <path
+                d="M17.05 6.7a1.05 1.05 0 1 1-1.05 1.05 1.05 1.05 0 0 1 1.05-1.05z"
+              ></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Cookie banner. JavaScript will hide it after Accept is clicked. -->
+    <aside class="cookie-banner" id="cookie-banner" aria-label="Cookie notice">
+      <p class="cookie-banner__text">
+        By using this website, you agree to our use of cookies. We use cookies
+        to provide you with a great experience and to help our website run
+        effectively.
+      </p>
+
+      <button
+        class="cookie-banner__button"
+        id="cookie-accept-button"
+        type="button"
+      >
+        Accept
+      </button>
+    </aside>
+  </body>
 </html>
