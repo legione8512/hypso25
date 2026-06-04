@@ -1,0 +1,159 @@
+/* =========================================================
+   Contact page
+   Page-specific styles only.
+   ========================================================= */
+
+.page--contact {
+  background: var(--colour-light);
+}
+
+/* I reuse the same small hero logic as the Our Story page. */
+.page--contact .hero--contact-page {
+  height: clamp(150px, 15vw, 250px);
+}
+
+.page--contact .site-main {
+  background: var(--colour-white);
+}
+/* Main contact area */
+.contact-content {
+  padding: clamp(5rem, 6vw, 7rem) var(--page-padding) clamp(7rem, 9vw, 11rem);
+  background: var(--colour-white);
+  color: var(--colour-black);
+  padding-bottom: 3rem;
+}
+
+.contact-content__grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: clamp(3rem, 5vw, 7rem);
+
+  width: 100%;
+  max-width: var(--container-wide);
+  margin-inline: auto;
+}
+
+.contact-content__details {
+  grid-column: 1 / 5;
+}
+
+.contact-content__map {
+  grid-column: 6 / 13;
+  min-height: 390px;
+}
+
+.contact-content__map-frame {
+  display: block;
+  width: 100%;
+  height: clamp(360px, 32vw, 460px);
+  border: 0;
+}
+
+.contact-page__title {
+  margin-bottom: clamp(3rem, 4vw, 4.5rem);
+  font-family: var(--font-heading);
+  font-size: clamp(3.4rem, 4.6vw, 5.5rem);
+  font-weight: 500;
+  line-height: 1.1;
+  color: var(--colour-black);
+}
+
+.contact-block {
+  margin-bottom: clamp(0.4rem, 2vw, 2.4rem);
+}
+
+.contact-block:last-child {
+  margin-bottom: 0;
+}
+
+.contact-block__title {
+  margin-bottom: 1rem;
+  font-family: var(--font-heading);
+  font-size: clamp(2.1rem, 2.4vw, 3rem);
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--colour-black);
+}
+
+.contact-block__text {
+  margin-bottom: 0.8rem;
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.7;
+  color: var(--colour-black);
+}
+
+.contact-block__text strong {
+  font-weight: 700;
+}
+
+.contact-block__text a {
+  color: var(--colour-black);
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .page--contact .hero--contact-page {
+    height: clamp(140px, 22vw, 220px);
+  }
+
+  .contact-content {
+    padding-top: 4.5rem;
+    padding-right: 5vw;
+    padding-left: 5vw;
+  }
+
+  .contact-content__grid {
+    grid-template-columns: repeat(8, minmax(0, 1fr));
+    column-gap: 3rem;
+  }
+
+  .contact-content__details {
+    grid-column: 1 / 4;
+  }
+
+  .contact-content__map {
+    grid-column: 4 / 9;
+  }
+
+  .contact-content__map-frame {
+    height: clamp(320px, 42vw, 420px);
+  }
+
+  .contact-page__title {
+    font-size: clamp(3rem, 6vw, 4.6rem);
+  }
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+  .page--contact .hero--contact-page {
+    height: clamp(120px, 34vw, 180px);
+  }
+
+  .contact-content {
+    padding: 3.5rem 7vw 6rem;
+  }
+
+  .contact-content__grid {
+    grid-template-columns: 1fr;
+    row-gap: 4rem;
+  }
+
+  .contact-content__details,
+  .contact-content__map {
+    grid-column: 1;
+  }
+
+  .contact-page__title {
+    font-size: clamp(3rem, 13vw, 4.4rem);
+  }
+
+  .contact-block__title {
+    font-size: clamp(2.1rem, 9vw, 3rem);
+  }
+
+  .contact-content__map-frame {
+    height: clamp(280px, 75vw, 390px);
+  }
+}

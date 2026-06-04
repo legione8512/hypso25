@@ -1,0 +1,418 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Our Story | Hypso25</title>
+    <meta
+      name="description"
+      content="Discover the story of Hypso25, a marine bistro with a steampunk twist in the heart of Constanta."
+    />
+
+    <link rel="icon" type="image/webp" href="assets/images/favicon.webp" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="assets/css/our-story.css" />
+  </head>
+
+  <body class="page page--our-story">
+    <!-- Site header -->
+    <header class="site-header" aria-label="Main site header">
+      <div class="site-header__inner">
+        <a
+          class="site-logo"
+          href="index.html"
+          aria-label="Go to Hypso25 homepage"
+        >
+          Hypso25
+        </a>
+
+        <nav class="desktop-nav" aria-label="Main navigation">
+          <ul class="desktop-nav__list">
+            <li>
+              <a class="desktop-nav__link" href="index.html#menu">Menu</a>
+            </li>
+            <li>
+              <a class="desktop-nav__link" href="our-story.html">Our Story</a>
+            </li>
+            <li>
+              <a class="desktop-nav__link" href="photo-gallery.html"
+                >Photo Gallery</a
+              >
+            </li>
+          </ul>
+        </nav>
+
+        <div class="header-actions">
+          <a
+            class="header-actions__social-link"
+            href="https://www.facebook.com/hypso25"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Open Hypso25 Facebook page"
+          >
+            <svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5.02 3.66 9.18 8.44 9.94v-7.03H7.9v-2.91h2.54V9.85c0-2.52 1.49-3.91 3.77-3.91 1.09 0 2.23.2 2.23.2v2.47h-1.26c-1.24 0-1.63.78-1.63 1.57v1.88h2.78l-.44 2.91h-2.34V22C18.34 21.24 22 17.08 22 12.06z"
+              ></path>
+            </svg>
+          </a>
+
+          <a
+            class="header-actions__social-link"
+            href="https://www.instagram.com/hypso.25"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Open Hypso25 Instagram page"
+          >
+            <svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M7.75 2h8.5A5.76 5.76 0 0 1 22 7.75v8.5A5.76 5.76 0 0 1 16.25 22h-8.5A5.76 5.76 0 0 1 2 16.25v-8.5A5.76 5.76 0 0 1 7.75 2zm0 2A3.75 3.75 0 0 0 4 7.75v8.5A3.75 3.75 0 0 0 7.75 20h8.5A3.75 3.75 0 0 0 20 16.25v-8.5A3.75 3.75 0 0 0 16.25 4h-8.5zm8.75 2.25a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"
+              ></path>
+            </svg>
+          </a>
+
+          <div class="language-picker">
+            <button
+              class="language-picker__button"
+              type="button"
+              aria-label="Choose language"
+            >
+              <span class="language-picker__flag">
+                <img
+                  class="language-picker__flag-img"
+                  src="assets/images/gb.svg"
+                  alt=""
+                />
+              </span>
+              <span class="language-picker__current">English</span>
+              <span class="language-picker__arrow" aria-hidden="true">
+                <svg class="language-picker__arrow-icon" viewBox="0 0 24 24">
+                  <path d="M7 10l5 5 5-5z" fill="currentColor"></path>
+                </svg>
+              </span>
+            </button>
+
+            <div class="language-picker__menu">
+              <a class="language-picker__option" href="our-story.html">
+                <img
+                  class="language-picker__flag-img"
+                  src="assets/images/gb.svg"
+                  alt=""
+                />
+                <span>English</span>
+              </a>
+
+              <a class="language-picker__option" href="our-story-ro.html">
+                <img
+                  class="language-picker__flag-img"
+                  src="assets/images/ro.svg"
+                  alt=""
+                />
+                <span>Română</span>
+              </a>
+            </div>
+          </div>
+
+          <a class="header-actions__contact-button" href="contact.html">
+            Contact
+          </a>
+        </div>
+
+        <button
+          class="mobile-menu-toggle"
+          type="button"
+          aria-label="Open menu"
+          aria-controls="mobile-menu"
+          aria-expanded="false"
+        >
+          <span class="mobile-menu-toggle__line"></span>
+          <span class="mobile-menu-toggle__line"></span>
+          <span class="mobile-menu-toggle__line"></span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Mobile menu -->
+    <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+      <div class="mobile-menu__inner">
+        <div class="mobile-menu__top">
+          <a
+            class="mobile-menu__logo"
+            href="index.html"
+            aria-label="Go to Hypso25 homepage"
+          >
+            Hypso25
+          </a>
+
+          <button
+            class="mobile-menu__close"
+            type="button"
+            aria-label="Close menu"
+          >
+            Close
+          </button>
+        </div>
+
+        <nav class="mobile-menu__nav" aria-label="Mobile navigation">
+          <ul class="mobile-menu__nav-list">
+            <li>
+              <a class="mobile-menu__nav-link" href="index.html#menu">Menu</a>
+            </li>
+            <li>
+              <a class="mobile-menu__nav-link" href="our-story.html"
+                >Our Story</a
+              >
+            </li>
+            <li>
+              <a class="mobile-menu__nav-link" href="photo-gallery.html"
+                >Photo Gallery</a
+              >
+            </li>
+          </ul>
+        </nav>
+
+        <div class="mobile-menu__socials" aria-label="Social links">
+          <a
+            class="mobile-menu__social-link"
+            href="https://www.facebook.com/hypso25"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Open Hypso25 Facebook page"
+          >
+            <svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5.02 3.66 9.18 8.44 9.94v-7.03H7.9v-2.91h2.54V9.85c0-2.52 1.49-3.91 3.77-3.91 1.09 0 2.23.2 2.23.2v2.47h-1.26c-1.24 0-1.63.78-1.63 1.57v1.88h2.78l-.44 2.91h-2.34V22C18.34 21.24 22 17.08 22 12.06z"
+              ></path>
+            </svg>
+          </a>
+
+          <a
+            class="mobile-menu__social-link"
+            href="https://www.instagram.com/hypso.25"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Open Hypso25 Instagram page"
+          >
+            <svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M7.75 2h8.5A5.76 5.76 0 0 1 22 7.75v8.5A5.76 5.76 0 0 1 16.25 22h-8.5A5.76 5.76 0 0 1 2 16.25v-8.5A5.76 5.76 0 0 1 7.75 2zm0 2A3.75 3.75 0 0 0 4 7.75v8.5A3.75 3.75 0 0 0 7.75 20h8.5A3.75 3.75 0 0 0 20 16.25v-8.5A3.75 3.75 0 0 0 16.25 4h-8.5zm8.75 2.25a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"
+              ></path>
+            </svg>
+          </a>
+        </div>
+
+        <!-- Mobile language selector -->
+        <div class="mobile-menu__language">
+          <button
+            class="mobile-menu__language-link"
+            type="button"
+            data-open-language-menu
+            aria-controls="mobile-language-view"
+            aria-expanded="false"
+          >
+            <img
+              class="mobile-menu__language-flag-img"
+              src="assets/images/gb.svg"
+              alt=""
+              data-current-language-flag
+            />
+            <span
+              class="mobile-menu__language-text"
+              data-current-language-label
+            >
+              English
+            </span>
+            <span class="mobile-menu__language-arrow" aria-hidden="true"
+              >⌄</span
+            >
+          </button>
+        </div>
+
+        <div
+          class="mobile-menu__language-view"
+          id="mobile-language-view"
+          aria-hidden="true"
+        >
+          <div class="mobile-menu__language-view-top">
+            <button
+              class="mobile-menu__back-button"
+              type="button"
+              data-language-back
+            >
+              <span data-language-back-label>Back</span>
+            </button>
+          </div>
+
+          <div
+            class="mobile-menu__language-options"
+            aria-label="Choose language"
+          >
+            <a
+              class="mobile-menu__language-option is-active"
+              href="our-story.html"
+              data-language-option
+              data-language-code="en"
+              data-language-label="English"
+              data-language-flag="assets/images/gb.svg"
+              data-back-label="Back"
+            >
+              <img src="assets/images/gb.svg" alt="" />
+              <span>English</span>
+            </a>
+
+            <a
+              class="mobile-menu__language-option"
+              href="our-story-ro.html"
+              data-language-option
+              data-language-code="ro"
+              data-language-label="Română"
+              data-language-flag="assets/images/ro.svg"
+              data-back-label="Înapoi"
+            >
+              <img src="assets/images/ro.svg" alt="" />
+              <span>Română</span>
+            </a>
+          </div>
+        </div>
+
+        <a class="mobile-menu__contact-button" href="contact.html"> Contact </a>
+      </div>
+    </div>
+
+    <main class="site-main">
+      <!-- Small hero -->
+      <section
+        class="hero hero--story-page"
+        aria-label="Hypso25 Our Story hero image"
+      >
+        <div class="hero__media">
+          <img
+            class="hero__image"
+            src="assets/images/hero-bar.webp"
+            alt="Hypso25 bar interior"
+          />
+        </div>
+
+        <div class="hero__overlay" aria-hidden="true"></div>
+      </section>
+
+      <!-- Our Story page content -->
+      <section class="our-story-page">
+        <div class="our-story-page__grid">
+          <h1 class="our-story-page__title">Our Story</h1>
+
+          <div class="our-story-page__text our-story-page__text--intro">
+            <p>
+              At Hypso25, our marine bistro with a steampunk twist is a
+              whimsical oasis located at 11 Piata Ovidiu in the heart of
+              Constanta. As you step into our enchanting space, you'll be
+              greeted by the alluring aroma of specialty coffee brewing and the
+              tantalizing sight of expertly crafted cocktails being prepared
+              behind our vintage bar.
+            </p>
+
+            <p>
+              Our story began with a vision to blend the mysteries of the deep
+              waters with the creativity of steampunk design, creating a unique
+              sanctuary for coffee enthusiasts and cocktail connoisseurs alike.
+              The fusion of these two distinct worlds is evident in every detail
+              of our decor, from the intricate clockwork gears adorning the
+              walls to the nautical artifacts scattered throughout the bistro.
+            </p>
+          </div>
+
+          <figure class="our-story-page__media">
+            <img
+              class="our-story-page__image"
+              src="assets/images/coffee-a.webp"
+              alt="Coffee being prepared at Hypso25"
+            />
+          </figure>
+
+          <div class="our-story-page__text our-story-page__text--closing">
+            <p>
+              Each sip of our specialty coffee tells a tale of craftsmanship and
+              dedication, sourced from the finest beans and brewed to perfection
+              by our skilled baristas. For those seeking a more adventurous
+              experience, our creative cocktail menu offers imaginative elixirs
+              that push the boundaries of flavor, taking your taste buds on a
+              thrilling journey through the depths of mixology.
+            </p>
+
+            <p>
+              Whether you're stopping by for your morning cup of joe or
+              unwinding with friends over handcrafted cocktails in the evening,
+              Hypso25 invites you to embrace the enchantment of the sea and the
+              marvels of steampunk while enjoying a truly one-of-a-kind
+              experience in the heart of Constanta.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer" id="contact">
+      <div class="site-footer__container">
+        <address class="site-footer__contact">
+          <p class="site-footer__brand">Hypso25</p>
+          <p class="site-footer__address">
+            Piata Ovidiu 11<br />
+            Constanta, Romania
+          </p>
+          <p class="site-footer__phone">
+            <a href="tel:+40751809099">+40751809099</a>
+          </p>
+        </address>
+
+        <div class="site-footer__socials" aria-label="Footer social links">
+          <a
+            class="site-footer__social-link"
+            href="https://www.facebook.com/hypso25"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Open Hypso25 Facebook page"
+          >
+            <svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5.02 3.66 9.18 8.44 9.94v-7.03H7.9v-2.91h2.54V9.85c0-2.52 1.49-3.91 3.77-3.91 1.09 0 2.23.2 2.23.2v2.47h-1.26c-1.24 0-1.63.78-1.63 1.57v1.88h2.78l-.44 2.91h-2.34V22C18.34 21.24 22 17.08 22 12.06z"
+              ></path>
+            </svg>
+          </a>
+
+          <a
+            class="site-footer__social-link"
+            href="https://www.instagram.com/hypso.25"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Open Hypso25 Instagram page"
+          >
+            <svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M7.75 2h8.5A5.76 5.76 0 0 1 22 7.75v8.5A5.76 5.76 0 0 1 16.25 22h-8.5A5.76 5.76 0 0 1 2 16.25v-8.5A5.76 5.76 0 0 1 7.75 2zm0 2A3.75 3.75 0 0 0 4 7.75v8.5A3.75 3.75 0 0 0 7.75 20h8.5A3.75 3.75 0 0 0 20 16.25v-8.5A3.75 3.75 0 0 0 16.25 4h-8.5zm8.75 2.25a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"
+              ></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Cookie banner -->
+    <div class="cookie-banner" id="cookie-banner">
+      <p class="cookie-banner__text">
+        This website uses cookies to offer you a better browsing experience.
+      </p>
+
+      <button
+        class="cookie-banner__button"
+        id="cookie-accept-button"
+        type="button"
+      >
+        Accept
+      </button>
+    </div>
+
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>

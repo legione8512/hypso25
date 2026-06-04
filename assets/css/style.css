@@ -564,6 +564,7 @@ address {
 .mobile-menu__language-link {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
   color: var(--colour-black);
 }
@@ -573,7 +574,7 @@ address {
 }
 
 .mobile-menu__language-text {
-  font-size: 0.95rem;
+  font-size: 6vmin;
 }
 
 .mobile-menu__language-arrow {
@@ -585,13 +586,12 @@ address {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: min(100%, 420px);
   min-height: 3.2rem;
   margin-inline: auto;
-  padding: 0.9rem 1.4rem;
+  padding: 2rem 4rem;
   background: var(--colour-black);
   color: var(--colour-white);
-  font-size: 1rem;
+  font-size: 1.5rem;
   line-height: 1;
   transition:
     background var(--transition-fast),
@@ -602,6 +602,72 @@ address {
   opacity: 1;
   background: var(--colour-muted);
   color: var(--colour-white);
+}
+.mobile-menu__language-view {
+  display: none;
+  flex: 1;
+  width: 100%;
+  min-height: 100%;
+}
+
+.mobile-menu.is-language-open .mobile-menu__top,
+.mobile-menu.is-language-open .mobile-menu__nav,
+.mobile-menu.is-language-open .mobile-menu__socials,
+.mobile-menu.is-language-open .mobile-menu__language,
+.mobile-menu.is-language-open .mobile-menu__contact-button {
+  display: none;
+}
+
+.mobile-menu.is-language-open .mobile-menu__language-view {
+  display: flex;
+  flex-direction: column;
+}
+
+.mobile-menu__language-view-top {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.mobile-menu__back-button {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1;
+  color: var(--colour-black);
+}
+
+.mobile-menu__language-options {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(1.4rem, 4vmin, 2.4rem);
+  width: 100%;
+}
+.mobile-menu__language-option {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 8vmin, 4rem);
+  font-weight: 500;
+  line-height: 1.1;
+  color: var(--colour-black);
+}
+
+.mobile-menu__language-option img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+}
+
+.mobile-menu__language-option.is-active {
+  opacity: 0.55;
 }
 
 /* =========================================================
@@ -1159,8 +1225,8 @@ address {
 
 .mobile-menu__language-flag-img {
   display: block;
-  width: 20px;
-  height: 20px;
+  width: 30px;
+  height: 30px;
   object-fit: contain;
   flex: 0 0 auto;
 }
@@ -1549,16 +1615,20 @@ address {
     padding-top: 7.5rem;
     padding-right: 15vw;
     padding-bottom: 0;
-    padding-left: calc(15vw - 10px);
+    padding-left: calc(15vw - 1px);
   }
 
   .story__container {
-    max-width: clamp(1005px, calc(40vw + 429px), 1170px);
+    max-width: clamp(
+      1230px,
+      max(calc(40vw + 429px), calc(100vw - 600px)),
+      1330px
+    );
   }
 
   .story__content {
-    font-size: clamp(2.29rem, calc(0.8rem + 1.66vw), 2.45rem);
-    line-height: 1.35;
+    font-size: clamp(2.29rem, calc(0.6rem + 1.8vw), 2.95rem);
+    line-height: 1.33;
     word-spacing: -0.03em;
   }
   /* Testimonial */
@@ -1567,13 +1637,17 @@ address {
   }
 
   .testimonial__container {
-    width: clamp(985px, calc(42vw + 380px), 1350px);
+    width: clamp(
+      985px,
+      max(calc(42vw + 380px), min(calc(250vw - 3000px), calc(62vw + 133px))),
+      1350px
+    );
     max-width: 100%;
     margin-inline: auto;
   }
 
   .testimonial__quote p {
-    font-size: clamp(2.8rem, calc(4vw - 12.8px), 3.3rem);
+    font-size: clamp(2.8rem, calc(4vw - 12.8px), 3.35rem);
     line-height: 1.35;
     text-align: center;
   }
@@ -1656,15 +1730,36 @@ address {
 }
 
 /* =========================================================
-   31. Very large desktop Coffee size correction: 2000px and above
-   I keep the tested Coffee image size on very wide screens.
-   The left spacing is already handled by --coffee-left-padding above.
+   31. Very large desktop corrections: 2000px and above
+   I control Coffee, Our Story and Testimonial on very wide screens.
    ========================================================= */
 
 @media (min-width: 2000px) {
   .coffee-preview {
     --coffee-image-column: clamp(720px, calc(60vw - 232px), 1000px);
     --coffee-media-height: clamp(780px, calc(52vw - 47px), 980px);
+  }
+  .story {
+    padding-top: 7.5rem;
+    padding-right: 15vw;
+    padding-bottom: 0;
+    padding-left: calc(15vw - 10px);
+  }
+  .story__content {
+    font-size: clamp(2.25rem, calc(2rem + 0.1vw), 2.28rem);
+    line-height: 1.34;
+    word-spacing: -0.03em;
+  }
+  .testimonial__container {
+    width: clamp(1350px, calc(100vw - 600px), 1380px);
+    max-width: 100%;
+    margin-inline: auto;
+  }
+
+  .testimonial__quote p {
+    font-size: clamp(2.9rem, calc(1.4rem + 0.85vw), 3.15rem);
+    line-height: 1.3;
+    text-align: center;
   }
 }
 /* =========================================================
@@ -1980,7 +2075,7 @@ address {
 
   /* Testimonial */
   .testimonial__quote p {
-    font-size: clamp(2.25rem, 9vw, 2.25rem);
+    font-size: 2.25rem;
     line-height: 1.33;
   }
 
@@ -2029,5 +2124,29 @@ address {
   .coffee-preview__menu-panel {
     padding-right: 1.6rem;
     padding-left: 1.6rem;
+  }
+}
+/* =========================================================
+   Large desktop Our Story correction: 1950px - 1999px
+   I reduce only the Our Story text before the 2000px breakpoint.
+   ========================================================= */
+
+@media (min-width: 1950px) and (max-width: 1999px) {
+  /* Our Story */
+  .story__content {
+    font-size: 2.2rem;
+    line-height: 1.34;
+  }
+
+  /* Testimonial */
+  .testimonial__container {
+    width: clamp(1350px, calc(100vw - 600px), 1400px);
+    max-width: 100%;
+    margin-inline: auto;
+  }
+
+  .testimonial__quote p {
+    font-size: 2.9rem;
+    line-height: 1.28;
   }
 }

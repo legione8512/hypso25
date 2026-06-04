@@ -1,0 +1,148 @@
+/* =========================================================
+   Photo Gallery page
+   Page-specific styles only.
+   ========================================================= */
+
+.page--gallery {
+  background: var(--colour-light);
+}
+
+.page--gallery .site-main {
+  background: var(--colour-white);
+}
+
+/* I reuse the same small hero logic as Our Story and Contact. */
+.page--gallery .hero--gallery-page {
+  height: clamp(150px, 15vw, 250px);
+}
+
+/* Main gallery area */
+.gallery-content {
+  padding: clamp(5rem, 6vw, 7rem) var(--page-padding) clamp(7rem, 9vw, 11rem);
+  background: var(--colour-white);
+  color: var(--colour-black);
+}
+
+.gallery-content__container {
+  width: 100%;
+  max-width: var(--container-wide);
+  margin-inline: auto;
+}
+
+.gallery-content__header {
+  margin-bottom: clamp(3rem, 5vw, 5rem);
+}
+
+.gallery-content__title {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: clamp(3.4rem, 4.6vw, 5.5rem);
+  font-weight: 500;
+  line-height: 1.1;
+  color: var(--colour-black);
+}
+
+/* Gallery grid */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: clamp(1rem, 1.6vw, 1.8rem);
+}
+
+.gallery-grid__item {
+  grid-column: span 4;
+  margin: 0;
+  overflow: hidden;
+  background: var(--colour-light);
+}
+
+.gallery-grid__item--large {
+  grid-column: span 8;
+  grid-row: span 2;
+}
+
+.gallery-grid__item--wide {
+  grid-column: span 8;
+}
+
+.gallery-grid__image {
+  width: 100%;
+  height: 100%;
+  min-height: 340px;
+  object-fit: cover;
+  object-position: center center;
+  transition: transform var(--transition-medium);
+}
+
+.gallery-grid__item:hover .gallery-grid__image {
+  transform: scale(1.03);
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .page--gallery .hero--gallery-page {
+    height: clamp(140px, 22vw, 220px);
+  }
+
+  .gallery-content {
+    padding-top: 4.5rem;
+    padding-right: 5vw;
+    padding-left: 5vw;
+  }
+
+  .gallery-grid {
+    grid-template-columns: repeat(8, minmax(0, 1fr));
+  }
+
+  .gallery-grid__item {
+    grid-column: span 4;
+  }
+
+  .gallery-grid__item--large,
+  .gallery-grid__item--wide {
+    grid-column: span 8;
+  }
+
+  .gallery-grid__image {
+    min-height: 300px;
+  }
+
+  .gallery-content__title {
+    font-size: clamp(3rem, 6vw, 4.6rem);
+  }
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+  .page--gallery .hero--gallery-page {
+    height: clamp(120px, 34vw, 180px);
+  }
+
+  .gallery-content {
+    padding: 3.5rem 7vw 6rem;
+  }
+
+  .gallery-content__header {
+    margin-bottom: 3rem;
+  }
+
+  .gallery-content__title {
+    font-size: clamp(3rem, 13vw, 4.4rem);
+  }
+
+  .gallery-grid {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+  }
+
+  .gallery-grid__item,
+  .gallery-grid__item--large,
+  .gallery-grid__item--wide {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
+  .gallery-grid__image {
+    min-height: clamp(240px, 70vw, 380px);
+  }
+}
