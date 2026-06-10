@@ -109,13 +109,145 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   document.addEventListener("keydown", function (event) {
+    const galleryIsOpen =
+      galleryLightbox && galleryLightbox.classList.contains("is-open");
+
     if (event.key === "Escape") {
       closeMobileMenu();
+      closeGalleryLightbox();
+    }
+
+    if (galleryIsOpen && event.key === "ArrowLeft") {
+      showPreviousGalleryImage();
+    }
+
+    if (galleryIsOpen && event.key === "ArrowRight") {
+      showNextGalleryImage();
     }
   });
-
   /* =========================================================
-     2. Cookie banner
+     2. Gallery lightbox
+     I open a larger version of a gallery image and allow next/previous navigation.
+     ========================================================= */
+
+  const galleryImages = Array.from(
+    document.querySelectorAll(".gallery-grid__image"),
+  );
+  const galleryLightbox = document.getElementById("gallery-lightbox");
+  const galleryLightboxImage = document.querySelector(
+    "[data-gallery-lightbox-image]",
+  );
+  const galleryLightboxClose = document.querySelector(
+    "[data-gallery-lightbox-close]",
+  );
+  const galleryLightboxPrev = document.querySelector(
+    "[data-gallery-lightbox-prev]",
+  );
+  const galleryLightboxNext = document.querySelector(
+    "[data-gallery-lightbox-next]",
+  );
+
+  let currentGalleryIndex = 0;
+
+  function updateGalleryLightbox(index) {
+    if (!galleryLightboxImage || galleryImages.length === 0) {
+      return;
+    }
+
+    currentGalleryIndex = (index + galleryImages.length) % galleryImages.length;
+
+    const currentImage = galleryImages[currentGalleryIndex];
+
+    galleryLightboxImage.setAttribute("src", currentImage.getAttribute("src"));
+    galleryLightboxImage.setAttribute(
+      "alt",
+      currentImage.getAttribute("alt") || "",
+    );
+  }
+
+  function openGalleryLightbox(index) {
+    if (
+      !galleryLightbox ||
+      !galleryLightboxImage ||
+      galleryImages.length === 0
+    ) {
+      return;
+    }
+
+    updateGalleryLightbox(index);
+
+    galleryLightbox.classList.add("is-open");
+    galleryLightbox.setAttribute("aria-hidden", "false");
+    document.body.classList.add("no-scroll");
+  }
+
+  function closeGalleryLightbox() {
+    if (!galleryLightbox || !galleryLightboxImage) {
+      return;
+    }
+
+    galleryLightbox.classList.remove("is-open");
+    galleryLightbox.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("no-scroll");
+
+    galleryLightboxImage.setAttribute("src", "");
+    galleryLightboxImage.setAttribute("alt", "");
+  }
+
+  function showPreviousGalleryImage() {
+    updateGalleryLightbox(currentGalleryIndex - 1);
+  }
+
+  function showNextGalleryImage() {
+    updateGalleryLightbox(currentGalleryIndex + 1);
+  }
+
+  galleryImages.forEach(function (image, index) {
+    const galleryItem = image.closest(".gallery-grid__item");
+
+    if (!galleryItem) {
+      return;
+    }
+
+    galleryItem.addEventListener("click", function () {
+      openGalleryLightbox(index);
+    });
+
+    galleryItem.addEventListener("keydown", function (event) {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        openGalleryLightbox(index);
+      }
+    });
+  });
+
+  if (galleryLightboxClose) {
+    galleryLightboxClose.addEventListener("click", closeGalleryLightbox);
+  }
+
+  if (galleryLightboxPrev) {
+    galleryLightboxPrev.addEventListener("click", function (event) {
+      event.stopPropagation();
+      showPreviousGalleryImage();
+    });
+  }
+
+  if (galleryLightboxNext) {
+    galleryLightboxNext.addEventListener("click", function (event) {
+      event.stopPropagation();
+      showNextGalleryImage();
+    });
+  }
+
+  if (galleryLightbox) {
+    galleryLightbox.addEventListener("click", function (event) {
+      if (event.target === galleryLightbox) {
+        closeGalleryLightbox();
+      }
+    });
+  }
+  /* =========================================================
+     3. Cookie banner
      I hide the cookie banner after the user clicks Accept.
      I save the choice in localStorage so the banner stays hidden.
      ========================================================= */

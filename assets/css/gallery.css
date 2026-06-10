@@ -146,3 +146,137 @@
     min-height: clamp(240px, 70vw, 380px);
   }
 }
+/* =========================================================
+   Gallery lightbox
+   I enlarge gallery images when the user clicks them.
+   ========================================================= */
+
+.gallery-grid__item {
+  cursor: zoom-in;
+}
+
+.gallery-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 400000;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: clamp(1.2rem, 4vw, 4rem);
+  background: rgba(0, 0, 0, 0.88);
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  transition:
+    opacity var(--transition-medium),
+    visibility var(--transition-medium);
+}
+
+.gallery-lightbox.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.gallery-lightbox__image {
+  display: block;
+  width: auto;
+  max-width: min(100%, 1500px);
+  max-height: 88vh;
+  object-fit: contain;
+  box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.45);
+}
+
+.gallery-lightbox__close {
+  position: absolute;
+  top: clamp(1.2rem, 3vw, 2.4rem);
+  right: clamp(1.2rem, 3vw, 2.4rem);
+  z-index: 1;
+
+  width: 3rem;
+  height: 3rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: var(--colour-white);
+  font-size: 2.4rem;
+  font-weight: 300;
+  line-height: 1;
+}
+
+.gallery-lightbox__close:hover {
+  opacity: 0.7;
+}
+
+@media (max-width: 767px) {
+  .gallery-lightbox {
+    padding: 1rem;
+  }
+
+  .gallery-lightbox__image {
+    max-height: 82vh;
+  }
+
+  .gallery-lightbox__close {
+    top: 1rem;
+    right: 1rem;
+    width: 2.6rem;
+    height: 2.6rem;
+    font-size: 2rem;
+  }
+}
+.gallery-lightbox__control {
+  position: absolute;
+  top: 50%;
+  z-index: 1;
+
+  width: clamp(3rem, 5vw, 4.5rem);
+  height: clamp(3rem, 5vw, 4.5rem);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: var(--colour-white);
+  font-family: var(--font-heading);
+  font-size: clamp(3rem, 6vw, 5rem);
+  font-weight: 300;
+  line-height: 1;
+
+  transform: translateY(-50%);
+  transition: opacity var(--transition-fast);
+}
+
+.gallery-lightbox__control:hover {
+  opacity: 0.7;
+}
+
+.gallery-lightbox__control--prev {
+  left: clamp(1rem, 3vw, 3rem);
+}
+
+.gallery-lightbox__control--next {
+  right: clamp(1rem, 3vw, 3rem);
+}
+
+@media (max-width: 767px) {
+  .gallery-lightbox__control {
+    width: 2.8rem;
+    height: 2.8rem;
+    font-size: 3rem;
+  }
+
+  .gallery-lightbox__control--prev {
+    left: 0.5rem;
+  }
+
+  .gallery-lightbox__control--next {
+    right: 0.5rem;
+  }
+}
