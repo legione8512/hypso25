@@ -1,0 +1,200 @@
+/* QR landing page improvements for menu/index.html */
+
+.qr-intro {
+  background: #fffbf2;
+}
+
+.qr-intro__text {
+  font-weight: 700;
+  max-width: 760px;
+  color: #33211d;
+  font-size: 1.08rem;
+  line-height: 1.8;
+  opacity: 0.9;
+}
+
+.qr-intro__button {
+  font-size: 1.5rem;
+  padding: 1rem 2.6rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.qr-intro__quick-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  max-width: 920px;
+  margin: 0 auto;
+}
+
+.qr-intro__quick-links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.65rem 1rem;
+  border: 1px solid rgba(218, 159, 91, 0.6);
+  border-radius: 999px;
+  color: #ffffff;
+  font-size: 0.82rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: all 0.2s ease;
+}
+
+.qr-intro__quick-links a:hover {
+  background: #da9f5b;
+  color: #33211d;
+  text-decoration: none;
+}
+
+.qr-reviews [data-random-reviews] {
+  row-gap: 1.5rem;
+}
+
+.qr-reviews {
+  background: #fffbf2;
+}
+
+.qr-reviews__intro {
+  max-width: 720px;
+  color: #33211d;
+  line-height: 1.8;
+  opacity: 0.9;
+}
+
+.qr-review-card {
+  height: 100%;
+  min-height: 260px;
+  padding: 1.6rem;
+  border: 2px solid rgba(218, 159, 91, 0.9);
+  background: #33211d;
+  color: #ffffff;
+  box-shadow:
+    0 0 0 1px rgba(255, 220, 160, 0.22),
+    0 1.2rem 2.4rem rgba(0, 0, 0, 0.38),
+    0 2.4rem 5rem rgba(51, 33, 29, 0.55);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.qr-review-card:hover {
+  transform: translateY(-5px);
+  box-shadow:
+    0 0 0 1px rgba(255, 220, 160, 0.3),
+    0 1.5rem 3rem rgba(0, 0, 0, 0.48),
+    0 3rem 6rem rgba(51, 33, 29, 0.65);
+}
+
+.qr-review-card__logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 42px;
+  margin-bottom: 1rem;
+}
+
+.qr-review-card__logo img {
+  display: block;
+  max-width: 135px;
+  max-height: 36px;
+  object-fit: contain;
+}
+
+.qr-review-card__badge {
+  margin-bottom: 0.8rem;
+  color: #da9f5b;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.qr-review-card__stars {
+  margin-bottom: 1rem;
+  color: #da9f5b;
+  font-size: 1.15rem;
+  letter-spacing: 2px;
+  text-align: center;
+}
+
+.qr-review-card__text {
+  margin-bottom: 1.2rem;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  opacity: 0.92;
+}
+
+.qr-review-card__author {
+  margin-bottom: 1rem;
+  color: #ffffff;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.qr-review-card__date {
+  color: rgba(255, 255, 255, 0.65);
+  font-weight: 400;
+}
+
+.qr-review-card__link {
+  color: #da9f5b;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.qr-review-card__link:hover {
+  color: #ffffff;
+}
+
+.qr-reviews__empty {
+  margin: 0 auto;
+  max-width: 640px;
+  color: #ffffff;
+  text-align: center;
+  opacity: 0.8;
+}
+.qr-review-card__title {
+  margin-bottom: 0.8rem;
+  color: #ffffff;
+  font-size: 1.1rem;
+  font-weight: 700;
+  line-height: 1.3;
+  text-align: center;
+}
+
+@media (max-width: 767px) {
+  .qr-intro {
+    padding-top: 3rem !important;
+    padding-bottom: 3rem !important;
+  }
+
+  .qr-intro .display-4 {
+    font-size: 2.15rem;
+  }
+
+  .qr-intro__button {
+    width: 100%;
+    max-width: 320px;
+  }
+
+  .qr-intro__quick-links {
+    gap: 0.55rem;
+  }
+
+  .qr-intro__quick-links a {
+    width: 100%;
+    max-width: 320px;
+  }
+
+  .qr-review-card {
+    min-height: auto;
+    padding: 1.4rem;
+  }
+}
