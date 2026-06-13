@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const logo = document.createElement("img");
     logo.src =
       source === "google"
-        ? "img/review-logos/google.svg"
+        ? "img/review-logos/13549.svg"
         : "img/review-logos/tripadvisor.svg";
 
     logo.alt = source === "google" ? "Google" : "TripAdvisor";
@@ -97,8 +97,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
       link.textContent =
         source === "google"
-          ? "View more Google reviews"
-          : "View more TripAdvisor reviews";
+          ? "View more on Google"
+          : "View more on TripAdvisor";
     }
 
     card.appendChild(logoWrapper);

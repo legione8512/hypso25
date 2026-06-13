@@ -8,7 +8,7 @@
   font-weight: 700;
   max-width: 760px;
   color: #33211d;
-  font-size: 1.08rem;
+  font-size: 1.4rem;
   line-height: 1.8;
   opacity: 0.9;
 }
@@ -19,6 +19,20 @@
   font-weight: 700;
   letter-spacing: 2px;
   text-transform: uppercase;
+  border: 1px solid rgba(218, 159, 91, 0.85);
+  box-shadow:
+    0 0.8rem 1.8rem rgba(0, 0, 0, 0.28),
+    0 1.4rem 3rem rgba(51, 33, 29, 0.35);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.qr-intro__button:hover {
+  transform: translateY(-3px) scale(1.1);
+  box-shadow:
+    0 1rem 2.2rem rgba(0, 0, 0, 0.35),
+    0 1.8rem 3.6rem rgba(51, 33, 29, 0.45);
 }
 
 .qr-intro__quick-links {
@@ -68,10 +82,12 @@
 .qr-review-card {
   height: 100%;
   min-height: 260px;
-  padding: 1.6rem;
+  padding: 1rem;
   border: 2px solid rgba(218, 159, 91, 0.9);
   background: #33211d;
   color: #ffffff;
+  display: flex;
+  flex-direction: column;
   box-shadow:
     0 0 0 1px rgba(255, 220, 160, 0.22),
     0 1.2rem 2.4rem rgba(0, 0, 0, 0.38),
@@ -93,14 +109,15 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 42px;
-  margin-bottom: 1rem;
+  min-height: 95px;
+  margin-bottom: 1.4rem;
 }
 
 .qr-review-card__logo img {
   display: block;
-  max-width: 135px;
-  max-height: 36px;
+  width: auto;
+  max-width: 340px;
+  max-height: 95px;
   object-fit: contain;
 }
 
@@ -125,7 +142,7 @@
 .qr-review-card__text {
   margin-bottom: 1.2rem;
   font-size: 0.95rem;
-  line-height: 1.7;
+  line-height: 1.6;
   opacity: 0.92;
 }
 
@@ -142,8 +159,13 @@
 }
 
 .qr-review-card__link {
+  margin-top: auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  align-self: flex-start;
   color: #da9f5b;
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   font-weight: 700;
   letter-spacing: 1px;
   text-transform: uppercase;
@@ -169,7 +191,33 @@
   text-align: center;
 }
 
+.qr-carousel-logo {
+  position: absolute;
+  top: 50%;
+  left: clamp(1.2rem, 4vw, 4rem);
+  z-index: 20;
+
+  display: block;
+  width: clamp(300px, 42vw, 650px);
+
+  transform: translateY(-50%);
+}
+
+.qr-carousel-logo img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.qr-carousel-logo:hover {
+  text-decoration: none;
+}
+
 @media (max-width: 767px) {
+  .qr-carousel-logo {
+    left: clamp(1rem, 5vw, 1.8rem);
+    width: clamp(190px, 65vw, 320px);
+  }
   .qr-intro {
     padding-top: 3rem !important;
     padding-bottom: 3rem !important;
@@ -196,5 +244,14 @@
   .qr-review-card {
     min-height: auto;
     padding: 1.4rem;
+  }
+  .qr-review-card__logo {
+    min-height: 78px;
+    margin-bottom: 1.2rem;
+  }
+
+  .qr-review-card__logo img {
+    max-width: 250px;
+    max-height: 70px;
   }
 }

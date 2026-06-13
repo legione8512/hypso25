@@ -1,6 +1,6 @@
 window.hypsoReviewLinks = {
   googleMore:
-    "https://www.google.com/maps/search/?api=1&query=Hypso25%20Constanta",
+    "https://www.google.com/search?sca_esv=7f84a317695edff8&rlz=1C1GCEA_en-GBRO1182RO1182&q=HYPSO25+Reviews&rflfq=1&num=20&stick=H4sIAAAAAAAAAONgkxI2sjA1sDA2NzQztzQ0NTO3MDQx3cDI-IqR3yMyINjfyFQhKLUsM7W8eBEruggAJwq8fj4AAAA&rldimm=2850837167915678145&tbm=lcl&hl=en-RO&sa=X&ved=2ahUKEwj-qMDY2oKVAxX2xwIHHRSrHJkQ9fQKegQIMxAG&biw=2560&bih=1271&dpr=1#lkt=LocalPoiReviews",
   tripadvisorMore:
     "https://www.tripadvisor.com/Restaurant_Review-g295396-d17560953-Reviews-Hypso25-Constanta_Constanta_County_Southeast_Romania.html",
 };
