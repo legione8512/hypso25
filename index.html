@@ -44,6 +44,42 @@
 
     <!-- Main JavaScript file. I use defer so the HTML loads before the script runs. -->
     <script src="assets/js/main.js" defer></script>
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": ["CafeOrCoffeeShop", "BarOrPub"],
+        "name": "Hypso25",
+        "url": "https://www.hypso25.ro/",
+        "image": "https://www.hypso25.ro/assets/images/hero-bar.webp",
+        "telephone": "+40751880909",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Piața Ovidiu 11",
+          "addressLocality": "Constanța",
+          "addressCountry": "RO"
+        },
+        "servesCuisine": ["Specialty coffee", "Cocktails", "Wine"],
+        "sameAs": [
+          "https://www.facebook.com/hypso25",
+          "https://www.instagram.com/hypso.25"
+        ],
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Tuesday", "Wednesday", "Thursday", "Friday"],
+            "opens": "10:00",
+            "closes": "22:00"
+          },
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Saturday", "Sunday"],
+            "opens": "10:00",
+            "closes": "00:00"
+          }
+        ]
+      }
+    </script>
   </head>
 
   <body>
