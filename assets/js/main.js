@@ -161,7 +161,7 @@ document.addEventListener("DOMContentLoaded", function () {
     galleryLightboxImage.setAttribute("src", currentImage.getAttribute("src"));
     galleryLightboxImage.setAttribute(
       "alt",
-      currentImage.getAttribute("alt") || "",
+      currentImage.getAttribute("alt") || "Selected gallery image at Hypso25",
     );
   }
 
@@ -191,7 +191,10 @@ document.addEventListener("DOMContentLoaded", function () {
     document.body.classList.remove("no-scroll");
 
     galleryLightboxImage.setAttribute("src", "");
-    galleryLightboxImage.setAttribute("alt", "");
+    galleryLightboxImage.setAttribute(
+      "alt",
+      "Selected gallery image at Hypso25",
+    );
   }
 
   function showPreviousGalleryImage() {
