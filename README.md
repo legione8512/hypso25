@@ -165,10 +165,28 @@ _unused-assets-backup/
 - The menu is connected from the main website through `menu/menu.html`.
 - The shared favicon is stored at `assets/images/favicon.ico`.
 
+### Checklist when changing header, footer or shared layout
+
+The main website is static, so the header, mobile menu, language picker, footer and cookie banner are repeated manually across the main HTML pages.
+
+When changing the main navigation, header actions, mobile menu, language switcher, footer or cookie banner, update and test these files:
+
+```text
+index.html
+ro.html
+our-story.html
+our-story-ro.html
+contact.html
+contact-ro.html
+photo-gallery.html
+photo-gallery-ro.html
+```
+
 ## Future Improvements
 
 Possible future improvements:
 
+- consider a simple static build script for shared header and footer partials;
 - create a Romanian version of the menu;
 - add a lightbox experience for menu product images;
 - further optimise image sizes for faster loading;

@@ -776,6 +776,60 @@ address {
 }
 
 /* =========================================================
+   16. Privacy Page css
+    Styles for the privacy page, with a different image and overlay.
+   ========================================================= */
+
+.policy-page {
+  min-height: 100vh;
+  padding: 140px 6vw 80px;
+  color: var(--colour-white);
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.72), rgba(0, 0, 0, 0.72)),
+    url("../images/hero-bar.webp") center / cover no-repeat;
+}
+
+.policy-page__container {
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.policy-page__eyebrow {
+  margin: 0 0 16px;
+  font-size: 0.85rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--colour-gold);
+}
+
+.policy-page__title {
+  margin: 0 0 32px;
+  font-family: var(--font-heading);
+  font-size: clamp(2.4rem, 6vw, 5rem);
+  line-height: 1;
+}
+
+.policy-page__heading {
+  margin: 36px 0 12px;
+  font-family: var(--font-heading);
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  line-height: 1.1;
+}
+
+.policy-page__text {
+  max-width: 760px;
+  margin: 0 0 18px;
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.policy-page__text a {
+  color: var(--colour-gold);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+/* =========================================================
    17. Hero responsive behaviour
    I keep the hero proportional as the screen gets smaller.
    ========================================================= */
@@ -1131,6 +1185,17 @@ address {
 
 .site-footer__social-link:hover {
   opacity: 0.65;
+}
+
+.site-footer__privacy {
+  margin: 8px 0 0;
+}
+
+.site-footer__privacy a,
+.cookie-banner__text a {
+  color: var(--colour-gold);
+  text-decoration: underline;
+  text-underline-offset: 4px;
 }
 /* =========================================================
    24. Cookie banner
