@@ -165,6 +165,14 @@ _unused-assets-backup/
 - The menu is connected from the main website through `menu/menu.html`.
 - The shared favicon is stored at `assets/images/favicon.ico`.
 
+### Check local links
+
+To check if local HTML links and image/script sources point to existing files, run:
+
+```bash
+python scripts/check_links.py
+```
+
 ### Checklist when changing header, footer or shared layout
 
 The main website is static, so the header, mobile menu, language picker, footer and cookie banner are repeated manually across the main HTML pages.
