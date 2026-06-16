@@ -1,17 +1,28 @@
-(function ($) {
-    "use strict";
+document.addEventListener("DOMContentLoaded", function () {
+  const backToTop = document.querySelector(".back-to-top");
 
-    // Back to top button
-    $(window).scroll(function () {
-        if ($(this).scrollTop() > 100) {
-            $('.back-to-top').fadeIn('slow');
-        } else {
-            $('.back-to-top').fadeOut('slow');
-        }
+  if (!backToTop) {
+    return;
+  }
+
+  function toggleBackToTopButton() {
+    if (window.scrollY > 100) {
+      backToTop.style.display = "inline-flex";
+    } else {
+      backToTop.style.display = "none";
+    }
+  }
+
+  toggleBackToTopButton();
+
+  window.addEventListener("scroll", toggleBackToTopButton);
+
+  backToTop.addEventListener("click", function (event) {
+    event.preventDefault();
+
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
     });
-    $('.back-to-top').click(function () {
-        $('html, body').animate({scrollTop: 0}, 1500, 'swing');
-        return false;
-    });
-    
-})(jQuery);
+  });
+});
