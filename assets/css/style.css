@@ -15,6 +15,7 @@
   --colour-muted: #757263;
   --colour-black: #000000;
   --colour-white: #ffffff;
+  --colour-gold: #c8a46a; /* Only on dark backgrounds: too light for the light footer */
 
   /* Practical colours */
   --colour-text: var(--colour-black);
@@ -1193,9 +1194,17 @@ address {
 
 .site-footer__privacy a,
 .cookie-banner__text a {
-  color: var(--colour-gold);
   text-decoration: underline;
   text-underline-offset: 4px;
+}
+
+/* I keep the footer link dark because gold is hard to read on the light footer. */
+.site-footer__privacy a {
+  color: var(--colour-black);
+}
+
+.cookie-banner__text a {
+  color: var(--colour-gold);
 }
 /* =========================================================
    24. Cookie banner

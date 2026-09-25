@@ -1,6 +1,6 @@
 # Hypso25 Website
 
-A static website for **Hypso25**, a specialty coffee shop, cocktail bar and wine bar with an industrial steampunk identity, located in the old town of Constanţa, Romania.
+A static website for **Hypso25**, a specialty coffee shop, cocktail bar and wine bar with an industrial steampunk identity, located in the old town of Constanța, Romania.
 
 The project contains the main Hypso25 website, bilingual Romanian/English pages, a photo gallery with lightbox functionality, contact pages, and an existing standalone menu website integrated inside the `/menu` folder.
 
