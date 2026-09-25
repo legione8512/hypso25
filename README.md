@@ -59,7 +59,8 @@ menu/vcock.html         Cocktails
 menu/celix.html         Chilled elixirs
 menu/spirits.html       Spirits
 menu/wines.html         Wines and beer
-menu/seasonal.html      Seasonal drinks
+menu/winter.html        Winter seasonal drinks (Winter Spirit Infusions)
+menu/seasonal.html      Summer seasonal drinks (Heatwave Elixirs)
 ```
 
 ## Project Structure
@@ -100,6 +101,7 @@ hypso25/
     ├── spirits.html
     ├── wines.html
     ├── seasonal.html
+    ├── winter.html
     ├── css/
     │   └── style.min.css
     ├── js/
@@ -164,6 +166,15 @@ _unused-assets-backup/
 - The menu website keeps its own styling and scripts inside `menu/`.
 - The menu is connected from the main website through `menu/menu.html`.
 - The shared favicon is stored at `assets/images/favicon.ico`.
+
+### Switching the seasonal menu
+
+The menu has one seasonal page at a time:
+
+- winter: `menu/winter.html` (Winter Spirit Infusions), linked as `WINTER INFUSIONS`;
+- summer: `menu/seasonal.html` (Heatwave Elixirs), linked as `SEASONAL SIPS`.
+
+To switch season, change the seasonal link in the page header of all menu category pages (`menu.html`, `sdrinks.html`, `vcock.html`, `celix.html`, `spirits.html`, `wines.html` and the seasonal page that becomes active), and replace the seasonal page URL in `sitemap.xml`.
 
 ### Check local links
 
