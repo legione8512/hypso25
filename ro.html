@@ -50,10 +50,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,700;1,500;1,700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,700;1,500;1,700&family=Source+Sans+3:wght@300;400;700&display=swap"
     />
 
-    <!-- Main CSS file. I will write all styling here later. -->
+    <!-- Main CSS file -->
     <link rel="stylesheet" href="assets/css/style.css" />
 
     <!-- Main JavaScript file. I use defer so the HTML loads before the script runs. -->
@@ -65,12 +65,12 @@
     <header class="site-header" id="site-header">
       <div class="site-header__inner">
         <!-- Brand / logo text -->
-        <a class="site-logo" href="ro.html" aria-label="Hypso25 homepage">
+        <a class="site-logo" href="ro.html" aria-label="Pagina principală Hypso25">
           Hypso25
         </a>
 
         <!-- Desktop navigation -->
-        <nav class="desktop-nav" aria-label="Main navigation">
+        <nav class="desktop-nav" aria-label="Navigație principală">
           <ul class="desktop-nav__list">
             <li class="desktop-nav__item">
               <a class="desktop-nav__link" href="menu/menu.html">Meniu</a>
@@ -97,7 +97,7 @@
             href="https://www.facebook.com/hypso25"
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="Open Hypso25 Facebook page"
+            aria-label="Deschide pagina de Facebook Hypso25"
           >
             <svg
               class="social-icon social-icon--facebook"
@@ -115,7 +115,7 @@
             href="https://www.instagram.com/hypso.25"
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="Open Hypso25 Instagram page"
+            aria-label="Deschide pagina de Instagram Hypso25"
           >
             <svg
               class="social-icon social-icon--instagram"
@@ -134,7 +134,7 @@
             </svg>
           </a>
 
-          <div class="language-picker" aria-label="Language selector">
+          <div class="language-picker" aria-label="Selector de limbă">
             <button
               class="language-picker__button"
               type="button"
@@ -161,7 +161,7 @@
               </span>
             </button>
 
-            <div class="language-picker__menu" aria-label="Available languages">
+            <div class="language-picker__menu" aria-label="Limbi disponibile">
               <a class="language-picker__option" href="index.html">
                 <img
                   class="language-picker__flag-img"
@@ -189,11 +189,11 @@
           </a>
         </div>
 
-        <!-- Mobile menu button. JavaScript will open the mobile menu later. -->
+        <!-- Mobile menu button. JavaScript opens the mobile menu. -->
         <button
           class="mobile-menu-toggle"
           type="button"
-          aria-label="Open menu"
+          aria-label="Deschide meniul"
           aria-controls="mobile-menu"
           aria-expanded="false"
         >
@@ -211,7 +211,7 @@
           <a
             class="mobile-menu__logo"
             href="ro.html"
-            aria-label="Hypso25 homepage"
+            aria-label="Pagina principală Hypso25"
           >
             Hypso25
           </a>
@@ -219,14 +219,14 @@
           <button
             class="mobile-menu__close"
             type="button"
-            aria-label="Close menu"
+            aria-label="Închide meniul"
           >
             X
           </button>
         </div>
 
         <!-- Mobile navigation links -->
-        <nav class="mobile-menu__nav" aria-label="Mobile navigation">
+        <nav class="mobile-menu__nav" aria-label="Navigație mobilă">
           <ul class="mobile-menu__nav-list">
             <li class="mobile-menu__nav-item">
               <a class="mobile-menu__nav-link" href="menu/menu.html">Meniu</a>
@@ -247,13 +247,13 @@
         </nav>
 
         <!-- Mobile social links -->
-        <div class="mobile-menu__socials" aria-label="Social links">
+        <div class="mobile-menu__socials" aria-label="Linkuri social media">
           <a
             class="mobile-menu__social-link"
             href="https://www.facebook.com/hypso25"
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="Open Hypso25 Facebook page"
+            aria-label="Deschide pagina de Facebook Hypso25"
           >
             <svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true">
               <path
@@ -267,7 +267,7 @@
             href="https://www.instagram.com/hypso.25"
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="Open Hypso25 Instagram page"
+            aria-label="Deschide pagina de Instagram Hypso25"
           >
             <svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true">
               <path
@@ -312,13 +312,13 @@
               type="button"
               data-language-back
             >
-              <span data-language-back-label>Back</span>
+              <span data-language-back-label>Înapoi</span>
             </button>
           </div>
 
           <div
             class="mobile-menu__language-options"
-            aria-label="Choose language"
+            aria-label="Alege limba"
           >
             <a
               class="mobile-menu__language-option"
@@ -358,14 +358,13 @@
     <!-- Main page content -->
     <main class="site-main" id="main-content">
       <!-- Hero section -->
-      <!-- Hero section -->
-      <section class="hero" id="hero" aria-label="Hypso25 interior">
+      <section class="hero" id="hero" aria-label="Interiorul Hypso25">
         <!-- I keep the hero image as real HTML, not CSS background, for better accessibility and loading. -->
         <div class="hero__media">
           <img
             class="hero__image"
             src="assets/images/hero-bar.webp"
-            alt="Interior of Hypso25 bar with steampunk industrial decor"
+            alt="Interiorul barului Hypso25, cu decor steampunk industrial"
           />
         </div>
 
@@ -417,7 +416,7 @@
             <img
               class="coffee-preview__image"
               src="assets/images/coffee.webp"
-              alt="Espresso being prepared at Hypso25"
+              alt="Espresso pregătit la Hypso25"
             />
           </div>
 
@@ -426,7 +425,7 @@
             <div class="coffee-preview__menu-panel">
               <h2 class="coffee-preview__title">Coffee</h2>
 
-              <div class="coffee-menu-preview" aria-label="Coffee menu preview">
+              <div class="coffee-menu-preview" aria-label="Previzualizare meniu cafea">
                 <!-- Espresso Black category -->
                 <section
                   class="coffee-menu-preview__group"
@@ -540,7 +539,7 @@
       <section
         class="testimonial section"
         id="testimonial"
-        aria-label="Customer testimonial"
+        aria-label="Recenzie client"
       >
         <div class="testimonial__container section__container">
           <blockquote class="testimonial__quote">
@@ -559,13 +558,13 @@
       <section
         class="atmosphere"
         id="atmosphere"
-        aria-label="Hypso25 atmosphere"
+        aria-label="Atmosfera Hypso25"
       >
         <div class="atmosphere__media">
           <img
             class="atmosphere__image"
             src="assets/images/bar-interior.webp"
-            alt="Warm interior atmosphere at Hypso25"
+            alt="Atmosferă caldă în interiorul Hypso25"
           />
         </div>
       </section>
@@ -593,13 +592,13 @@
         </address>
 
         <!-- Footer social links -->
-        <div class="site-footer__socials" aria-label="Footer social links">
+        <div class="site-footer__socials" aria-label="Linkuri social media">
           <a
             class="site-footer__social-link"
             href="https://www.facebook.com/hypso25"
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="Open Hypso25 Facebook page"
+            aria-label="Deschide pagina de Facebook Hypso25"
           >
             <svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true">
               <path
@@ -613,7 +612,7 @@
             href="https://www.instagram.com/hypso.25"
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="Open Hypso25 Instagram page"
+            aria-label="Deschide pagina de Instagram Hypso25"
           >
             <svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true">
               <path
@@ -632,7 +631,7 @@
     </footer>
 
     <!-- Cookie banner. JavaScript will hide it after Accept is clicked. -->
-    <aside class="cookie-banner" id="cookie-banner" aria-label="Cookie notice">
+    <aside class="cookie-banner" id="cookie-banner" aria-label="Notificare cookie-uri">
       <p class="cookie-banner__text">
         Prin utilizarea acestui website, ești de acord cu folosirea
         cookie-urilor. Folosim cookie-uri pentru a-ți oferi o experiență plăcută

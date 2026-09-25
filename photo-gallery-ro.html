@@ -55,7 +55,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,700;1,500;1,700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,700;1,500;1,700&family=Source+Sans+3:wght@300;400;700&display=swap"
     />
 
     <link rel="stylesheet" href="assets/css/style.css" />
@@ -383,7 +383,7 @@
           <div class="gallery-grid" aria-label="Galerie foto Hypso25">
             <figure
               class="gallery-grid__item gallery-grid__item--large"
-              tabindex="0"
+              tabindex="0" role="button" aria-haspopup="dialog"
             >
               <img
                 class="gallery-grid__image"
@@ -392,7 +392,7 @@
               />
             </figure>
 
-            <figure class="gallery-grid__item" tabindex="0">
+            <figure class="gallery-grid__item" tabindex="0" role="button" aria-haspopup="dialog">
               <img
                 class="gallery-grid__image"
                 src="assets/images/bar-interior.webp"
@@ -400,7 +400,7 @@
               />
             </figure>
 
-            <figure class="gallery-grid__item" tabindex="0">
+            <figure class="gallery-grid__item" tabindex="0" role="button" aria-haspopup="dialog">
               <img
                 class="gallery-grid__image"
                 src="assets/images/coffee.webp"
@@ -410,7 +410,7 @@
 
             <figure
               class="gallery-grid__item gallery-grid__item--wide"
-              tabindex="0"
+              tabindex="0" role="button" aria-haspopup="dialog"
             >
               <img
                 class="gallery-grid__image"
@@ -426,6 +426,7 @@
             id="gallery-lightbox"
             aria-hidden="true"
             role="dialog"
+            aria-modal="true"
             aria-label="Imagine mărită din galerie"
           >
             <button

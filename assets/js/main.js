@@ -22,6 +22,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const languageView = document.getElementById("mobile-language-view");
 
+  // I take the button labels from the page, so Romanian pages keep Romanian labels.
+  const openMenuLabel = mobileMenuToggle
+    ? mobileMenuToggle.getAttribute("aria-label")
+    : "";
+  const closeMenuLabel = mobileMenuClose
+    ? mobileMenuClose.getAttribute("aria-label")
+    : openMenuLabel;
+
   function openMobileMenu() {
     if (!mobileMenu || !mobileMenuToggle) {
       return;
@@ -32,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     mobileMenu.setAttribute("aria-hidden", "false");
     mobileMenuToggle.setAttribute("aria-expanded", "true");
-    mobileMenuToggle.setAttribute("aria-label", "Close menu");
+    mobileMenuToggle.setAttribute("aria-label", closeMenuLabel);
   }
 
   function closeMobileMenu() {
@@ -45,7 +53,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     mobileMenu.setAttribute("aria-hidden", "true");
     mobileMenuToggle.setAttribute("aria-expanded", "false");
-    mobileMenuToggle.setAttribute("aria-label", "Open menu");
+    mobileMenuToggle.setAttribute("aria-label", openMenuLabel);
     mobileMenu.classList.remove("is-language-open");
   }
 
@@ -124,6 +132,10 @@ document.addEventListener("DOMContentLoaded", function () {
     if (galleryIsOpen && event.key === "ArrowRight") {
       showNextGalleryImage();
     }
+
+    if (galleryIsOpen && event.key === "Tab") {
+      keepFocusInGalleryLightbox(event);
+    }
   });
   /* =========================================================
      2. Gallery lightbox
@@ -149,6 +161,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
   let currentGalleryIndex = 0;
 
+  // I keep the page's own alt text (English or Romanian) as the fallback.
+  const defaultGalleryLightboxAlt = galleryLightboxImage
+    ? galleryLightboxImage.getAttribute("alt")
+    : "";
+
+  // I remember which photo opened the lightbox, so focus can go back to it.
+  let galleryLightboxTrigger = null;
+
   function updateGalleryLightbox(index) {
     if (!galleryLightboxImage || galleryImages.length === 0) {
       return;
@@ -161,11 +181,11 @@ document.addEventListener("DOMContentLoaded", function () {
     galleryLightboxImage.setAttribute("src", currentImage.getAttribute("src"));
     galleryLightboxImage.setAttribute(
       "alt",
-      currentImage.getAttribute("alt") || "Selected gallery image at Hypso25",
+      currentImage.getAttribute("alt") || defaultGalleryLightboxAlt,
     );
   }
 
-  function openGalleryLightbox(index) {
+  function openGalleryLightbox(index, trigger) {
     if (
       !galleryLightbox ||
       !galleryLightboxImage ||
@@ -176,13 +196,23 @@ document.addEventListener("DOMContentLoaded", function () {
 
     updateGalleryLightbox(index);
 
+    galleryLightboxTrigger = trigger || document.activeElement;
     galleryLightbox.classList.add("is-open");
     galleryLightbox.setAttribute("aria-hidden", "false");
     document.body.classList.add("no-scroll");
+
+    // I move keyboard focus into the lightbox so screen readers announce it.
+    if (galleryLightboxClose) {
+      galleryLightboxClose.focus();
+    }
   }
 
   function closeGalleryLightbox() {
-    if (!galleryLightbox || !galleryLightboxImage) {
+    if (
+      !galleryLightbox ||
+      !galleryLightboxImage ||
+      !galleryLightbox.classList.contains("is-open")
+    ) {
       return;
     }
 
@@ -191,10 +221,41 @@ document.addEventListener("DOMContentLoaded", function () {
     document.body.classList.remove("no-scroll");
 
     galleryLightboxImage.setAttribute("src", "");
-    galleryLightboxImage.setAttribute(
-      "alt",
-      "Selected gallery image at Hypso25",
-    );
+    galleryLightboxImage.setAttribute("alt", defaultGalleryLightboxAlt);
+
+    // I return focus to the photo that opened the lightbox.
+    if (galleryLightboxTrigger) {
+      galleryLightboxTrigger.focus();
+      galleryLightboxTrigger = null;
+    }
+  }
+
+  // I keep Tab and Shift+Tab inside the lightbox buttons while it is open.
+  function keepFocusInGalleryLightbox(event) {
+    const focusable = [
+      galleryLightboxClose,
+      galleryLightboxPrev,
+      galleryLightboxNext,
+    ].filter(Boolean);
+
+    if (focusable.length === 0) {
+      return;
+    }
+
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    const current = document.activeElement;
+
+    if (!focusable.includes(current)) {
+      event.preventDefault();
+      first.focus();
+    } else if (event.shiftKey && current === first) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && current === last) {
+      event.preventDefault();
+      first.focus();
+    }
   }
 
   function showPreviousGalleryImage() {
@@ -213,13 +274,13 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     galleryItem.addEventListener("click", function () {
-      openGalleryLightbox(index);
+      openGalleryLightbox(index, galleryItem);
     });
 
     galleryItem.addEventListener("keydown", function (event) {
       if (event.key === "Enter" || event.key === " ") {
         event.preventDefault();
-        openGalleryLightbox(index);
+        openGalleryLightbox(index, galleryItem);
       }
     });
   });

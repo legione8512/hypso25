@@ -25,7 +25,7 @@
 
   /* Fonts */
   --font-heading: "Cormorant Garamond", Georgia, serif;
-  --font-body: "adelle-sans", "Helvetica Neue", Arial, sans-serif;
+  --font-body: "Source Sans 3", "Helvetica Neue", Arial, sans-serif;
 
   /* Font sizes */
   --font-size-base: 16px;
@@ -280,7 +280,7 @@ address {
 
 /* =========================================================
    9. Basic hidden states
-   I prepare utility classes for JavaScript later.
+   I toggle these utility classes from assets/js/main.js.
    ========================================================= */
 
 .is-hidden {
@@ -457,7 +457,7 @@ address {
 /* =========================================================
    14. Mobile menu overlay
    I prepare the full-screen mobile menu.
-   JavaScript will add the class .is-open later.
+   JavaScript adds the class .is-open to open it.
    ========================================================= */
 
 .mobile-menu {
@@ -939,7 +939,7 @@ address {
 /* =========================================================
    20. Coffee Preview section
    I style the coffee section for large desktop first.
-   Responsive rules will be added later.
+   Tablet and mobile rules are in sections 27-32 below.
    ========================================================= */
 
 .coffee-preview {
@@ -1116,7 +1116,7 @@ address {
 /* =========================================================
    23. Footer / Contact section
    I style the footer for large desktop first.
-   Responsive rules will be added later.
+   Tablet and mobile rules are in sections 27-32 below.
    ========================================================= */
 
 .site-footer {
@@ -1177,7 +1177,7 @@ address {
   padding-top: 0.4rem;
 }
 
-/* For now these are text links. Later we can replace them with SVG icons. */
+/* Footer social links use the SVG icons styled in section 25. */
 .site-footer__social-link {
   font-size: 0.85rem;
   font-weight: 300;
@@ -1209,7 +1209,7 @@ address {
 /* =========================================================
    24. Cookie banner
    I recreate the original Squarespace cookie banner style.
-   This is desktop-first. JavaScript will hide it after Accept later.
+   This is desktop-first. JavaScript hides it after Accept is clicked.
    ========================================================= */
 
 .cookie-banner {
@@ -1228,7 +1228,7 @@ address {
   background: var(--colour-black);
   color: var(--colour-white);
 
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: var(--font-body);
 }
 
 /* I keep the text small and compact like the original banner. */
