@@ -516,6 +516,14 @@ address {
 }
 
 .mobile-menu__close {
+  /* A 44 x 44 px tap target around the small X. The negative margins cancel the extra size,
+     so the X stays exactly where it was and nothing else in the menu moves. */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  margin: -12.5px -17.5px -12.5px 0;
   font-size: 1.2rem;
   font-weight: 300;
   line-height: 1;

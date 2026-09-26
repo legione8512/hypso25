@@ -310,7 +310,8 @@ document.addEventListener("DOMContentLoaded", function () {
     galleryLightbox.setAttribute("aria-hidden", "true");
     document.body.classList.remove("no-scroll");
 
-    galleryLightboxImage.setAttribute("src", "");
+    // No empty src: that would count as a failed image load.
+    galleryLightboxImage.removeAttribute("src");
     galleryLightboxImage.setAttribute("alt", defaultGalleryLightboxAlt);
 
     // I return focus to the photo that opened the lightbox.
