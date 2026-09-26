@@ -413,15 +413,28 @@
             </section>
           </div>
 
-          <!-- Google map -->
+          <!-- Google map: it loads only after a click, so Google gets no data before the visitor chooses. -->
           <div class="contact-content__map">
-            <iframe
-              class="contact-content__map-frame"
-              title="Locația Hypso25 pe Google Maps"
-              src="https://www.google.com/maps?q=Hypso25%20Piata%20Ovidiu%2011%20Constanta&output=embed"
-              loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"
-            ></iframe>
+            <div
+              class="contact-content__map-frame contact-map"
+              data-map-src="https://www.google.com/maps?q=Hypso25%20Piata%20Ovidiu%2011%20Constanta&amp;output=embed"
+              data-map-title="Locația Hypso25 pe Google Maps"
+            >
+              <div class="contact-map__card">
+                <button class="button" type="button" data-map-load>Arată harta</button>
+                <p class="contact-map__note">
+                  Harta se încarcă de la Google Maps. După ce apeși, Google primește adresa ta IP și poate seta cookie-uri. <a href="privacy-ro.html">Politica de confidențialitate</a>
+                </p>
+                <a
+                  class="contact-map__link"
+                  href="https://maps.app.goo.gl/JFcnPuGnPKfqosZBA"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Deschide în Google Maps</a
+                >
+              </div>
+              <p class="contact-map__credit">© contribuitorii <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap</a></p>
+            </div>
           </div>
         </div>
       </section>
@@ -488,26 +501,5 @@
       </div>
     </footer>
 
-    <!-- Cookie banner -->
-    <aside
-      class="cookie-banner"
-      id="cookie-banner"
-      aria-label="Notificare cookie-uri"
-    >
-      <p class="cookie-banner__text">
-        Prin utilizarea acestui website, ești de acord cu folosirea
-        cookie-urilor. Folosim cookie-uri pentru a-ți oferi o experiență plăcută
-        și pentru ca website-ul să funcționeze eficient.
-        <a href="privacy-ro.html">Politica de confidențialitate</a>
-      </p>
-
-      <button
-        class="cookie-banner__button"
-        id="cookie-accept-button"
-        type="button"
-      >
-        Accept
-      </button>
-    </aside>
   </body>
 </html>

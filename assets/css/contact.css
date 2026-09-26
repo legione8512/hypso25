@@ -49,6 +49,60 @@
   border: 0;
 }
 
+/* Until the visitor clicks the button, this box stands in for the Google map (same size).
+   The background is a greyed-out OpenStreetMap image of the area, stored on this site. */
+.contact-map {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+  border: 1px solid var(--colour-border);
+  background: url("../images/contact-map.webp") center / cover no-repeat;
+}
+
+.contact-map__card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  max-width: 24rem;
+  padding: 1.5rem 1.75rem;
+  background: rgba(238, 237, 235, 0.92);
+  box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.12);
+  text-align: center;
+}
+
+/* OpenStreetMap asks for this credit next to its maps. */
+.contact-map__credit {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  margin: 0;
+  padding: 0.15rem 0.45rem;
+  background: rgba(255, 255, 255, 0.8);
+  font-size: 0.7rem;
+  line-height: 1.4;
+}
+
+.contact-map__credit a {
+  color: var(--colour-black);
+}
+
+.contact-map__note {
+  max-width: 30rem;
+  margin: 0;
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+.contact-map__note a,
+.contact-map__link {
+  color: var(--colour-black);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 .contact-page__title {
   margin-bottom: clamp(3rem, 4vw, 4.5rem);
   font-family: var(--font-heading);
@@ -155,5 +209,14 @@
 
   .contact-content__map-frame {
     height: clamp(280px, 75vw, 390px);
+  }
+
+  .contact-map {
+    padding: 0.75rem 0.75rem 1.6rem;
+  }
+
+  .contact-map__card {
+    gap: 0.75rem;
+    padding: 1rem 1.1rem;
   }
 }

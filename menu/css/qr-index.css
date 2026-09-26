@@ -109,15 +109,19 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 95px;
-  margin-bottom: 1.4rem;
+  margin-bottom: 1.2rem;
 }
 
+/* Each review source logo sits on a white circle in its own colours: Tripadvisor does not allow
+   its owl in white or recoloured on a dark background like these cards. */
 .qr-review-card__logo img {
   display: block;
-  width: auto;
-  max-width: 340px;
-  max-height: 95px;
+  width: 72px;
+  height: 72px;
+  padding: 16px;
+  box-sizing: border-box;
+  border-radius: 50%;
+  background: #ffffff;
   object-fit: contain;
 }
 
@@ -137,6 +141,29 @@
   font-size: 1.15rem;
   letter-spacing: 2px;
   text-align: center;
+}
+
+/* Tripadvisor bubbles in Trip Green (#00EB5B), the colour from its brand guidelines. */
+.qr-review-card__bubbles {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  margin-bottom: 1rem;
+}
+
+.qr-review-card__bubble {
+  width: 16px;
+  height: 16px;
+  border: 2px solid #00eb5b;
+  border-radius: 50%;
+}
+
+.qr-review-card__bubble.is-full {
+  background: #00eb5b;
+}
+
+.qr-review-card__bubble.is-half {
+  background: linear-gradient(90deg, #00eb5b 50%, transparent 50%);
 }
 
 .qr-review-card__text {
@@ -231,7 +258,8 @@
 @media (max-width: 767px) {
   .qr-carousel-logo {
     left: clamp(1rem, 5vw, 1.8rem);
-    width: clamp(190px, 65vw, 320px);
+    /* Relative to the carousel, which is narrower than the screen on a phone held sideways. */
+    width: min(65%, 320px);
   }
   .qr-intro {
     padding-top: 3rem !important;
@@ -261,12 +289,12 @@
     padding: 1.4rem;
   }
   .qr-review-card__logo {
-    min-height: 78px;
-    margin-bottom: 1.2rem;
+    margin-bottom: 1rem;
   }
 
   .qr-review-card__logo img {
-    max-width: 250px;
-    max-height: 70px;
+    width: 64px;
+    height: 64px;
+    padding: 14px;
   }
 }

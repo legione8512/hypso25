@@ -401,27 +401,27 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
   /* =========================================================
-     3. Cookie banner
-     I hide the cookie banner after the user clicks Accept.
-     I save the choice in localStorage so the banner stays hidden.
+     3. Contact map
+     I load Google Maps only after the visitor clicks the button,
+     so Google gets no data from visitors who do not want the map.
      ========================================================= */
 
-  const cookieBanner = document.getElementById("cookie-banner");
-  const cookieAcceptButton = document.getElementById("cookie-accept-button");
+  document.querySelectorAll("[data-map-src]").forEach(function (placeholder) {
+    const loadButton = placeholder.querySelector("[data-map-load]");
 
-  if (!cookieBanner || !cookieAcceptButton) {
-    return;
-  }
+    if (!loadButton) {
+      return;
+    }
 
-  const cookiesAccepted = localStorage.getItem("hypso25CookiesAccepted");
+    loadButton.addEventListener("click", function () {
+      const frame = document.createElement("iframe");
+      frame.className = "contact-content__map-frame";
+      frame.title = placeholder.getAttribute("data-map-title");
+      frame.src = placeholder.getAttribute("data-map-src");
+      frame.referrerPolicy = "no-referrer-when-downgrade";
 
-  if (cookiesAccepted === "true") {
-    cookieBanner.classList.add("is-hidden");
-    return;
-  }
-
-  cookieAcceptButton.addEventListener("click", function () {
-    localStorage.setItem("hypso25CookiesAccepted", "true");
-    cookieBanner.classList.add("is-hidden");
+      placeholder.replaceWith(frame);
+      frame.focus();
+    });
   });
 });

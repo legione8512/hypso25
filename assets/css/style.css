@@ -216,8 +216,7 @@ button {
 /* The muted outline disappears on the dark photos and black sections, so I use gold there. */
 .site-header :focus-visible,
 .hero :focus-visible,
-.policy-page :focus-visible,
-.cookie-banner :focus-visible {
+.policy-page :focus-visible {
   outline-color: var(--colour-gold);
 }
 
@@ -753,6 +752,19 @@ address {
   opacity: 0.2;
   pointer-events: none;
 }
+
+/* On the homepage the text sits over lamps and bottles, so the photo gets darker towards the bottom.
+   The top keeps the 20% of the other pages, so the header and the top of the bar look the same. */
+.hero--home .hero__overlay {
+  opacity: 1;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.2) 0%,
+    rgba(0, 0, 0, 0.2) 25%,
+    rgba(0, 0, 0, 0.5) 40%,
+    rgba(0, 0, 0, 0.65) 100%
+  );
+}
 .hero__content {
   position: absolute;
   inset: 0;
@@ -981,7 +993,6 @@ address {
   width: 100%;
   aspect-ratio: 1 / 1;
   overflow: hidden;
-  transform: translateX(-125px);
 }
 
 /* The original image appears much taller than 16:9, so I use a near-square crop. */
@@ -1211,81 +1222,12 @@ address {
   margin: 8px 0 0;
 }
 
-.site-footer__privacy a,
-.cookie-banner__text a {
+.site-footer__privacy a {
   text-decoration: underline;
   text-underline-offset: 4px;
-}
-
-/* I keep the footer link dark because gold is hard to read on the light footer. */
-.site-footer__privacy a {
+  /* I keep the footer link dark because gold is hard to read on the light footer. */
   color: var(--colour-black);
 }
-
-.cookie-banner__text a {
-  color: var(--colour-gold);
-}
-/* =========================================================
-   24. Cookie banner
-   I recreate the original Squarespace cookie banner style.
-   This is desktop-first. JavaScript hides it after Accept is clicked.
-   ========================================================= */
-
-.cookie-banner {
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 300000;
-
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 2vw;
-
-  padding: 10px 15px;
-  background: var(--colour-black);
-  color: var(--colour-white);
-
-  font-family: var(--font-body);
-}
-
-/* I keep the text small and compact like the original banner. */
-.cookie-banner__text {
-  margin: 10px 2vw 10px 10px;
-  max-width: 75%;
-
-  font-size: 12px;
-  font-weight: 400;
-  line-height: 1.5;
-  letter-spacing: 0.05em;
-  color: var(--colour-white);
-}
-
-/* I style Accept as a text-style CTA, not as a boxed button. */
-.cookie-banner__button {
-  flex: 0 0 auto;
-  margin: 10px;
-  padding: 0;
-
-  border: 0;
-  border-bottom: 1px solid #777;
-  background: transparent;
-
-  font-size: 12px;
-  font-weight: 400;
-  line-height: 1.5;
-  letter-spacing: 0.05em;
-  color: var(--colour-white);
-
-  cursor: pointer;
-  transition: opacity var(--transition-fast);
-}
-
-.cookie-banner__button:hover {
-  opacity: 0.7;
-}
-
 /* =========================================================
    25. Social icons
    I style the SVG social icons separately for header, footer and mobile menu.
@@ -1550,7 +1492,6 @@ address {
     width: var(--coffee-image-width);
     aspect-ratio: 1 / 1.75;
     overflow: hidden;
-    transform: none;
   }
 
   .coffee-preview__image {
@@ -1707,7 +1648,6 @@ address {
     height: clamp(800px, calc(1329px - 42.65vw), 860px);
     aspect-ratio: auto;
     overflow: hidden;
-    transform: none;
   }
 
   /* This is the full right column. */
@@ -1842,7 +1782,6 @@ address {
     height: var(--coffee-media-height);
     aspect-ratio: auto;
     overflow: hidden;
-    transform: none;
   }
 
   .coffee-preview__image {
@@ -2002,7 +1941,6 @@ address {
     aspect-ratio: 4 / 3;
     margin-inline: auto;
     overflow: hidden;
-    transform: none;
   }
 
   .coffee-preview__image {
@@ -2135,26 +2073,6 @@ address {
     width: 30px;
     height: 30px;
   }
-
-  /* Cookie banner */
-  .cookie-banner {
-    align-items: flex-start;
-    flex-direction: column;
-    gap: 0.8rem;
-    padding: 1rem 1.1rem;
-  }
-
-  .cookie-banner__text {
-    max-width: 100%;
-    margin: 0;
-    font-size: 11px;
-    line-height: 1.5;
-  }
-
-  .cookie-banner__button {
-    margin: 0;
-    font-size: 11px;
-  }
 }
 
 /* =========================================================
@@ -2183,7 +2101,6 @@ address {
     aspect-ratio: 4 / 3;
     margin-inline: auto;
     overflow: hidden;
-    transform: none;
   }
 
   .coffee-preview__image {

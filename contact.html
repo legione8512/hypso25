@@ -420,15 +420,28 @@
             </section>
           </div>
 
-          <!-- Google map -->
+          <!-- Google map: it loads only after a click, so Google gets no data before the visitor chooses. -->
           <div class="contact-content__map">
-            <iframe
-              class="contact-content__map-frame"
-              title="Hypso25 location on Google Maps"
-              src="https://www.google.com/maps?q=Hypso25%20Piata%20Ovidiu%2011%20Constanta&output=embed"
-              loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"
-            ></iframe>
+            <div
+              class="contact-content__map-frame contact-map"
+              data-map-src="https://www.google.com/maps?q=Hypso25%20Piata%20Ovidiu%2011%20Constanta&amp;output=embed"
+              data-map-title="Hypso25 location on Google Maps"
+            >
+              <div class="contact-map__card">
+                <button class="button" type="button" data-map-load>Show map</button>
+                <p class="contact-map__note">
+                  The map loads from Google Maps. Once you click, Google receives your IP address and may set cookies. <a href="privacy.html">Privacy Policy</a>
+                </p>
+                <a
+                  class="contact-map__link"
+                  href="https://maps.app.goo.gl/JFcnPuGnPKfqosZBA"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Open in Google Maps</a
+                >
+              </div>
+              <p class="contact-map__credit">© <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap</a> contributors</p>
+            </div>
           </div>
         </div>
       </section>
@@ -497,22 +510,5 @@
       </div>
     </footer>
 
-    <!-- Cookie banner -->
-    <aside class="cookie-banner" id="cookie-banner" aria-label="Cookie notice">
-      <p class="cookie-banner__text">
-        By using this website, you agree to our use of cookies. We use cookies
-        to provide you with a great experience and to help our website run
-        effectively.
-        <a href="privacy.html">Privacy Policy</a>
-      </p>
-
-      <button
-        class="cookie-banner__button"
-        id="cookie-accept-button"
-        type="button"
-      >
-        Accept
-      </button>
-    </aside>
   </body>
 </html>
