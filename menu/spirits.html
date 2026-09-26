@@ -17,12 +17,8 @@
 
     <!-- Favicon -->
     <link rel="icon" href="../assets/images/favicon.ico" sizes="any" />
-    <!-- Google Font -->
-    <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400&family=Roboto:wght@400;500;700&display=swap"
-      rel="stylesheet"
-    />
+    <!-- Fonts (the same files as the main site) -->
+    <link rel="stylesheet" href="../assets/css/fonts.css" />
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="css/style.min.css" rel="stylesheet" />
@@ -33,11 +29,33 @@
     <div
       class="container-fluid page-header mb-5 position-relative overlay-bottom"
     >
+      <!-- Language picker (same as the main site). Română points to # until the Romanian menu exists. -->
+      <div class="language-picker" aria-label="Language selector">
+        <button class="language-picker__button" type="button" aria-expanded="false">
+          <img class="language-picker__flag-img" src="../assets/images/gb.svg" alt="" />
+          <span class="language-picker__current">English</span>
+          <span class="language-picker__arrow" aria-hidden="true">
+            <svg viewBox="0 0 22 22" class="language-picker__arrow-icon">
+              <path d="M6 8.5L11 13.5L16 8.5" fill="none" stroke="currentColor" stroke-width="1.5"></path>
+            </svg>
+          </span>
+        </button>
+        <div class="language-picker__menu" aria-label="Available languages">
+          <a class="language-picker__option" href="spirits.html">
+            <img class="language-picker__flag-img" src="../assets/images/gb.svg" alt="" />
+            <span>English</span>
+          </a>
+          <a class="language-picker__option" href="#" lang="ro">
+            <img class="language-picker__flag-img" src="../assets/images/ro.svg" alt="" />
+            <span>Română</span>
+          </a>
+        </div>
+      </div>
       <div
         class="d-flex flex-column align-items-center justify-content-center pt-0"
         style="min-height: 200px"
       >
-        <h1 class="display-4 mb-3 mt-5 text-white text-uppercase">
+        <h1 class="display-4 mb-3 mt-5 text-white text-uppercase text-center">
           Hypso25 Spirits Menu
         </h1>
         <div class="d-inline-flex">
@@ -80,13 +98,16 @@
     <!-- Menu Start -->
     <div class="container-fluid pt-1">
       <div class="container">
-        <div class="section-title">
-          <h4
-            class="text-primary text-uppercase mb-0"
-            style="letter-spacing: 5px; font-size: 4em"
+        <div class="section-title section-title--logo">
+          <a class="section-title__home" href="../index.html">
+            <img src="img/hypso25-logo.svg" alt="Hypso25 homepage" width="100" height="100" />
+          </a>
+          <h2
+            class="h4 font-weight-medium text-primary text-uppercase mb-0"
+            style="letter-spacing: 5px; font-size: min(4em, 14vw)"
           >
             Spirits
-          </h4>
+          </h2>
           <p>
             <b
               >A diverse collection of classic and craft spirits — ideal for
@@ -97,7 +118,7 @@
         </div>
         <div class="row">
           <div class="col-lg-6">
-            <h2 class="mb-0">TOP SHELF SPIRITS</h2>
+            <h3 class="h2 font-weight-bold mb-0">TOP SHELF SPIRITS</h3>
             <p class="mb-5">
               <b
                 >A curated selection of rare, aged, and ultra-premium spirits
@@ -111,10 +132,10 @@
                   src="img/icons_watermarked/webp/spirits/Aberlour18.webp"
                   alt="Aberlour 18y whiskey at Hypso25"
                 />
-                <h5 class="menu-price">
+                <p class="menu-price h5 font-weight-normal">
                   <b>65</b>
                   <span style="font-size: small"><b>ron</b></span>
-                </h5>
+                </p>
               </div>
               <div class="col-8 col-sm-9">
                 <h4>Aberlour 18y whiskey - 40ml</h4>
@@ -128,10 +149,10 @@
                   src="img/icons_watermarked/webp/spirits/The Glenlivet 18.webp"
                   alt="The Glenlivet 18y whiskey at Hypso25"
                 />
-                <h5 class="menu-price">
+                <p class="menu-price h5 font-weight-normal">
                   <b>65</b>
                   <span style="font-size: small"><b>ron</b></span>
-                </h5>
+                </p>
               </div>
               <div class="col-8 col-sm-9">
                 <h4>The Glenlivet 18y whiskey - 40ml</h4>
@@ -145,10 +166,10 @@
                   src="img/icons_watermarked/webp/spirits/Chivas18.webp"
                   alt="Chivas Regal 18y whiskey at Hypso25"
                 />
-                <h5 class="menu-price">
+                <p class="menu-price h5 font-weight-normal">
                   <b>50</b>
                   <span style="font-size: small"><b>ron</b></span>
-                </h5>
+                </p>
               </div>
               <div class="col-8 col-sm-9">
                 <h4>Chivas Regal 18y whiskey - 40ml</h4>
@@ -162,10 +183,10 @@
                   src="img/icons_watermarked/webp/spirits/Chopin Vodka.webp"
                   alt="Chopin vodka at Hypso25"
                 />
-                <h5 class="menu-price">
+                <p class="menu-price h5 font-weight-normal">
                   <b>50</b>
                   <span style="font-size: small"><b>ron</b></span>
-                </h5>
+                </p>
               </div>
               <div class="col-8 col-sm-9">
                 <h4>Chopin vodka - 40ml</h4>
@@ -179,10 +200,10 @@
                   src="img/icons_watermarked/webp/spirits/Belvedere vodka.webp"
                   alt="Belvedere vodka at Hypso25"
                 />
-                <h5 class="menu-price">
+                <p class="menu-price h5 font-weight-normal">
                   <b>50</b>
                   <span style="font-size: small"><b>ron</b></span>
-                </h5>
+                </p>
               </div>
               <div class="col-8 col-sm-9">
                 <h4>Belvedere vodka - 40ml</h4>
@@ -196,10 +217,10 @@
                   src="img/icons_watermarked/webp/spirits/Don_Julio.webp"
                   alt="Don Julio tequila at Hypso25"
                 />
-                <h5 class="menu-price">
+                <p class="menu-price h5 font-weight-normal">
                   <b>50</b>
                   <span style="font-size: small"><b>ron</b></span>
-                </h5>
+                </p>
               </div>
               <div class="col-8 col-sm-9">
                 <h4>Don Julio tequila - 40ml</h4>
@@ -213,10 +234,10 @@
                   src="img/icons_watermarked/webp/spirits/Bumbuxo.webp"
                   alt="Bumbu XO rum at Hypso25"
                 />
-                <h5 class="menu-price">
+                <p class="menu-price h5 font-weight-normal">
                   <b>50</b>
                   <span style="font-size: small"><b>ron</b></span>
-                </h5>
+                </p>
               </div>
               <div class="col-8 col-sm-9">
                 <h4>Bumbu XO rum - 40ml</h4>
@@ -230,17 +251,17 @@
                   src="img/icons_watermarked/webp/spirits/Martell VSOP.webp"
                   alt="Martell VSOP cognac at Hypso25"
                 />
-                <h5 class="menu-price">
+                <p class="menu-price h5 font-weight-normal">
                   <b>50</b>
                   <span style="font-size: small"><b>ron</b></span>
-                </h5>
+                </p>
               </div>
               <div class="col-8 col-sm-9">
                 <h4>Martell VSOP cognac - 40ml</h4>
                 <p class="m-0"></p>
               </div>
             </div>
-            <h2 class="mb-0">PREMIUM SELECTION</h2>
+            <h3 class="h2 font-weight-bold mb-0">PREMIUM SELECTION</h3>
             <p class="mb-5">
               <b
                 >Crafted to deliver taste and balance, this collection features
@@ -255,10 +276,10 @@
                   src="img/icons_watermarked/webp/spirits/The Glenlivet 15y.webp"
                   alt="The Glenlivet 15y whiskey at Hypso25"
                 />
-                <h5 class="menu-price">
+                <p class="menu-price h5 font-weight-normal">
                   <b>40</b>
                   <span style="font-size: small"><b>ron</b></span>
-                </h5>
+                </p>
               </div>
               <div class="col-8 col-sm-9">
                 <h4>The Glenlivet 15y whiskey - 40ml</h4>
@@ -272,10 +293,10 @@
                   src="img/icons_watermarked/webp/spirits/ChivasXV.webp"
                   alt="Chivas Regal XV whiskey at Hypso25"
                 />
-                <h5 class="menu-price">
+                <p class="menu-price h5 font-weight-normal">
                   <b>40</b>
                   <span style="font-size: small"><b>ron</b></span>
-                </h5>
+                </p>
               </div>
               <div class="col-8 col-sm-9">
                 <h4>Chivas Regal XV whiskey - 40ml</h4>
@@ -289,10 +310,10 @@
                   src="img/icons_watermarked/webp/spirits/The Glenlivet_12.webp"
                   alt="The Glenlivet 12y whiskey at Hypso25"
                 />
-                <h5 class="menu-price">
+                <p class="menu-price h5 font-weight-normal">
                   <b>40</b>
                   <span style="font-size: small"><b>ron</b></span>
-                </h5>
+                </p>
               </div>
               <div class="col-8 col-sm-9">
                 <h4>The Glenlivet 12y whiskey - 40ml</h4>
@@ -306,10 +327,10 @@
                   src="img/icons_watermarked/webp/spirits/Aberlour_12.webp"
                   alt="Aberlour 12y whiskey at Hypso25"
                 />
-                <h5 class="menu-price">
+                <p class="menu-price h5 font-weight-normal">
                   <b>40</b>
                   <span style="font-size: small"><b>ron</b></span>
-                </h5>
+                </p>
               </div>
               <div class="col-8 col-sm-9">
                 <h4>Aberlour 12y - 40ml</h4>
@@ -323,10 +344,10 @@
                   src="img/icons_watermarked/webp/spirits/Grey Goose vodka.webp"
                   alt="Grey Goose vodka at Hypso25"
                 />
-                <h5 class="menu-price">
+                <p class="menu-price h5 font-weight-normal">
                   <b>40</b>
                   <span style="font-size: small"><b>ron</b></span>
-                </h5>
+                </p>
               </div>
               <div class="col-8 col-sm-9">
                 <h4>Grey Goose vodka - 40ml</h4>
@@ -340,10 +361,10 @@
                   src="img/icons_watermarked/webp/spirits/Ostoya vodka.webp"
                   alt="Ostoya vodka at Hypso25"
                 />
-                <h5 class="menu-price">
+                <p class="menu-price h5 font-weight-normal">
                   <b>40</b>
                   <span style="font-size: small"><b>ron</b></span>
-                </h5>
+                </p>
               </div>
               <div class="col-8 col-sm-9">
                 <h4>Ostoya vodka - 40ml</h4>
@@ -357,10 +378,10 @@
                   src="img/icons_watermarked/webp/spirits/Absolut Elyx vodka_.webp"
                   alt="Absolut Elyx vodka at Hypso25"
                 />
-                <h5 class="menu-price">
+                <p class="menu-price h5 font-weight-normal">
                   <b>40</b>
                   <span style="font-size: small"><b>ron</b></span>
-                </h5>
+                </p>
               </div>
               <div class="col-8 col-sm-9">
                 <h4>Absolut Elyx vodka - 40ml</h4>
@@ -374,10 +395,10 @@
                   src="img/icons_watermarked/webp/spirits/Tanqueray10.webp"
                   alt="Tanqueray 10 gin at Hypso25"
                 />
-                <h5 class="menu-price">
+                <p class="menu-price h5 font-weight-normal">
                   <b>40</b>
                   <span style="font-size: small"><b>ron</b></span>
-                </h5>
+                </p>
               </div>
               <div class="col-8 col-sm-9">
                 <h4>Tanqueray 10 gin - 40ml</h4>
@@ -391,10 +412,10 @@
                   src="img/icons_watermarked/webp/spirits/Hendricks-gin.webp"
                   alt="Hendrick's gin at Hypso25"
                 />
-                <h5 class="menu-price">
+                <p class="menu-price h5 font-weight-normal">
                   <b>40</b>
                   <span style="font-size: small"><b>ron</b></span>
-                </h5>
+                </p>
               </div>
               <div class="col-8 col-sm-9">
                 <h4>Hendrick's gin - 40ml</h4>
@@ -408,10 +429,10 @@
                   src="img/icons_watermarked/webp/spirits/Monkey 47 gin.webp"
                   alt="Monkey 47 gin at Hypso25"
                 />
-                <h5 class="menu-price">
+                <p class="menu-price h5 font-weight-normal">
                   <b>40</b>
                   <span style="font-size: small"><b>ron</b></span>
-                </h5>
+                </p>
               </div>
               <div class="col-8 col-sm-9">
                 <h4>Monkey 47 gin - 40ml</h4>
@@ -425,10 +446,10 @@
                   src="img/icons_watermarked/webp/spirits/Ki No Bi gin.webp"
                   alt="Ki No Bi gin at Hypso25"
                 />
-                <h5 class="menu-price">
+                <p class="menu-price h5 font-weight-normal">
                   <b>40</b>
                   <span style="font-size: small"><b>ron</b></span>
-                </h5>
+                </p>
               </div>
               <div class="col-8 col-sm-9">
                 <h4>Ki No Bi gin - 40ml</h4>
@@ -442,13 +463,13 @@
                   src="img/icons_watermarked/webp/spirits/Malfy ORIGINALE_Limone_Arancia_Rosa gin.webp"
                   alt="Malfy ORIGINALE/Limone/Arancia Rosa gin at Hypso25"
                 />
-                <h5 class="menu-price">
+                <p class="menu-price h5 font-weight-normal">
                   <b>40</b>
                   <span style="font-size: small"><b>ron</b></span>
-                </h5>
+                </p>
               </div>
               <div class="col-8 col-sm-9">
-                <h4>Malfy ORIGINALE/Limone/Arancia Rosa gin - 40ml</h4>
+                <h4>Malfy ORIGINALE/<wbr>Limone/<wbr>Arancia Rosa gin - 40ml</h4>
                 <p></p>
               </div>
             </div>
@@ -459,10 +480,10 @@
                   src="img/icons_watermarked/webp/spirits/Havana Maestros.webp"
                   alt="Havana Maestros rum at Hypso25"
                 />
-                <h5 class="menu-price">
+                <p class="menu-price h5 font-weight-normal">
                   <b>40</b>
                   <span style="font-size: small"><b>ron</b></span>
-                </h5>
+                </p>
               </div>
               <div class="col-8 col-sm-9">
                 <h4>Havana Maestros rum - 40ml</h4>
@@ -476,10 +497,10 @@
                   src="img/icons_watermarked/webp/spirits/Olmeca Reposado.webp"
                   alt="Olmeca Reposado tequila at Hypso25"
                 />
-                <h5 class="menu-price">
+                <p class="menu-price h5 font-weight-normal">
                   <b>40</b>
                   <span style="font-size: small"><b>ron</b></span>
-                </h5>
+                </p>
               </div>
               <div class="col-8 col-sm-9">
                 <h4>Olmeca Reposado tequila - 40ml</h4>
@@ -493,10 +514,10 @@
                   src="img/icons_watermarked/webp/spirits/Martell VS.webp"
                   alt="Martell VS cognac at Hypso25"
                 />
-                <h5 class="menu-price">
+                <p class="menu-price h5 font-weight-normal">
                   <b>40</b>
                   <span style="font-size: small"><b>ron</b></span>
-                </h5>
+                </p>
               </div>
               <div class="col-8 col-sm-9">
                 <h4>Martell VS cognac - 40ml</h4>
@@ -511,10 +532,10 @@
                   src="img/icons_watermarked/webp/missing.webp"
                   alt="Mamaia Aperitiv at Hypso25"
                 />
-                <h5 class="menu-price">
+                <p class="menu-price h5 font-weight-normal">
                   <b>40</b>
                   <span style="font-size: small"><b>ron</b></span>
-                </h5>
+                </p>
               </div>
               <div class="col-8 col-sm-9">
                 <h4>Mamaia Aperitiv - 40ml</h4>
@@ -528,17 +549,17 @@
                   src="img/icons_watermarked/webp/missing.webp"
                   alt="Mamaia Vermut at Hypso25"
                 />
-                <h5 class="menu-price">
+                <p class="menu-price h5 font-weight-normal">
                   <b>40</b>
                   <span style="font-size: small"><b>ron</b></span>
-                </h5>
+                </p>
               </div>
               <div class="col-8 col-sm-9">
                 <h4>Mamaia Vermut - 40ml</h4>
                 <p class="m-0" style="font-size: small"><b>Allergens:</b> Sulphites</p>
               </div>
             </div>
-            <h2 class="pt-4 mb-0">ROMANIAN SPIRITS</h2>
+            <h3 class="h2 font-weight-bold pt-4 mb-0">ROMANIAN SPIRITS</h3>
             <p class="mb-5">
               <b
                 >A celebration of Romanian distilling traditions — strong,
@@ -552,10 +573,10 @@
                   src="img/icons_watermarked/webp/spirits/Tuica_bran_ico.webp"
                   alt="Tuica Bran at Hypso25"
                 />
-                <h5 class="menu-price">
+                <p class="menu-price h5 font-weight-normal">
                   <b>30</b>
                   <span style="font-size: small"><b>ron</b></span>
-                </h5>
+                </p>
               </div>
               <div class="col-8 col-sm-9">
                 <h4>Tuica Bran - 40ml</h4>
@@ -569,10 +590,10 @@
                   src="img/icons_watermarked/webp/spirits/Visinata Bran.webp"
                   alt="Visinata Bran at Hypso25"
                 />
-                <h5 class="menu-price">
+                <p class="menu-price h5 font-weight-normal">
                   <b>30</b>
                   <span style="font-size: small"><b>ron</b></span>
-                </h5>
+                </p>
               </div>
               <div class="col-8 col-sm-9">
                 <h4>Visinata Bran - 40ml</h4>
@@ -586,10 +607,10 @@
                   src="img/icons_watermarked/webp/spirits/Afinata Bran.webp"
                   alt="Afinata Bran at Hypso25"
                 />
-                <h5 class="menu-price">
+                <p class="menu-price h5 font-weight-normal">
                   <b>30</b>
                   <span style="font-size: small"><b>ron</b></span>
-                </h5>
+                </p>
               </div>
               <div class="col-8 col-sm-9">
                 <h4>Afinata Bran - 40ml</h4>
@@ -603,10 +624,10 @@
                   src="img/icons_watermarked/webp/spirits/Capsunata Bran.webp"
                   alt="Capsunata Bran at Hypso25"
                 />
-                <h5 class="menu-price">
+                <p class="menu-price h5 font-weight-normal">
                   <b>30</b>
                   <span style="font-size: small"><b>ron</b></span>
-                </h5>
+                </p>
               </div>
               <div class="col-8 col-sm-9">
                 <h4>Capsunata Bran - 40ml</h4>
@@ -620,10 +641,10 @@
                   src="img/icons_watermarked/webp/spirits/Caisata Bran.webp"
                   alt="Caisata Bran at Hypso25"
                 />
-                <h5 class="menu-price">
+                <p class="menu-price h5 font-weight-normal">
                   <b>30</b>
                   <span style="font-size: small"><b>ron</b></span>
-                </h5>
+                </p>
               </div>
               <div class="col-8 col-sm-9">
                 <h4>Caisata Bran - 40ml</h4>
@@ -637,10 +658,10 @@
                   src="img/icons_watermarked/webp/spirits/Samaro Bran.webp"
                   alt="Samaro Bran at Hypso25"
                 />
-                <h5 class="menu-price">
+                <p class="menu-price h5 font-weight-normal">
                   <b>30</b>
                   <span style="font-size: small"><b>ron</b></span>
-                </h5>
+                </p>
               </div>
               <div class="col-8 col-sm-9">
                 <h4>Samaro Bran - 40ml</h4>
@@ -649,7 +670,7 @@
             </div>
           </div>
           <div class="col-lg-6">
-            <h2 class="mb-0">STANDARD PICKS</h2>
+            <h3 class="h2 font-weight-bold mb-0">STANDARD PICKS</h3>
             <p class="mb-5">
               <b
                 >A selection of well-known, go-to spirits that offer comfort,
@@ -663,10 +684,10 @@
                   src="img/icons_watermarked/webp/spirits/Jack Daniel's.webp"
                   alt="Jack Daniel's Tennessee whiskey at Hypso25"
                 />
-                <h5 class="menu-price">
+                <p class="menu-price h5 font-weight-normal">
                   <b>25</b>
                   <span style="font-size: small"><b>ron</b></span>
-                </h5>
+                </p>
               </div>
               <div class="col-8 col-sm-9">
                 <h4>Jack Daniel's Tennessee whiskey - 40ml</h4>
@@ -680,10 +701,10 @@
                   src="img/icons_watermarked/webp/spirits/Johnnie Walker Red Label.webp"
                   alt="Johnnie Walker Red Label whiskey at Hypso25"
                 />
-                <h5 class="menu-price">
+                <p class="menu-price h5 font-weight-normal">
                   <b>25</b>
                   <span style="font-size: small"><b>ron</b></span>
-                </h5>
+                </p>
               </div>
               <div class="col-8 col-sm-9">
                 <h4>Johnnie Walker Red Label whiskey - 40ml</h4>
@@ -697,10 +718,10 @@
                   src="img/icons_watermarked/webp/spirits/Jameson Irish Stout.webp"
                   alt="Jameson Irish Stout whiskey at Hypso25"
                 />
-                <h5 class="menu-price">
+                <p class="menu-price h5 font-weight-normal">
                   <b>25</b>
                   <span style="font-size: small"><b>ron</b></span>
-                </h5>
+                </p>
               </div>
               <div class="col-8 col-sm-9">
                 <h4>Jameson Irish Stout whiskey - 40ml</h4>
@@ -714,10 +735,10 @@
                   src="img/icons_watermarked/webp/spirits/Jameson Black Barrel.webp"
                   alt="Jameson Black Barrel whiskey at Hypso25"
                 />
-                <h5 class="menu-price">
+                <p class="menu-price h5 font-weight-normal">
                   <b>25</b>
                   <span style="font-size: small"><b>ron</b></span>
-                </h5>
+                </p>
               </div>
               <div class="col-8 col-sm-9">
                 <h4>Jameson Black Barrel whiskey - 40ml</h4>
@@ -731,10 +752,10 @@
                   src="img/icons_watermarked/webp/spirits/Absolut.webp"
                   alt="Absolut vodka at Hypso25"
                 />
-                <h5 class="menu-price">
+                <p class="menu-price h5 font-weight-normal">
                   <b>25</b>
                   <span style="font-size: small"><b>ron</b></span>
-                </h5>
+                </p>
               </div>
               <div class="col-8 col-sm-9">
                 <h4>Absolut vodka - 40ml</h4>
@@ -748,10 +769,10 @@
                   src="img/icons_watermarked/webp/spirits/Havana Club 7.webp"
                   alt="Havana Club 7y rum at Hypso25"
                 />
-                <h5 class="menu-price">
+                <p class="menu-price h5 font-weight-normal">
                   <b>25</b>
                   <span style="font-size: small"><b>ron</b></span>
-                </h5>
+                </p>
               </div>
               <div class="col-8 col-sm-9">
                 <h4>Havana Club 7y - 40ml</h4>
@@ -765,10 +786,10 @@
                   src="img/icons_watermarked/webp/spirits/Beefeater Blood Orange gin.webp"
                   alt="Beefeater Blood Orange gin at Hypso25"
                 />
-                <h5 class="menu-price">
+                <p class="menu-price h5 font-weight-normal">
                   <b>25</b>
                   <span style="font-size: small"><b>ron</b></span>
-                </h5>
+                </p>
               </div>
               <div class="col-8 col-sm-9">
                 <h4>Beefeater Blood Orange gin - 40ml</h4>
@@ -782,10 +803,10 @@
                   src="img/icons_watermarked/webp/spirits/Beefeater 24 gin.webp"
                   alt="Beefeater 24 gin at Hypso25"
                 />
-                <h5 class="menu-price">
+                <p class="menu-price h5 font-weight-normal">
                   <b>25</b>
                   <span style="font-size: small"><b>ron</b></span>
-                </h5>
+                </p>
               </div>
               <div class="col-8 col-sm-9">
                 <h4>Beefeater 24 gin - 40ml</h4>
@@ -799,10 +820,10 @@
                   src="img/icons_watermarked/webp/spirits/Beefeater Pink gin.webp"
                   alt="Beefeater Pink gin at Hypso25"
                 />
-                <h5 class="menu-price">
+                <p class="menu-price h5 font-weight-normal">
                   <b>25</b>
                   <span style="font-size: small"><b>ron</b></span>
-                </h5>
+                </p>
               </div>
               <div class="col-8 col-sm-9">
                 <h4>Beefeater Pink gin - 40ml</h4>
@@ -816,17 +837,17 @@
                   src="img/icons_watermarked/webp/spirits/Grappa.webp"
                   alt="Grappa - 40ml at Hypso25"
                 />
-                <h5 class="menu-price">
+                <p class="menu-price h5 font-weight-normal">
                   <b>25</b>
                   <span style="font-size: small"><b>ron</b></span>
-                </h5>
+                </p>
               </div>
               <div class="col-8 col-sm-9">
                 <h4>Grappa - 40ml</h4>
                 <p class="m-0"></p>
               </div>
             </div>
-            <h2 class="pt-4 mb-0">LIQUEURS & DIGESTIFS</h2>
+            <h3 class="h2 font-weight-bold pt-4 mb-0">LIQUEURS & DIGESTIFS</h3>
             <p class="mb-5">
               <b
                 >A curated selection of refined liqueurs and digestifs — perfect
@@ -840,10 +861,10 @@
                   src="img/icons_watermarked/webp/spirits/Ramazotti Amaro.webp"
                   alt="Ramazzotti Amaro - 40ml at Hypso25"
                 />
-                <h5 class="menu-price">
+                <p class="menu-price h5 font-weight-normal">
                   <b>25</b>
                   <span style="font-size: small"><b>ron</b></span>
-                </h5>
+                </p>
               </div>
               <div class="col-8 col-sm-9">
                 <h4>Ramazzotti Amaro - 40ml</h4>
@@ -857,10 +878,10 @@
                   src="img/icons_watermarked/webp/spirits/Sambuca_Molinari.webp"
                   alt="Sambuca - 40ml at Hypso25"
                 />
-                <h5 class="menu-price">
+                <p class="menu-price h5 font-weight-normal">
                   <b>25</b>
                   <span style="font-size: small"><b>ron</b></span>
-                </h5>
+                </p>
               </div>
               <div class="col-8 col-sm-9">
                 <h4>Sambuca - 40ml</h4>
@@ -874,10 +895,10 @@
                   src="img/icons_watermarked/webp/spirits/Jagermeister.webp"
                   alt="Jägermeister - 40ml at Hypso25"
                 />
-                <h5 class="menu-price">
+                <p class="menu-price h5 font-weight-normal">
                   <b>25</b>
                   <span style="font-size: small"><b>ron</b></span>
-                </h5>
+                </p>
               </div>
               <div class="col-8 col-sm-9">
                 <h4>Jägermeister - 40ml</h4>
@@ -891,10 +912,10 @@
                   src="img/icons_watermarked/webp/spirits/Disaronno Amaretto.webp"
                   alt="Disaronno Amaretto - 40ml at Hypso25"
                 />
-                <h5 class="menu-price">
+                <p class="menu-price h5 font-weight-normal">
                   <b>25</b>
                   <span style="font-size: small"><b>ron</b></span>
-                </h5>
+                </p>
               </div>
               <div class="col-8 col-sm-9">
                 <h4>Disaronno Amaretto - 40ml</h4>
@@ -908,10 +929,10 @@
                   src="img/icons_watermarked/webp/spirits/Cointreau liqueur.webp"
                   alt="Cointreau liqueur - 40ml at Hypso25"
                 />
-                <h5 class="menu-price">
+                <p class="menu-price h5 font-weight-normal">
                   <b>25</b>
                   <span style="font-size: small"><b>ron</b></span>
-                </h5>
+                </p>
               </div>
               <div class="col-8 col-sm-9">
                 <h4>Cointreau liqueur - 40ml</h4>
@@ -925,10 +946,10 @@
                   src="img/icons_watermarked/webp/spirits/Antica Formula.webp"
                   alt="Antica Formula Vermouth - 40ml at Hypso25"
                 />
-                <h5 class="menu-price">
+                <p class="menu-price h5 font-weight-normal">
                   <b>25</b>
                   <span style="font-size: small"><b>ron</b></span>
-                </h5>
+                </p>
               </div>
               <div class="col-8 col-sm-9">
                 <h4>Antica Formula Vermouth - 40ml</h4>
@@ -942,10 +963,10 @@
                   src="img/icons_watermarked/webp/spirits/Aperol.webp"
                   alt="Aperol - 40ml at Hypso25"
                 />
-                <h5 class="menu-price">
+                <p class="menu-price h5 font-weight-normal">
                   <b>25</b>
                   <span style="font-size: small"><b>ron</b></span>
-                </h5>
+                </p>
               </div>
               <div class="col-8 col-sm-9">
                 <h4>Aperol - 40ml</h4>
@@ -959,10 +980,10 @@
                   src="img/icons_watermarked/webp/spirits/Frangelico.webp"
                   alt="Frangelico liqueur - 40ml at Hypso25"
                 />
-                <h5 class="menu-price">
+                <p class="menu-price h5 font-weight-normal">
                   <b>25</b>
                   <span style="font-size: small"><b>ron</b></span>
-                </h5>
+                </p>
               </div>
               <div class="col-8 col-sm-9">
                 <h4>Frangelico liqueur - 40ml</h4>
@@ -976,10 +997,10 @@
                   src="img/icons_watermarked/webp/spirits/Luxardo.webp"
                   alt="Luxardo - 40ml at Hypso25"
                 />
-                <h5 class="menu-price">
+                <p class="menu-price h5 font-weight-normal">
                   <b>25</b>
                   <span style="font-size: small"><b>ron</b></span>
-                </h5>
+                </p>
               </div>
               <div class="col-8 col-sm-9">
                 <h4>Luxardo - 40ml</h4>
@@ -993,10 +1014,10 @@
                   src="img/icons_watermarked/webp/spirits/Peachtree.webp"
                   alt="Peachtree liqueur - 40ml at Hypso25"
                 />
-                <h5 class="menu-price">
+                <p class="menu-price h5 font-weight-normal">
                   <b>25</b>
                   <span style="font-size: small"><b>ron</b></span>
-                </h5>
+                </p>
               </div>
               <div class="col-8 col-sm-9">
                 <h4>Peachtree liqueur - 40ml</h4>
@@ -1010,10 +1031,10 @@
                   src="img/icons_watermarked/webp/spirits/Kahlua.webp"
                   alt="Kahlua - 40ml at Hypso25"
                 />
-                <h5 class="menu-price">
+                <p class="menu-price h5 font-weight-normal">
                   <b>25</b>
                   <span style="font-size: small"><b>ron</b></span>
-                </h5>
+                </p>
               </div>
               <div class="col-8 col-sm-9">
                 <h4>Kahlua - 40ml</h4>
@@ -1027,10 +1048,10 @@
                   src="img/icons_watermarked/webp/spirits/Bayleys Irish Cream.webp"
                   alt="Baileys Irish Cream liqueur - 40ml at Hypso25"
                 />
-                <h5 class="menu-price">
+                <p class="menu-price h5 font-weight-normal">
                   <b>25</b>
                   <span style="font-size: small"><b>ron</b></span>
-                </h5>
+                </p>
               </div>
               <div class="col-8 col-sm-9">
                 <h4>Baileys Irish Cream liqueur - 40ml</h4>
@@ -1044,10 +1065,10 @@
                   src="img/icons_watermarked/webp/spirits/Campari.webp"
                   alt="Campari - 40ml at Hypso25"
                 />
-                <h5 class="menu-price">
+                <p class="menu-price h5 font-weight-normal">
                   <b>25</b>
                   <span style="font-size: small"><b>ron</b></span>
-                </h5>
+                </p>
               </div>
               <div class="col-8 col-sm-9">
                 <h4>Campari - 40ml</h4>
@@ -1061,10 +1082,10 @@
                   src="img/icons_watermarked/webp/spirits/Grand Marnier.webp"
                   alt="Grand Marnier - 40ml at Hypso25"
                 />
-                <h5 class="menu-price">
+                <p class="menu-price h5 font-weight-normal">
                   <b>25</b>
                   <span style="font-size: small"><b>ron</b></span>
-                </h5>
+                </p>
               </div>
               <div class="col-8 col-sm-9">
                 <h4>Grand Marnier - 40ml</h4>
@@ -1083,12 +1104,12 @@
     >
       <div class="row mx-0 pt-5 px-sm-3 px-lg-5 mt-4 justify-content-center">
         <div class="col-lg-3 col-md-6 mb-5">
-          <h4
-            class="text-white text-uppercase mb-4"
+          <h2
+            class="h4 font-weight-medium text-white text-uppercase mb-4"
             style="letter-spacing: 3px"
           >
             Get In Touch
-          </h4>
+          </h2>
           <p>
             <svg class="icon mr-2" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg
             ><a
@@ -1100,8 +1121,8 @@
           </p>
           <p>
             <svg class="icon mr-2" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg
-            ><a class="text-white" href="tel:+40751880909" target="_blank"
-              >+40 751 880 909</a
+            ><a class="text-white" href="tel:+40722500692" target="_blank"
+              >+40 722 500 692</a
             >
           </p>
           <p class="m-0">
@@ -1112,12 +1133,12 @@
           </p>
         </div>
         <div class="col-lg-3 col-md-6 mb-5">
-          <h4
-            class="text-white text-uppercase mb-4"
+          <h2
+            class="h4 font-weight-medium text-white text-uppercase mb-4"
             style="letter-spacing: 3px"
           >
             Follow Us
-          </h4>
+          </h2>
           <p>Join the Hypso25 journey – coffee, wine & a hint of magic.</p>
           <div class="d-flex justify-content-start">
             <a
@@ -1138,18 +1159,18 @@
           </div>
         </div>
         <div class="col-lg-3 col-md-6">
-          <h4
-            class="text-white text-uppercase mb-4"
+          <h2
+            class="h4 font-weight-medium text-white text-uppercase mb-4"
             style="letter-spacing: 3px"
           >
             Open Hours
-          </h4>
+          </h2>
           <div>
-            <h6 class="text-white text-uppercase">Monday</h6>
+            <h3 class="h6 font-weight-normal text-white text-uppercase">Monday</h3>
             <p>Closed</p>
-            <h6 class="text-white text-uppercase">Tuesday–Friday</h6>
+            <h3 class="h6 font-weight-normal text-white text-uppercase">Tuesday–Friday</h3>
             <p>10:00 AM–10:00 PM</p>
-            <h6 class="text-white text-uppercase">Saturday–Sunday</h6>
+            <h3 class="h6 font-weight-normal text-white text-uppercase">Saturday–Sunday</h3>
             <p>10:00 AM–12:00 AM</p>
           </div>
         </div>

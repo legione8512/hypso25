@@ -194,11 +194,12 @@
 .qr-carousel-logo {
   position: absolute;
   top: 50%;
-  left: clamp(1.2rem, 4vw, 4rem);
+  /* Sized to the carousel, not to the screen, because the carousel can be narrower than the page. */
+  left: 4%;
   z-index: 20;
 
   display: block;
-  width: clamp(300px, 42vw, 650px);
+  width: 40%;
 
   transform: translateY(-50%);
 }
@@ -213,6 +214,20 @@
   text-decoration: none;
 }
 
+/* The 16:9 photos filled the whole screen on desktop and hid the menu button below.
+   The carousel is now at most half the screen tall: on wide screens it gets narrower
+   (the photos stay whole) and the coffee-bean texture of the menu headers fills the sides. */
+.qr-carousel-wrap {
+  background:
+    linear-gradient(rgba(51, 33, 29, 0.9), rgba(51, 33, 29, 0.9)),
+    url(../img/bg.jpg) top / cover;
+}
+
+#blog-carousel {
+  max-width: calc(50vh * 16 / 9);
+  margin: 0 auto;
+}
+
 @media (max-width: 767px) {
   .qr-carousel-logo {
     left: clamp(1rem, 5vw, 1.8rem);
@@ -220,7 +235,7 @@
   }
   .qr-intro {
     padding-top: 3rem !important;
-    padding-bottom: 3rem !important;
+    padding-bottom: 1.5rem !important;
   }
 
   .qr-intro .display-4 {

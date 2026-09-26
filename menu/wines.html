@@ -17,12 +17,8 @@
 
     <!-- Favicon -->
     <link rel="icon" href="../assets/images/favicon.ico" sizes="any" />
-    <!-- Google Font -->
-    <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400&family=Roboto:wght@400;500;700&display=swap"
-      rel="stylesheet"
-    />
+    <!-- Fonts (the same files as the main site) -->
+    <link rel="stylesheet" href="../assets/css/fonts.css" />
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="css/style.min.css" rel="stylesheet" />
@@ -33,11 +29,33 @@
     <div
       class="container-fluid page-header mb-5 position-relative overlay-bottom"
     >
+      <!-- Language picker (same as the main site). Română points to # until the Romanian menu exists. -->
+      <div class="language-picker" aria-label="Language selector">
+        <button class="language-picker__button" type="button" aria-expanded="false">
+          <img class="language-picker__flag-img" src="../assets/images/gb.svg" alt="" />
+          <span class="language-picker__current">English</span>
+          <span class="language-picker__arrow" aria-hidden="true">
+            <svg viewBox="0 0 22 22" class="language-picker__arrow-icon">
+              <path d="M6 8.5L11 13.5L16 8.5" fill="none" stroke="currentColor" stroke-width="1.5"></path>
+            </svg>
+          </span>
+        </button>
+        <div class="language-picker__menu" aria-label="Available languages">
+          <a class="language-picker__option" href="wines.html">
+            <img class="language-picker__flag-img" src="../assets/images/gb.svg" alt="" />
+            <span>English</span>
+          </a>
+          <a class="language-picker__option" href="#" lang="ro">
+            <img class="language-picker__flag-img" src="../assets/images/ro.svg" alt="" />
+            <span>Română</span>
+          </a>
+        </div>
+      </div>
       <div
         class="d-flex flex-column align-items-center justify-content-center pt-0"
         style="min-height: 200px"
       >
-        <h1 class="display-4 mb-3 mt-5 text-white text-uppercase">
+        <h1 class="display-4 mb-3 mt-5 text-white text-uppercase text-center">
           Hypso25 Wines and Beer Menu
         </h1>
         <div class="d-inline-flex">
@@ -80,13 +98,16 @@
     <!-- Menu Start -->
     <div class="container-fluid pt-1">
       <div class="container">
-        <div class="section-title">
-          <h4
-            class="text-primary text-uppercase mb-0"
-            style="letter-spacing: 5px; font-size: 4em"
+        <div class="section-title section-title--logo">
+          <a class="section-title__home" href="../index.html">
+            <img src="img/hypso25-logo.svg" alt="Hypso25 homepage" width="100" height="100" />
+          </a>
+          <h2
+            class="h4 font-weight-medium text-primary text-uppercase mb-0"
+            style="letter-spacing: 5px; font-size: min(4em, 14vw)"
           >
             Wines & Beers
-          </h4>
+          </h2>
           <p>
             <b
               >Timeless pours — from refreshing beers to characterful wines,
@@ -99,7 +120,7 @@
         </div>
         <div class="row">
           <div class="col-lg-12">
-            <h2 class="mb-0">BERE NENEA IANCU</h2>
+            <h3 class="h2 font-weight-bold mb-0">BERE NENEA IANCU</h3>
             <p class="mb-5">
               <b
                 >Brewed with patience and purity — a meeting of Romanian roots
@@ -113,10 +134,10 @@
                   src="img/icons_watermarked/webp/beer&wine/Nenea Iancu Blonda Speciala.webp"
                   alt="Nenea Iancu Blonda Speciala beer at Hypso25"
                 />
-                <h5 class="menu-price p-4">
+                <p class="menu-price h5 font-weight-normal p-4">
                   <b>23</b>
                   <span style="font-size: small"><b>ron</b></span>
-                </h5>
+                </p>
               </div>
               <div class="col-8 col-sm-9">
                 <h4>Nenea Iancu Blonda Speciala 4.8% alc. - 500ml</h4>
@@ -136,10 +157,10 @@
                   src="img/icons_watermarked/webp/beer&wine/nenea_iancu_alba_nefiltrata.webp"
                   alt="Nenea Iancu Alba Nefiltrata beer at Hypso25"
                 />
-                <h5 class="menu-price p-4">
+                <p class="menu-price h5 font-weight-normal p-4">
                   <b>23</b>
                   <span style="font-size: small"><b>ron</b></span>
-                </h5>
+                </p>
               </div>
               <div class="col-8 col-sm-9">
                 <h4>Nenea Iancu Alba Nefiltrata 5.5% alc. - 500ml</h4>
@@ -151,7 +172,7 @@
                 <p class="m-0" style="font-size: small"><b>Allergens:</b> Wheat, barley (gluten)</p>
               </div>
             </div>
-            <h2 class="mb-0">WHITE WINES LIST</h2>
+            <h3 class="h2 font-weight-bold mb-0">WHITE WINES LIST</h3>
             <p class="mb-4">
               <b>A curated selection of white wines, from crisp and dry with notes of citrus, green apple and oak to a sweet liqueur wine.</b>
             </p>
@@ -163,10 +184,10 @@
                   src="img/icons_watermarked/webp/beer&wine/Sole Chardonnay Barrique.webp"
                   alt="Sole, Chardonnay, Barrique, dry, RECAȘ wine at Hypso25"
                 />
-                <h5 class="menu-price" style="padding: 28px">
+                <p class="menu-price h5 font-weight-normal" style="padding: 28px">
                   <b>149</b>
                   <span style="font-size: small"><b>ron</b></span>
-                </h5>
+                </p>
               </div>
               <div class="col-8 col-sm-9">
                 <h4>Sole, Chardonnay, Barrique, dry, RECAȘ 13.5% - 750ml</h4>
@@ -180,10 +201,10 @@
                   src="img/icons_watermarked/webp/beer&wine/Busuioaca de Husi, Blanc de Rose, dry, DOMENIILE AVERESTI.webp"
                   alt="Busuioacă de Huși, Blanc de Rose, dry, DOMENIILE AVEREȘTI wine at Hypso25"
                 />
-                <h5 class="menu-price" style="padding: 28px">
+                <p class="menu-price h5 font-weight-normal" style="padding: 28px">
                   <b>149</b>
                   <span style="font-size: small"><b>ron</b></span>
-                </h5>
+                </p>
               </div>
               <div class="col-8 col-sm-9">
                 <h4>Busuioacă de Huși, Blanc de Rose, dry, DOMENIILE AVEREȘTI 13.5% - 750ml</h4>
@@ -197,10 +218,10 @@
                   src="img/icons_watermarked/webp/beer&wine/Bacanta, Sarba, dry, GIRBOIU.webp"
                   alt="Bacanta, Șarbă, dry, GÎRBOIU wine at Hypso25"
                 />
-                <h5 class="menu-price" style="padding: 28px">
+                <p class="menu-price h5 font-weight-normal" style="padding: 28px">
                   <b>149</b>
                   <span style="font-size: small"><b>ron</b></span>
-                </h5>
+                </p>
               </div>
               <div class="col-8 col-sm-9">
                 <h4>Bacanta, Șarbă, dry, GÎRBOIU 12.5% - 750ml</h4>
@@ -214,10 +235,10 @@
                   src="img/icons_watermarked/webp/missing.webp"
                   alt="Ceva Nou, Crâmpoșie Aromată, dry, BAUER wine at Hypso25"
                 />
-                <h5 class="menu-price" style="padding: 28px">
+                <p class="menu-price h5 font-weight-normal" style="padding: 28px">
                   <b>169</b>
                   <span style="font-size: small"><b>ron</b></span>
-                </h5>
+                </p>
               </div>
               <div class="col-8 col-sm-9">
                 <h4>Ceva Nou, Crâmpoșie Aromată, dry, BAUER 11.5% - 750ml</h4>
@@ -231,17 +252,17 @@
                   src="img/icons_watermarked/webp/missing.webp"
                   alt="Lacrima lui Ovidiu, liqueur wine, sweet, MURFATLAR wine at Hypso25"
                 />
-                <h5 class="menu-price" style="padding: 28px">
+                <p class="menu-price h5 font-weight-normal" style="padding: 28px">
                   <b>239</b>
                   <span style="font-size: small"><b>ron</b></span>
-                </h5>
+                </p>
               </div>
               <div class="col-8 col-sm-9">
                 <h4>Lacrima lui Ovidiu, liqueur wine, sweet, MURFATLAR 16% - 750ml</h4>
                 <p class="m-0">Glass 150ml: 49 ron</p>
               </div>
             </div>
-            <h2 class="mb-0">ROSE WINES LIST</h2>
+            <h3 class="h2 font-weight-bold mb-0">ROSE WINES LIST</h3>
             <p class="mb-4">
               <b>With hints of red fruit and a clean, dry finish, our rosé selection brings a taste of sunshine to your glass, all year round.</b>
             </p>
@@ -253,10 +274,10 @@
                   src="img/icons_watermarked/webp/beer&wine/Bacanta Special Edition, Feteasca Neagra, dry, GIRBOIU.webp"
                   alt="Bacanta Special Edition, Fetească Neagră, dry, GÎRBOIU wine at Hypso25"
                 />
-                <h5 class="menu-price" style="padding: 28px">
+                <p class="menu-price h5 font-weight-normal" style="padding: 28px">
                   <b>149</b>
                   <span style="font-size: small"><b>ron</b></span>
-                </h5>
+                </p>
               </div>
               <div class="col-8 col-sm-9">
                 <h4>Bacanta Special Edition, Fetească Neagră, dry, GÎRBOIU 12.5% - 750ml</h4>
@@ -270,10 +291,10 @@
                   src="img/icons_watermarked/webp/beer&wine/Freamat, Syrah & Cabernet Franc, dry, CATLEYA.webp"
                   alt="Freamăt, Merlot &amp; Syrah &amp; Cabernet Sauvignon, dry, CATLEYA wine at Hypso25"
                 />
-                <h5 class="menu-price" style="padding: 28px">
+                <p class="menu-price h5 font-weight-normal" style="padding: 28px">
                   <b>129</b>
                   <span style="font-size: small"><b>ron</b></span>
-                </h5>
+                </p>
               </div>
               <div class="col-8 col-sm-9">
                 <h4>Freamăt, Merlot &amp; Syrah &amp; Cabernet Sauvignon, dry, CATLEYA 12% - 750ml</h4>
@@ -287,17 +308,17 @@
                   src="img/icons_watermarked/webp/missing.webp"
                   alt="Arezan, Cabernet Sauvignon, dry, MURFATLAR wine at Hypso25"
                 />
-                <h5 class="menu-price" style="padding: 28px">
+                <p class="menu-price h5 font-weight-normal" style="padding: 28px">
                   <b>149</b>
                   <span style="font-size: small"><b>ron</b></span>
-                </h5>
+                </p>
               </div>
               <div class="col-8 col-sm-9">
                 <h4>Arezan, Cabernet Sauvignon, dry, MURFATLAR 13% - 750ml</h4>
                 <p class="m-0">Glass 150ml: 32 ron</p>
               </div>
             </div>
-            <h2 class="mb-0">RED WINES LIST</h2>
+            <h3 class="h2 font-weight-bold mb-0">RED WINES LIST</h3>
             <p class="mb-4">
               <b>Explore Romania’s finest red varietals, crafted with passion — full-bodied, elegant, and rooted in centuries-old winemaking heritage.</b>
             </p>
@@ -309,10 +330,10 @@
                   src="img/icons_watermarked/webp/beer&wine/Bacanta, Feteasca Neagra, dry, GIRBOIUpng.webp"
                   alt="Bacanta, Fetească Neagră, dry, GÎRBOIU wine at Hypso25"
                 />
-                <h5 class="menu-price" style="padding: 28px">
+                <p class="menu-price h5 font-weight-normal" style="padding: 28px">
                   <b>169</b>
                   <span style="font-size: small"><b>ron</b></span>
-                </h5>
+                </p>
               </div>
               <div class="col-8 col-sm-9">
                 <h4>Bacanta, Fetească Neagră, dry, GÎRBOIU 15% - 750ml</h4>
@@ -326,10 +347,10 @@
                   src="img/icons_watermarked/webp/beer&wine/Urme, Pinot Noir, dry, DARABONT.webp"
                   alt="Urme, Pinot Noir, dry, DARABONT wine at Hypso25"
                 />
-                <h5 class="menu-price" style="padding: 28px">
+                <p class="menu-price h5 font-weight-normal" style="padding: 28px">
                   <b>129</b>
                   <span style="font-size: small"><b>ron</b></span>
-                </h5>
+                </p>
               </div>
               <div class="col-8 col-sm-9">
                 <h4>Urme, Pinot Noir, dry, DARABONT 12.5% - 750ml</h4>
@@ -343,17 +364,17 @@
                   src="img/icons_watermarked/webp/missing.webp"
                   alt="Arezan, Merlot, dry, MURFATLAR wine at Hypso25"
                 />
-                <h5 class="menu-price" style="padding: 28px">
+                <p class="menu-price h5 font-weight-normal" style="padding: 28px">
                   <b>149</b>
                   <span style="font-size: small"><b>ron</b></span>
-                </h5>
+                </p>
               </div>
               <div class="col-8 col-sm-9">
                 <h4>Arezan, Merlot, dry, MURFATLAR 13.5% - 750ml</h4>
                 <p class="m-0">Glass 150ml: 32 ron</p>
               </div>
             </div>
-            <h2 class="mb-0">SPARKLING WINES</h2>
+            <h3 class="h2 font-weight-bold mb-0">SPARKLING WINES</h3>
             <p class="mb-5">
               <b>A refined selection of sparkling wines — vibrant, balanced, and perfect for toasting life’s little luxuries.</b>
             </p>
@@ -365,10 +386,10 @@
                   src="img/icons_watermarked/webp/beer&wine/Bendis-Rose.webp"
                   alt="Bendis Rose, Pinot Noir, rose, dry, PETRO VASELO wine at Hypso25"
                 />
-                <h5 class="menu-price" style="padding: 28px">
+                <p class="menu-price h5 font-weight-normal" style="padding: 28px">
                   <b>129</b>
                   <span style="font-size: small"><b>ron</b></span>
-                </h5>
+                </p>
               </div>
               <div class="col-8 col-sm-9">
                 <h4>Bendis Rose, Pinot Noir, rose, dry, PETRO VASELO 12% - 750ml</h4>
@@ -382,10 +403,10 @@
                   src="img/icons_watermarked/webp/beer&wine/Bendis-Nadir.webp"
                   alt="Bendis Nadir, Chardonnay &amp; Pinot Noir, white, dry, PETRO VASELO wine at Hypso25"
                 />
-                <h5 class="menu-price" style="padding: 28px">
+                <p class="menu-price h5 font-weight-normal" style="padding: 28px">
                   <b>129</b>
                   <span style="font-size: small"><b>ron</b></span>
-                </h5>
+                </p>
               </div>
               <div class="col-8 col-sm-9">
                 <h4>Bendis Nadir, Chardonnay &amp; Pinot Noir, white, dry, PETRO VASELO 11.5% - 750ml</h4>
@@ -399,10 +420,10 @@
                   src="img/icons_watermarked/webp/missing.webp"
                   alt="Aerosoli, Prosecco DOC, white, dry, MURFATLAR wine at Hypso25"
                 />
-                <h5 class="menu-price" style="padding: 28px">
+                <p class="menu-price h5 font-weight-normal" style="padding: 28px">
                   <b>129</b>
                   <span style="font-size: small"><b>ron</b></span>
-                </h5>
+                </p>
               </div>
               <div class="col-8 col-sm-9">
                 <h4>Aerosoli, Prosecco DOC, white, dry, MURFATLAR 11% - 750ml</h4>
@@ -416,10 +437,10 @@
                   src="img/icons_watermarked/webp/missing.webp"
                   alt="Aerosoli, Prosecco DOC, rose, dry, MURFATLAR wine at Hypso25"
                 />
-                <h5 class="menu-price" style="padding: 28px">
+                <p class="menu-price h5 font-weight-normal" style="padding: 28px">
                   <b>129</b>
                   <span style="font-size: small"><b>ron</b></span>
-                </h5>
+                </p>
               </div>
               <div class="col-8 col-sm-9">
                 <h4>Aerosoli, Prosecco DOC, rose, dry, MURFATLAR 11% - 750ml</h4>
@@ -438,12 +459,12 @@
     >
       <div class="row mx-0 pt-5 px-sm-3 px-lg-5 mt-4 justify-content-center">
         <div class="col-lg-3 col-md-6 mb-5">
-          <h4
-            class="text-white text-uppercase mb-4"
+          <h2
+            class="h4 font-weight-medium text-white text-uppercase mb-4"
             style="letter-spacing: 3px"
           >
             Get In Touch
-          </h4>
+          </h2>
           <p>
             <svg class="icon mr-2" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg
             ><a
@@ -455,8 +476,8 @@
           </p>
           <p>
             <svg class="icon mr-2" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg
-            ><a class="text-white" href="tel:+40751880909" target="_blank"
-              >+40 751 880 909</a
+            ><a class="text-white" href="tel:+40722500692" target="_blank"
+              >+40 722 500 692</a
             >
           </p>
           <p class="m-0">
@@ -467,12 +488,12 @@
           </p>
         </div>
         <div class="col-lg-3 col-md-6 mb-5">
-          <h4
-            class="text-white text-uppercase mb-4"
+          <h2
+            class="h4 font-weight-medium text-white text-uppercase mb-4"
             style="letter-spacing: 3px"
           >
             Follow Us
-          </h4>
+          </h2>
           <p>Join the Hypso25 journey – coffee, wine & a hint of magic.</p>
           <div class="d-flex justify-content-start">
             <a
@@ -493,18 +514,18 @@
           </div>
         </div>
         <div class="col-lg-3 col-md-6">
-          <h4
-            class="text-white text-uppercase mb-4"
+          <h2
+            class="h4 font-weight-medium text-white text-uppercase mb-4"
             style="letter-spacing: 3px"
           >
             Open Hours
-          </h4>
+          </h2>
           <div>
-            <h6 class="text-white text-uppercase">Monday</h6>
+            <h3 class="h6 font-weight-normal text-white text-uppercase">Monday</h3>
             <p>Closed</p>
-            <h6 class="text-white text-uppercase">Tuesday–Friday</h6>
+            <h3 class="h6 font-weight-normal text-white text-uppercase">Tuesday–Friday</h3>
             <p>10:00 AM–10:00 PM</p>
-            <h6 class="text-white text-uppercase">Saturday–Sunday</h6>
+            <h3 class="h6 font-weight-normal text-white text-uppercase">Saturday–Sunday</h3>
             <p>10:00 AM–12:00 AM</p>
           </div>
         </div>

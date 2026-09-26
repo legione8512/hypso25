@@ -31,7 +31,7 @@
   --breakpoint-md: 768px;
   --breakpoint-lg: 992px;
   --breakpoint-xl: 1200px;
-  --font-family-sans-serif: "Montserrat", sans-serif;
+  --font-family-sans-serif: "Source Sans 3", "Helvetica Neue", Arial, sans-serif;
   --font-family-monospace:
     SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New",
     monospace;
@@ -61,7 +61,7 @@ section {
 }
 body {
   margin: 0;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Source Sans 3", "Helvetica Neue", Arial, sans-serif;
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
@@ -331,7 +331,9 @@ h6,
 .h5,
 .h6 {
   margin-bottom: 0.5rem;
-  font-family: "Roboto", sans-serif;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  /* Cormorant draws old-style figures by default; lining figures keep prices and volumes easy to read. */
+  font-variant-numeric: lining-nums;
   font-weight: 500;
   line-height: 1.2;
   color: #33211d;
@@ -5147,7 +5149,7 @@ a.close.disabled {
   z-index: 1070;
   display: block;
   margin: 0;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Source Sans 3", "Helvetica Neue", Arial, sans-serif;
   font-style: normal;
   font-weight: 400;
   line-height: 1.5;
@@ -5254,7 +5256,7 @@ a.close.disabled {
   z-index: 1060;
   display: block;
   max-width: 276px;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Source Sans 3", "Helvetica Neue", Arial, sans-serif;
   font-style: normal;
   font-weight: 400;
   line-height: 1.5;
@@ -8904,4 +8906,140 @@ h6,
   stroke-width: 2;
   stroke-linecap: round;
   stroke-linejoin: round;
+}
+
+/* Hypso25 logo above the page title, in place of the vertical line; it links to the main site. */
+.section-title--logo {
+  /* Less space than the line had: 24px above the logo (the page header keeps its 48px margin) and 4px below. */
+  margin-top: -28px;
+  padding-top: 0;
+}
+.section-title--logo::after {
+  display: none;
+}
+.section-title__home {
+  display: block;
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 4px;
+  transition: transform 0.2s ease;
+}
+.section-title__home:hover,
+.section-title__home:focus-visible {
+  transform: scale(1.08);
+}
+.section-title__home img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* Language picker, copied from the main site (assets/css/style.css, section 26).
+   It sits in the top right corner of every menu page. The list opens on hover,
+   keyboard focus, or a tap (js/main.js adds .is-open for phones). */
+.language-picker {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.5rem;
+  z-index: 30;
+  display: inline-flex;
+  align-items: center;
+  /* A small invisible hover bridge between the button and the list. */
+  padding-bottom: 0.5rem;
+  margin-bottom: -0.5rem;
+  color: #fff;
+}
+.language-picker__button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.1em 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  color: #fff;
+  /* Keeps the white text readable over the lighter carousel photos. */
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+  cursor: pointer;
+}
+.language-picker__flag-img {
+  display: block;
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  flex: 0 0 auto;
+}
+.language-picker__current {
+  font-size: 1.09rem;
+  font-weight: 300;
+  line-height: 1;
+}
+.language-picker__arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5em;
+  height: 1.5em;
+  margin-left: 0.2rem;
+}
+.language-picker__arrow-icon {
+  width: 100%;
+  height: 100%;
+  transition: transform 0.2s ease;
+}
+.language-picker__menu {
+  position: absolute;
+  top: 100%;
+  right: -1rem;
+  z-index: 150;
+  min-width: 135px;
+  padding: 0.55rem 0;
+  background: #000;
+  color: #fff;
+  text-align: left;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition:
+    opacity 0.2s ease,
+    visibility 0.2s ease;
+}
+.language-picker:hover .language-picker__menu,
+.language-picker:focus-within .language-picker__menu,
+.language-picker.is-open .language-picker__menu {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+.language-picker:hover .language-picker__arrow-icon,
+.language-picker:focus-within .language-picker__arrow-icon,
+.language-picker.is-open .language-picker__arrow-icon {
+  transform: rotate(180deg);
+}
+.language-picker__option {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.45rem 1rem;
+  font-size: 0.9rem;
+  font-weight: 300;
+  line-height: 1.2;
+  white-space: nowrap;
+  color: #fff;
+  background: transparent;
+}
+.language-picker__option:hover {
+  background: rgba(255, 255, 255, 0.14);
+  color: #fff;
+  text-decoration: none;
+}
+.language-picker :focus-visible {
+  outline: 2px solid #c8a46a;
+  outline-offset: 4px;
+}
+@media (max-width: 767px) {
+  .language-picker {
+    top: 0.75rem;
+    right: 1rem;
+  }
 }

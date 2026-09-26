@@ -30,6 +30,9 @@ document.addEventListener("DOMContentLoaded", function () {
     ? mobileMenuClose.getAttribute("aria-label")
     : openMenuLabel;
 
+  // I remember which button opened the menu, so focus can go back to it.
+  let mobileMenuTrigger = null;
+
   function openMobileMenu() {
     if (!mobileMenu || !mobileMenuToggle) {
       return;
@@ -41,12 +44,20 @@ document.addEventListener("DOMContentLoaded", function () {
     mobileMenu.setAttribute("aria-hidden", "false");
     mobileMenuToggle.setAttribute("aria-expanded", "true");
     mobileMenuToggle.setAttribute("aria-label", closeMenuLabel);
+
+    // I move keyboard focus into the menu, because it covers the whole page.
+    mobileMenuTrigger = document.activeElement;
+    if (mobileMenuClose) {
+      mobileMenuClose.focus();
+    }
   }
 
   function closeMobileMenu() {
     if (!mobileMenu || !mobileMenuToggle) {
       return;
     }
+
+    const focusWasInMenu = mobileMenu.contains(document.activeElement);
 
     mobileMenu.classList.remove("is-open");
     document.body.classList.remove("no-scroll");
@@ -55,6 +66,50 @@ document.addEventListener("DOMContentLoaded", function () {
     mobileMenuToggle.setAttribute("aria-expanded", "false");
     mobileMenuToggle.setAttribute("aria-label", openMenuLabel);
     mobileMenu.classList.remove("is-language-open");
+
+    if (languageView && languageOpenButton) {
+      languageView.setAttribute("aria-hidden", "true");
+      languageOpenButton.setAttribute("aria-expanded", "false");
+    }
+
+    // I return focus to the button that opened the menu (if it is still on screen).
+    if (
+      focusWasInMenu &&
+      mobileMenuTrigger &&
+      mobileMenuTrigger.getClientRects().length > 0
+    ) {
+      mobileMenuTrigger.focus();
+    }
+    mobileMenuTrigger = null;
+  }
+
+  // I keep Tab and Shift+Tab inside the open menu, like in the gallery lightbox.
+  function keepFocusInMobileMenu(event) {
+    // Only the controls shown right now: the language view hides the main links.
+    const focusable = Array.from(
+      mobileMenu.querySelectorAll("a[href], button:not([disabled])"),
+    ).filter(function (element) {
+      return element.getClientRects().length > 0;
+    });
+
+    if (focusable.length === 0) {
+      return;
+    }
+
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    const current = document.activeElement;
+
+    if (!focusable.includes(current)) {
+      event.preventDefault();
+      first.focus();
+    } else if (event.shiftKey && current === first) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && current === last) {
+      event.preventDefault();
+      first.focus();
+    }
   }
 
   function closeMobileMenuOnDesktop() {
@@ -76,6 +131,10 @@ document.addEventListener("DOMContentLoaded", function () {
     mobileMenu.classList.add("is-language-open");
     languageView.setAttribute("aria-hidden", "false");
     languageOpenButton.setAttribute("aria-expanded", "true");
+
+    if (languageBackButton) {
+      languageBackButton.focus();
+    }
   }
 
   function closeLanguageMenu() {
@@ -86,7 +145,32 @@ document.addEventListener("DOMContentLoaded", function () {
     mobileMenu.classList.remove("is-language-open");
     languageView.setAttribute("aria-hidden", "true");
     languageOpenButton.setAttribute("aria-expanded", "false");
+    languageOpenButton.focus();
   }
+
+  // The desktop language list opens on hover and keyboard focus (in CSS).
+  // I keep aria-expanded in step, so screen readers hear whether it is open.
+  document.querySelectorAll(".language-picker").forEach(function (picker) {
+    const pickerButton = picker.querySelector(".language-picker__button");
+
+    if (!pickerButton) {
+      return;
+    }
+
+    function updatePickerState() {
+      const isOpen =
+        picker.matches(":hover") || picker.contains(document.activeElement);
+      pickerButton.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    }
+
+    picker.addEventListener("mouseenter", updatePickerState);
+    picker.addEventListener("mouseleave", updatePickerState);
+    picker.addEventListener("focusin", updatePickerState);
+    // Focus has not moved yet during focusout, so I check a moment later.
+    picker.addEventListener("focusout", function () {
+      setTimeout(updatePickerState, 0);
+    });
+  });
 
   if (languageOpenButton) {
     languageOpenButton.addEventListener("click", openLanguageMenu);
@@ -119,6 +203,12 @@ document.addEventListener("DOMContentLoaded", function () {
   document.addEventListener("keydown", function (event) {
     const galleryIsOpen =
       galleryLightbox && galleryLightbox.classList.contains("is-open");
+    const mobileMenuIsOpen =
+      mobileMenu && mobileMenu.classList.contains("is-open");
+
+    if (mobileMenuIsOpen && event.key === "Tab") {
+      keepFocusInMobileMenu(event);
+    }
 
     if (event.key === "Escape") {
       closeMobileMenu();

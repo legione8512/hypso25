@@ -17,12 +17,8 @@
 
     <!-- Favicon -->
     <link rel="icon" href="../assets/images/favicon.ico" sizes="any" />
-    <!-- Google Font -->
-    <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400&family=Roboto:wght@400;500;700&display=swap"
-      rel="stylesheet"
-    />
+    <!-- Fonts (the same files as the main site) -->
+    <link rel="stylesheet" href="../assets/css/fonts.css" />
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="css/style.min.css" rel="stylesheet" />
@@ -33,11 +29,33 @@
     <div
       class="container-fluid page-header mb-5 position-relative overlay-bottom"
     >
+      <!-- Language picker (same as the main site). Română points to # until the Romanian menu exists. -->
+      <div class="language-picker" aria-label="Language selector">
+        <button class="language-picker__button" type="button" aria-expanded="false">
+          <img class="language-picker__flag-img" src="../assets/images/gb.svg" alt="" />
+          <span class="language-picker__current">English</span>
+          <span class="language-picker__arrow" aria-hidden="true">
+            <svg viewBox="0 0 22 22" class="language-picker__arrow-icon">
+              <path d="M6 8.5L11 13.5L16 8.5" fill="none" stroke="currentColor" stroke-width="1.5"></path>
+            </svg>
+          </span>
+        </button>
+        <div class="language-picker__menu" aria-label="Available languages">
+          <a class="language-picker__option" href="vcock.html">
+            <img class="language-picker__flag-img" src="../assets/images/gb.svg" alt="" />
+            <span>English</span>
+          </a>
+          <a class="language-picker__option" href="#" lang="ro">
+            <img class="language-picker__flag-img" src="../assets/images/ro.svg" alt="" />
+            <span>Română</span>
+          </a>
+        </div>
+      </div>
       <div
         class="d-flex flex-column align-items-center justify-content-center pt-0"
         style="min-height: 200px"
       >
-        <h1 class="display-4 mb-3 mt-5 text-white text-uppercase">
+        <h1 class="display-4 mb-3 mt-5 text-white text-uppercase text-center">
           Hypso25 Cocktails Menu
         </h1>
         <div class="d-inline-flex">
@@ -79,13 +97,16 @@
     <!-- Menu Start -->
     <div class="container-fluid pt-1">
       <div class="container">
-        <div class="section-title">
-          <h4
-            class="text-primary text-uppercase mb-0"
-            style="font-size: 4em; text-align: center"
+        <div class="section-title section-title--logo">
+          <a class="section-title__home" href="../index.html">
+            <img src="img/hypso25-logo.svg" alt="Hypso25 homepage" width="100" height="100" />
+          </a>
+          <h2
+            class="h4 font-weight-medium text-primary text-uppercase mb-0"
+            style="font-size: min(4em, 14vw); text-align: center"
           >
             Cocktails
-          </h4>
+          </h2>
           <p>
             <b
               >Crafted with character. Whether spirited or not, each cocktail is
@@ -95,7 +116,7 @@
         </div>
         <div class="row">
           <div class="col-lg-6">
-            <h2 class="m-0 text-uppercase">Cocktails With a Kick</h2>
+            <h3 class="h2 font-weight-bold m-0 text-uppercase">Cocktails With a Kick</h3>
             <p>
               <b
                 >Strong, stylish, and full of flavour. Not for the faint of
@@ -113,10 +134,10 @@
                     src="img/icons_watermarked/webp/Old_fashioned.webp"
                     alt="Old Fashioned cocktail at Hypso25"
                 /></a>
-                <h5 class="menu-price">
+                <p class="menu-price h5 font-weight-normal">
                   <b>35</b>
                   <span style="font-size: small"><b>ron</b></span>
-                </h5>
+                </p>
               </div>
               <div class="col-8 col-sm-9">
                 <h4 class="mb-0">Old Fashioned - 200ml</h4>
@@ -152,10 +173,10 @@
                     src="img/icons_watermarked/webp/Negroni_ico.webp"
                     alt="Negroni cocktail at Hypso25"
                 /></a>
-                <h5 class="menu-price">
+                <p class="menu-price h5 font-weight-normal">
                   <b>35</b>
                   <span style="font-size: small"><b>ron</b></span>
-                </h5>
+                </p>
               </div>
               <div class="col-8 col-sm-9">
                 <h4 class="mb-0">Negroni - 200ml</h4>
@@ -194,10 +215,10 @@
                     src="img/icons_watermarked/webp/Amaretto_sour_ico.webp"
                     alt="Amaretto Sour cocktail at Hypso25"
                 /></a>
-                <h5 class="menu-price">
+                <p class="menu-price h5 font-weight-normal">
                   <b>35</b>
                   <span style="font-size: small"><b>ron</b></span>
-                </h5>
+                </p>
               </div>
               <div class="col-8 col-sm-9">
                 <h4 class="mb-0">Amaretto Sour - 200ml</h4>
@@ -236,10 +257,10 @@
                     src="img/icons_watermarked/webp/Whiskey_sour_ico.webp"
                     alt="Whiskey Sour cocktail at Hypso25"
                 /></a>
-                <h5 class="menu-price">
+                <p class="menu-price h5 font-weight-normal">
                   <b>35</b>
                   <span style="font-size: small"><b>ron</b></span>
-                </h5>
+                </p>
               </div>
               <div class="col-8 col-sm-9">
                 <h4 class="mb-0">Whiskey Sour - 200ml</h4>
@@ -278,10 +299,10 @@
                     src="img/icons_watermarked/webp/White_lady_ico.webp"
                     alt="White Lady cocktail at Hypso25"
                 /></a>
-                <h5 class="menu-price">
+                <p class="menu-price h5 font-weight-normal">
                   <b>35</b>
                   <span style="font-size: small"><b>ron</b></span>
-                </h5>
+                </p>
               </div>
               <div class="col-8 col-sm-9">
                 <h4 class="mb-0">White Lady - 200ml</h4>
@@ -323,10 +344,10 @@
                     src="img/icons_watermarked/webp/Paloma_ico.webp"
                     alt="Paloma cocktail at Hypso25"
                 /></a>
-                <h5 class="menu-price">
+                <p class="menu-price h5 font-weight-normal">
                   <b>35</b>
                   <span style="font-size: small"><b>ron</b></span>
-                </h5>
+                </p>
               </div>
               <div class="col-8 col-sm-9">
                 <h4 class="mb-0">Paloma - 200ml</h4>
@@ -361,10 +382,10 @@
                     src="img/icons_watermarked/webp/Bellini_ico.webp"
                     alt="Bellini cocktail at Hypso25"
                 /></a>
-                <h5 class="menu-price">
+                <p class="menu-price h5 font-weight-normal">
                   <b>35</b>
                   <span style="font-size: small"><b>ron</b></span>
-                </h5>
+                </p>
               </div>
               <div class="col-8 col-sm-9">
                 <h4 class="mb-0">Bellini - 200ml</h4>
@@ -403,10 +424,10 @@
                     src="img/icons_watermarked/webp/Ruby_royale_ico.webp"
                     alt="Ruby Royale cocktail at Hypso25"
                 /></a>
-                <h5 class="menu-price">
+                <p class="menu-price h5 font-weight-normal">
                   <b>35</b>
                   <span style="font-size: small"><b>ron</b></span>
-                </h5>
+                </p>
               </div>
               <div class="col-8 col-sm-9">
                 <h4 class="mb-0">Ruby Royale - 200ml</h4>
@@ -436,7 +457,7 @@
                 </p>
               </div>
             </div>
-            <h2 class="mb-0">MOST WANTED</h2>
+            <h3 class="h2 font-weight-bold mb-0">MOST WANTED</h3>
             <p class="mb-5">
               <b
                 >The fan favorites — iconic, irresistible, and always in high
@@ -454,10 +475,10 @@
                     src="img/icons_watermarked/webp/Cuba_libre_ico.webp"
                     alt="Cuba Libre cocktail at Hypso25"
                 /></a>
-                <h5 class="menu-price">
+                <p class="menu-price h5 font-weight-normal">
                   <b>35</b>
                   <span style="font-size: small"><b>ron</b></span>
-                </h5>
+                </p>
               </div>
               <div class="col-8 col-sm-9">
                 <h4 class="mb-0">Cuba Libre - 350ml</h4>
@@ -492,10 +513,10 @@
                     src="img/icons_watermarked/webp/Mojito_ico.webp"
                     alt="Mojito cocktail at Hypso25"
                 /></a>
-                <h5 class="menu-price">
+                <p class="menu-price h5 font-weight-normal">
                   <b>35</b>
                   <span style="font-size: small"><b>ron</b></span>
-                </h5>
+                </p>
               </div>
               <div class="col-8 col-sm-9">
                 <h4 class="mb-0">Mojito - 350ml</h4>
@@ -531,10 +552,10 @@
                     src="img/icons_watermarked/webp/Gin_Tonic_ico.webp"
                     alt="Gin Tonic cocktail at Hypso25"
                 /></a>
-                <h5 class="menu-price">
+                <p class="menu-price h5 font-weight-normal">
                   <b>35</b>
                   <span style="font-size: small"><b>ron</b></span>
-                </h5>
+                </p>
               </div>
               <div class="col-8 col-sm-9">
                 <h4 class="mb-0">Gin Tonic - 350ml</h4>
@@ -572,10 +593,10 @@
                     src="img/icons_watermarked/webp/Hugo_ico.webp"
                     alt="Hugo cocktail at Hypso25"
                 /></a>
-                <h5 class="menu-price">
+                <p class="menu-price h5 font-weight-normal">
                   <b>35</b>
                   <span style="font-size: small"><b>ron</b></span>
-                </h5>
+                </p>
               </div>
               <div class="col-8 col-sm-9">
                 <h4 class="mb-0">Hugo - 350ml</h4>
@@ -617,10 +638,10 @@
                     src="img/icons_watermarked/webp/Aperol_spritz_ico.webp"
                     alt="Aperol Spritz cocktail at Hypso25"
                 /></a>
-                <h5 class="menu-price">
+                <p class="menu-price h5 font-weight-normal">
                   <b>35</b>
                   <span style="font-size: small"><b>ron</b></span>
-                </h5>
+                </p>
               </div>
               <div class="col-8 col-sm-9">
                 <h4 class="mb-0">Aperol Spritz - 350ml</h4>
@@ -649,7 +670,7 @@
             </div>
           </div>
           <div class="col-lg-6">
-            <h2 class="mb-0">MOCKTAILS</h2>
+            <h3 class="h2 font-weight-bold mb-0">MOCKTAILS</h3>
             <p class="mb-5">
               <b
                 >All the taste, none of the alcohol. Crafted with balance, care,
@@ -667,10 +688,10 @@
                     src="img/icons_watermarked/webp/Porn_star_collins_ico.webp"
                     alt="Porn Star Collins cocktail at Hypso25"
                 /></a>
-                <h5 class="menu-price">
+                <p class="menu-price h5 font-weight-normal">
                   <b>33</b>
                   <span style="font-size: small"><b>ron</b></span>
-                </h5>
+                </p>
               </div>
               <div class="col-8 col-sm-9">
                 <h4 class="mb-0">Porn Star Collins - 200ml</h4>
@@ -707,10 +728,10 @@
                     src="img/icons_watermarked/webp/Virgin_mojito_ico.webp"
                     alt="Virgin Mojito cocktail at Hypso25"
                 /></a>
-                <h5 class="menu-price">
+                <p class="menu-price h5 font-weight-normal">
                   <b>33</b>
                   <span style="font-size: small"><b>ron</b></span>
-                </h5>
+                </p>
               </div>
               <div class="col-8 col-sm-9">
                 <h4 class="mb-0">Virgin Mojito - 200ml</h4>
@@ -745,10 +766,10 @@
                     src="img/icons_watermarked/webp/Virgin_hugo_ico.webp"
                     alt="Virgin Hugo cocktail at Hypso25"
                 /></a>
-                <h5 class="menu-price">
+                <p class="menu-price h5 font-weight-normal">
                   <b>33</b>
                   <span style="font-size: small"><b>ron</b></span>
-                </h5>
+                </p>
               </div>
               <div class="col-8 col-sm-9">
                 <h4 class="mb-0">Virgin Hugo - 200ml</h4>
@@ -783,10 +804,10 @@
                     src="img/icons_watermarked/webp/Gin_Tonic_ico.webp"
                     alt="Virgin Gin Tonic cocktail at Hypso25"
                 /></a>
-                <h5 class="menu-price">
+                <p class="menu-price h5 font-weight-normal">
                   <b>33</b>
                   <span style="font-size: small"><b>ron</b></span>
-                </h5>
+                </p>
               </div>
               <div class="col-8 col-sm-9">
                 <h4>Virgin Gin Tonic - 200ml</h4>
@@ -811,7 +832,7 @@
                 </p>
               </div>
             </div>
-            <h2 class="mb-0">BESPOKE COCKTAILS</h2>
+            <h3 class="h2 font-weight-bold mb-0">BESPOKE COCKTAILS</h3>
             <p class="mb-5">
               <b
                 >Our signature creations — handcrafted cocktails that showcase
@@ -829,10 +850,10 @@
                     src="img/icons_watermarked/webp/Porn_star_martini_ico.webp"
                     alt="Porn Star Martini cocktail at Hypso25"
                 /></a>
-                <h5 class="menu-price">
+                <p class="menu-price h5 font-weight-normal">
                   <b>38</b>
                   <span style="font-size: small"><b>ron</b></span>
-                </h5>
+                </p>
               </div>
               <div class="col-8 col-sm-9">
                 <h4 class="mb-0">Porn Star Martini 25 - 250ml</h4>
@@ -872,10 +893,10 @@
                     src="img/icons_watermarked/webp/CoffeerumTreasure.webp"
                     alt="Coffeerum Treasure cocktail at Hypso25"
                 /></a>
-                <h5 class="menu-price">
+                <p class="menu-price h5 font-weight-normal">
                   <b>38</b>
                   <span style="font-size: small"><b>ron</b></span>
-                </h5>
+                </p>
               </div>
               <div class="col-8 col-sm-9">
                 <h4 class="mb-0">Coffeerum Treasure 25 - 250ml</h4>
@@ -911,10 +932,10 @@
                     src="img/icons_watermarked/webp/Mules_verne_ico.webp"
                     alt="Mules Verne 25 cocktail at Hypso25"
                 /></a>
-                <h5 class="menu-price">
+                <p class="menu-price h5 font-weight-normal">
                   <b>38</b>
                   <span style="font-size: small"><b>ron</b></span>
-                </h5>
+                </p>
               </div>
               <div class="col-8 col-sm-9">
                 <h4 class="mb-0">Mules Verne 25 - 250ml</h4>
@@ -949,10 +970,10 @@
                     src="img/icons_watermarked/webp/Zombie.webp"
                     alt="Zombie 25 cocktail at Hypso25"
                 /></a>
-                <h5 class="menu-price">
+                <p class="menu-price h5 font-weight-normal">
                   <b>38</b>
                   <span style="font-size: small"><b>ron</b></span>
-                </h5>
+                </p>
               </div>
               <div class="col-8 col-sm-9">
                 <h4 class="mb-0">Zombie 25 - 250ml</h4>
@@ -992,12 +1013,12 @@
     >
       <div class="row mx-0 pt-5 px-sm-3 px-lg-5 mt-4 justify-content-center">
         <div class="col-lg-3 col-md-6 mb-5">
-          <h4
-            class="text-white text-uppercase mb-4"
+          <h2
+            class="h4 font-weight-medium text-white text-uppercase mb-4"
             style="letter-spacing: 3px"
           >
             Get In Touch
-          </h4>
+          </h2>
           <p>
             <svg class="icon mr-2" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg
             ><a
@@ -1012,10 +1033,10 @@
             <svg class="icon mr-2" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg
             ><a
               class="text-white"
-              href="tel:+40751880909"
+              href="tel:+40722500692"
               target="_blank"
               rel="noopener noreferrer"
-              >+40 751 880 909</a
+              >+40 722 500 692</a
             >
           </p>
           <p class="m-0">
@@ -1026,12 +1047,12 @@
           </p>
         </div>
         <div class="col-lg-3 col-md-6 mb-5">
-          <h4
-            class="text-white text-uppercase mb-4"
+          <h2
+            class="h4 font-weight-medium text-white text-uppercase mb-4"
             style="letter-spacing: 3px"
           >
             Follow Us
-          </h4>
+          </h2>
           <p>Join the Hypso25 journey – coffee, wine & a hint of magic.</p>
           <div class="d-flex justify-content-start">
             <a
@@ -1052,18 +1073,18 @@
           </div>
         </div>
         <div class="col-lg-3 col-md-6">
-          <h4
-            class="text-white text-uppercase mb-4"
+          <h2
+            class="h4 font-weight-medium text-white text-uppercase mb-4"
             style="letter-spacing: 3px"
           >
             Open Hours
-          </h4>
+          </h2>
           <div>
-            <h6 class="text-white text-uppercase">Monday</h6>
+            <h3 class="h6 font-weight-normal text-white text-uppercase">Monday</h3>
             <p>Closed</p>
-            <h6 class="text-white text-uppercase">Tuesday–Friday</h6>
+            <h3 class="h6 font-weight-normal text-white text-uppercase">Tuesday–Friday</h3>
             <p>10:00 AM–10:00 PM</p>
-            <h6 class="text-white text-uppercase">Saturday–Sunday</h6>
+            <h3 class="h6 font-weight-normal text-white text-uppercase">Saturday–Sunday</h3>
             <p>10:00 AM–12:00 AM</p>
           </div>
         </div>

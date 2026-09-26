@@ -213,6 +213,14 @@ button {
   outline-offset: 4px;
 }
 
+/* The muted outline disappears on the dark photos and black sections, so I use gold there. */
+.site-header :focus-visible,
+.hero :focus-visible,
+.policy-page :focus-visible,
+.cookie-banner :focus-visible {
+  outline-color: var(--colour-gold);
+}
+
 /* =========================================================
    7. Lists, media and forms
    I remove default list styles and make media responsive.
@@ -470,15 +478,20 @@ address {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
+  /* On close, visibility waits for the fade-out to finish. */
   transition:
     opacity var(--transition-medium),
-    visibility var(--transition-medium);
+    visibility 0s linear 0.3s;
 }
 
+/* On open, visibility switches at once so the close button can take keyboard focus. */
 .mobile-menu.is-open {
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
+  transition:
+    opacity var(--transition-medium),
+    visibility 0s;
 }
 
 .mobile-menu__inner {
@@ -797,14 +810,17 @@ address {
 
 .policy-page__eyebrow {
   margin: 0 0 16px;
-  font-size: 0.85rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
+  /* Written like the Hypso25 logo in the header, in the boldest weight the font has. */
+  font-family: var(--font-heading);
+  font-size: 2.55rem;
+  font-weight: 700;
   color: var(--colour-gold);
 }
 
 .policy-page__title {
   margin: 0 0 32px;
+  /* White like the rest of the text: the global h1-h6 colour is dark and disappears on the photo. */
+  color: inherit;
   font-family: var(--font-heading);
   font-size: clamp(2.4rem, 6vw, 5rem);
   line-height: 1;
@@ -812,6 +828,7 @@ address {
 
 .policy-page__heading {
   margin: 36px 0 12px;
+  color: inherit;
   font-family: var(--font-heading);
   font-size: clamp(1.6rem, 3vw, 2.4rem);
   line-height: 1.1;
@@ -1152,7 +1169,8 @@ address {
 
 /* I keep address and phone small, like the original footer text. */
 .site-footer__address,
-.site-footer__phone {
+.site-footer__phone,
+.site-footer__email {
   margin-bottom: 0.8rem;
   font-size: 0.9rem;
   font-weight: 300;
@@ -1164,7 +1182,8 @@ address {
   line-height: 2;
 }
 
-.site-footer__phone a {
+.site-footer__phone a,
+.site-footer__email a {
   color: var(--colour-black);
 }
 
@@ -2100,7 +2119,8 @@ address {
   }
 
   .site-footer__address,
-  .site-footer__phone {
+  .site-footer__phone,
+  .site-footer__email {
     font-size: 0.9rem;
     line-height: 1.75;
   }

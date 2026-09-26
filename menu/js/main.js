@@ -1,4 +1,44 @@
 document.addEventListener("DOMContentLoaded", function () {
+  // Language picker (same as the main site). CSS opens the list on hover and keyboard focus;
+  // a tap toggles .is-open too, because phones do not always hover or focus a tapped button.
+  // aria-expanded tells screen readers whether the list is open.
+  document.querySelectorAll(".language-picker").forEach(function (picker) {
+    const pickerButton = picker.querySelector(".language-picker__button");
+
+    if (!pickerButton) {
+      return;
+    }
+
+    function updatePickerState() {
+      const isOpen =
+        picker.classList.contains("is-open") ||
+        picker.matches(":hover") ||
+        picker.contains(document.activeElement);
+      pickerButton.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    }
+
+    pickerButton.addEventListener("click", function () {
+      picker.classList.toggle("is-open");
+      updatePickerState();
+    });
+
+    // A tap anywhere else closes it.
+    document.addEventListener("click", function (event) {
+      if (!picker.contains(event.target)) {
+        picker.classList.remove("is-open");
+        updatePickerState();
+      }
+    });
+
+    picker.addEventListener("mouseenter", updatePickerState);
+    picker.addEventListener("mouseleave", updatePickerState);
+    picker.addEventListener("focusin", updatePickerState);
+    // Focus has not moved yet during focusout, so I check a moment later.
+    picker.addEventListener("focusout", function () {
+      setTimeout(updatePickerState, 0);
+    });
+  });
+
   const backToTop = document.querySelector(".back-to-top");
 
   if (!backToTop) {
