@@ -820,7 +820,7 @@ address {
   color: var(--colour-white);
   background:
     linear-gradient(rgba(0, 0, 0, 0.72), rgba(0, 0, 0, 0.72)),
-    url("../images/hero-bar.webp") center / cover no-repeat;
+    url("../images/hero-bar-1600.webp") center / cover no-repeat;
 }
 
 .policy-page__container {
