@@ -2,7 +2,7 @@
 
 A static website for **Hypso25**, a specialty coffee shop, cocktail bar and wine bar with an industrial steampunk identity, located in the old town of Constanța, Romania.
 
-The project contains the main Hypso25 website, bilingual Romanian/English pages, a photo gallery with lightbox functionality, contact pages, and an existing standalone menu website integrated inside the `/menu` folder.
+The project contains the main Hypso25 website, bilingual Romanian/English pages, a photo gallery with lightbox functionality, contact pages, privacy policy pages, and an existing standalone menu website integrated inside the `/menu` folder.
 
 ## Live Website
 
@@ -10,7 +10,7 @@ The project contains the main Hypso25 website, bilingual Romanian/English pages,
 
 ## Project Overview
 
-This website was built as a static front-end project using HTML, CSS and JavaScript. It does not require a build step, package manager, database or server-side framework.
+This website was built as a static front-end project using HTML, CSS and JavaScript. It does not require a package manager, database or server-side framework. The only build step is for the menu: its product lists are written from the data files in `menu-data/` by a small Node.js script (see [Editing the menu](#editing-the-menu)).
 
 Main goals of the project:
 
@@ -26,13 +26,16 @@ Main goals of the project:
 - English and Romanian versions
 - Desktop navigation and mobile burger menu
 - Language switcher for EN / RO pages
-- Standalone menu integrated under `/menu`
+- Standalone menu integrated under `/menu`, with the same fonts, logo and language switcher as the main website
+- Random Google and Tripadvisor reviews on the menu start page
+- Menu product lists, prices and nutrition values generated from data files
 - Photo gallery page
 - Gallery lightbox with previous and next controls
-- Contact page with Google Maps embed
+- Contact page with a map that loads from Google Maps only after a click
+- Responsive photos: each large photo comes in four sizes and the browser picks the right one
+- Self-hosted fonts, no cookies and no third-party requests when a page loads
+- Structured data for search engines and a share image for link previews
 - Shared favicon across the main website and menu
-- Optimised image structure for the main website
-- Cookie banner with local browser storage
 
 ## Pages
 
@@ -47,6 +50,8 @@ contact.html            English Contact page
 contact-ro.html         Romanian Contact page
 photo-gallery.html      English Photo Gallery page
 photo-gallery-ro.html   Romanian Photo Gallery page
+privacy.html            English Privacy Policy
+privacy-ro.html         Romanian Privacy Policy
 ```
 
 Integrated menu pages:
@@ -67,46 +72,44 @@ menu/seasonal.html      Summer seasonal drinks (Heatwave Elixirs)
 
 ```text
 hypso25/
-├── index.html
-├── ro.html
-├── our-story.html
-├── our-story-ro.html
-├── contact.html
-├── contact-ro.html
-├── photo-gallery.html
-├── photo-gallery-ro.html
+├── index.html, ro.html, our-story*.html, contact*.html, photo-gallery*.html, privacy*.html
+├── sitemap.xml
+├── robots.txt
 ├── assets/
 │   ├── css/
 │   │   ├── style.css
+│   │   ├── fonts.css            self-hosted fonts, shared with the menu
 │   │   ├── our-story.css
 │   │   ├── contact.css
 │   │   └── gallery.css
+│   ├── fonts/                   Cormorant Garamond and Source Sans 3 (WOFF2) with their OFL licences
 │   ├── js/
 │   │   └── main.js
 │   └── images/
 │       ├── favicon.ico
 │       ├── logo.webp
-│       ├── hero-bar.webp
-│       ├── bar-interior.webp
-│       ├── coffee.webp
-│       ├── coffee-a.webp
+│       ├── share.jpg            1200×630 image for link previews
+│       ├── contact-map.webp     OpenStreetMap placeholder for the contact map
+│       ├── hero-bar-800.webp … hero-bar-2048.webp
+│       │                        four sizes of each photo (also coffee, coffee-a, bar-interior)
 │       ├── gb.svg
 │       └── ro.svg
-└── menu/
-    ├── index.html
-    ├── menu.html
-    ├── sdrinks.html
-    ├── vcock.html
-    ├── celix.html
-    ├── spirits.html
-    ├── wines.html
-    ├── seasonal.html
-    ├── winter.html
-    ├── css/
-    │   └── style.min.css
-    ├── js/
-    │   └── main.js
-    └── img/
+├── menu/
+│   ├── index.html
+│   ├── menu.html, sdrinks.html, vcock.html, celix.html, spirits.html, wines.html, seasonal.html, winter.html
+│   ├── css/
+│   │   ├── style.min.css        Bootstrap 4 (only the rules the menu uses) and the menu styles
+│   │   └── qr-index.css         menu start page
+│   ├── js/
+│   │   ├── main.js
+│   │   ├── carousel.js
+│   │   ├── reviews-data.js
+│   │   └── reviews-random.js
+│   └── img/
+├── menu-data/                   menu products, one file per menu page (see menu-data/README.md)
+└── scripts/
+    ├── build-menu.js            writes the menu product lists from menu-data/
+    └── check_links.py           checks local links
 ```
 
 ## Technologies Used
@@ -114,16 +117,17 @@ hypso25/
 - HTML5
 - CSS3
 - JavaScript
-- Google Fonts
+- Self-hosted web fonts (Cormorant Garamond, Source Sans 3)
 - SVG icons
 - WebP images
-- Google Maps embed
+- Google Maps, loaded only when the visitor clicks "Show map"
+- Node.js, only to build the menu product lists
 
 The integrated menu keeps its own CSS and JavaScript inside the `/menu` folder so it can remain visually and functionally separate from the main website while still being connected through the main navigation.
 
 ## Running the Project Locally
 
-No installation is required.
+No installation is required to view the website. Node.js is needed only to rebuild the menu after a change in `menu-data/`.
 
 Open the project folder and run it with a local server. For example, in VS Code you can use the **Live Server** extension.
 
@@ -141,31 +145,41 @@ http://localhost:8000
 
 ## Deployment
 
-Because this is a static website, it can be deployed to any static hosting provider, including:
+The website is published with GitHub Pages from the `main` branch. Because it is a static website, it can also be deployed to any other static hosting provider, including:
 
-- GitHub Pages
 - Cloudflare Pages
 - Netlify
 - Vercel
 - standard web hosting with FTP / cPanel
 
-For deployment, upload the HTML files, the `assets/` folder and the `menu/` folder.
+For deployment, upload the HTML files, `sitemap.xml`, `robots.txt`, the `assets/` folder and the `menu/` folder. The `menu-data/` and `scripts/` folders are only used to build the menu; the website does not load them.
 
 Do not upload development-only folders such as:
 
 ```text
 .git/
-_unused-assets-backup/
 ```
 
 ## Notes for Maintenance
 
 - Main website styling is controlled from `assets/css/style.css`.
 - Page-specific styles are separated into `our-story.css`, `contact.css` and `gallery.css`.
+- The fonts are declared once in `assets/css/fonts.css`, which the main website and the menu both load.
 - Main website JavaScript is controlled from `assets/js/main.js`.
 - The menu website keeps its own styling and scripts inside `menu/`.
 - The menu is connected from the main website through `menu/menu.html`.
 - The shared favicon is stored at `assets/images/favicon.ico`.
+- The website sets no cookies and loads nothing from other servers until the visitor asks for it (the contact map). A new embed or tracking script also needs a change to the privacy policy (`privacy.html`, `privacy-ro.html`).
+
+### Editing the menu
+
+Prices, products, ingredients, nutrition values and allergens are kept in `menu-data/`, one file per menu page. After a change, run:
+
+```bash
+node scripts/build-menu.js
+```
+
+It rewrites the product lists in `menu/*.html` and the coffee prices on the homepage (`index.html`, `ro.html`). Do not edit the product lists in the HTML directly. The fields are described in `menu-data/README.md`.
 
 ### Switching the seasonal menu
 
@@ -186,9 +200,9 @@ python scripts/check_links.py
 
 ### Checklist when changing header, footer or shared layout
 
-The main website is static, so the header, mobile menu, language picker, footer and cookie banner are repeated manually across the main HTML pages.
+The main website is static, so the header, mobile menu, language picker and footer are repeated manually across the main HTML pages. The privacy pages have no header or footer, by design.
 
-When changing the main navigation, header actions, mobile menu, language switcher, footer or cookie banner, update and test these files:
+When changing the main navigation, header actions, mobile menu, language switcher or footer, update and test these files:
 
 ```text
 index.html
@@ -206,12 +220,9 @@ photo-gallery-ro.html
 Possible future improvements:
 
 - consider a simple static build script for shared header and footer partials;
-- create a Romanian version of the menu;
+- create a Romanian version of the menu (the language switcher on the menu already links to it as `#`);
 - add a lightbox experience for menu product images;
-- further optimise image sizes for faster loading;
-- add SEO metadata for each page;
-- add structured data for the business location and opening hours;
-- add accessibility improvements for the old menu pages.
+- use the four photo sizes on the contact page too.
 
 ## Author
 
