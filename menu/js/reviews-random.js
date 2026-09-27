@@ -7,6 +7,49 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const reviewLinks = window.hypsoReviewLinks || {};
 
+  // The card texts follow the page language (menu/ro.html is the Romanian start page).
+  // The reviews themselves stay in the language their authors wrote them in.
+  const isRomanian = document.documentElement.lang === "ro";
+  const TEXT = isRomanian
+    ? {
+        bubbles: (rating) => rating + " din 5 buline",
+        stars: (rating) => "Notă: " + rating + " din 5",
+        badge: { google: "Recenzie Google", tripadvisor: "Recenzie Tripadvisor" },
+        guest: "Recenzie de la un client",
+        read: { google: "Citește pe Google", tripadvisor: "Citește pe Tripadvisor" },
+        more: { google: "Vezi mai multe pe Google", tripadvisor: "Vezi mai multe pe Tripadvisor" },
+        empty: "Recenziile vor apărea aici după ce adăugăm recenzii reale de pe Google și Tripadvisor.",
+      }
+    : {
+        bubbles: (rating) => rating + " of 5 bubbles",
+        stars: (rating) => "Rated " + rating + " out of 5",
+        badge: { google: "Google Review", tripadvisor: "Tripadvisor Review" },
+        guest: "Guest review",
+        read: { google: "Read on Google", tripadvisor: "Read on Tripadvisor" },
+        more: { google: "View more on Google", tripadvisor: "View more on Tripadvisor" },
+        empty: "Reviews will appear here after real Google and Tripadvisor reviews are added.",
+      };
+
+  const RO_MONTHS = {
+    Jan: "ianuarie", Feb: "februarie", Mar: "martie", Apr: "aprilie", May: "mai", Jun: "iunie",
+    Jul: "iulie", Aug: "august", Sep: "septembrie", Oct: "octombrie", Nov: "noiembrie", Dec: "decembrie",
+  };
+  // "Aug 2021" becomes "august 2021" on the Romanian page.
+  function reviewDate(date) {
+    if (!isRomanian) {
+      return date;
+    }
+    const monthYear = date.match(/^([A-Z][a-z]{2})[a-z]* (\d{4})$/);
+    if (monthYear && RO_MONTHS[monthYear[1]]) {
+      return RO_MONTHS[monthYear[1]] + " " + monthYear[2];
+    }
+    return date;
+  }
+
+  function ratingText(rating) {
+    return isRomanian ? String(rating).replace(".", ",") : String(rating);
+  }
+
   function shuffleReviews(reviews) {
     return reviews
       .map(function (review) {
@@ -32,7 +75,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (source === "tripadvisor") {
       element.className = "qr-review-card__bubbles";
-      element.setAttribute("aria-label", safeRating + " of 5 bubbles");
+      element.setAttribute("aria-label", TEXT.bubbles(ratingText(safeRating)));
 
       for (let bubbleNumber = 1; bubbleNumber <= 5; bubbleNumber++) {
         const bubble = document.createElement("span");
@@ -49,7 +92,7 @@ document.addEventListener("DOMContentLoaded", function () {
     } else {
       const fullStars = Math.round(safeRating);
       element.className = "qr-review-card__stars";
-      element.setAttribute("aria-label", "Rated " + safeRating + " out of 5");
+      element.setAttribute("aria-label", TEXT.stars(ratingText(safeRating)));
       element.textContent = "★".repeat(fullStars) + "☆".repeat(5 - fullStars);
     }
 
@@ -84,8 +127,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const badge = document.createElement("p");
     badge.className = "qr-review-card__badge";
-    badge.textContent =
-      source === "google" ? "Google Review" : "Tripadvisor Review";
+    badge.textContent = TEXT.badge[source];
 
     const stars = createRating(review.rating, source);
 
@@ -103,12 +145,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const author = document.createElement("p");
     author.className = "qr-review-card__author";
-    author.textContent = review.author || "Guest review";
+    author.textContent = review.author || TEXT.guest;
 
     if (review.date) {
       const date = document.createElement("span");
       date.className = "qr-review-card__date";
-      date.textContent = " • " + review.date;
+      date.textContent = " • " + reviewDate(review.date);
       author.appendChild(date);
     }
 
@@ -119,18 +161,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (review.url) {
       link.href = review.url;
-      link.textContent =
-        source === "google" ? "Read on Google" : "Read on Tripadvisor";
+      link.textContent = TEXT.read[source];
     } else {
       link.href =
         source === "google"
           ? reviewLinks.googleMore || "#"
           : reviewLinks.tripadvisorMore || "#";
 
-      link.textContent =
-        source === "google"
-          ? "View more on Google"
-          : "View more on Tripadvisor";
+      link.textContent = TEXT.more[source];
     }
 
     card.appendChild(logoWrapper);
@@ -156,8 +194,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const message = document.createElement("p");
     message.className = "qr-reviews__empty";
-    message.textContent =
-      "Reviews will appear here after real Google and Tripadvisor reviews are added.";
+    message.textContent = TEXT.empty;
 
     column.appendChild(message);
 

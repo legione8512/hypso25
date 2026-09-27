@@ -26,7 +26,7 @@ Main goals of the project:
 - English and Romanian versions
 - Desktop navigation and mobile burger menu
 - Language switcher for EN / RO pages
-- Standalone menu integrated under `/menu`, with the same fonts, logo and language switcher as the main website
+- Standalone menu integrated under `/menu`, in English and Romanian, with the same fonts, logo and language switcher as the main website
 - Random Google and Tripadvisor reviews on the menu start page
 - Menu product lists, prices and nutrition values generated from data files
 - Photo gallery page
@@ -68,6 +68,8 @@ menu/winter.html        Winter seasonal drinks (Winter Spirit Infusions)
 menu/seasonal.html      Summer seasonal drinks (Heatwave Elixirs)
 ```
 
+Each menu page has a Romanian version: `menu/ro.html` (landing page), `menu/menu-ro.html`, `menu/sdrinks-ro.html`, `menu/vcock-ro.html`, `menu/celix-ro.html`, `menu/spirits-ro.html`, `menu/wines-ro.html`, `menu/winter-ro.html` and `menu/seasonal-ro.html`. The Romanian pages of the main website link to the Romanian menu.
+
 ## Project Structure
 
 ```text
@@ -95,8 +97,9 @@ hypso25/
 │       ├── gb.svg
 │       └── ro.svg
 ├── menu/
-│   ├── index.html
+│   ├── index.html, ro.html
 │   ├── menu.html, sdrinks.html, vcock.html, celix.html, spirits.html, wines.html, seasonal.html, winter.html
+│   ├── menu-ro.html, sdrinks-ro.html, … (the Romanian version of each page)
 │   ├── css/
 │   │   ├── style.min.css        Bootstrap 4 (only the rules the menu uses) and the menu styles
 │   │   └── qr-index.css         menu start page
@@ -169,6 +172,7 @@ Do not upload development-only folders such as:
 - The menu website keeps its own styling and scripts inside `menu/`.
 - The menu is connected from the main website through `menu/menu.html`.
 - The shared favicon is stored at `assets/images/favicon.ico`.
+- The site footer has the same look as the menu footer and uses the menu's coffee-bean photo (`menu/img/bg.jpg`), so both share one cached file. Its torn-paper top edge is `assets/images/footer-edge.png`; the homepage footers use `site-footer--straight`, without the edge, because they follow a photo.
 - The website sets no cookies and loads nothing from other servers until the visitor asks for it (the contact map). A new embed or tracking script also needs a change to the privacy policy (`privacy.html`, `privacy-ro.html`).
 
 ### Editing the menu
@@ -179,7 +183,7 @@ Prices, products, ingredients, nutrition values and allergens are kept in `menu-
 node scripts/build-menu.js
 ```
 
-It rewrites the product lists in `menu/*.html` and the coffee prices on the homepage (`index.html`, `ro.html`). Do not edit the product lists in the HTML directly. The fields are described in `menu-data/README.md`.
+Every text has an English and a Romanian version. The script rewrites the product lists of the English and Romanian menu pages and the coffee prices on the homepage (`index.html`, `ro.html`). Do not edit the product lists in the HTML directly. The fields are described in `menu-data/README.md`.
 
 ### Switching the seasonal menu
 
@@ -188,7 +192,7 @@ The menu has one seasonal page at a time:
 - winter: `menu/winter.html` (Winter Spirit Infusions), linked as `WINTER INFUSIONS`;
 - summer: `menu/seasonal.html` (Heatwave Elixirs), linked as `SEASONAL SIPS`.
 
-To switch season, change the seasonal link in the page header of all menu category pages (`menu.html`, `sdrinks.html`, `vcock.html`, `celix.html`, `spirits.html`, `wines.html` and the seasonal page that becomes active), and replace the seasonal page URL in `sitemap.xml`.
+To switch season, change the seasonal link in the page header of all menu category pages (`menu.html`, `sdrinks.html`, `vcock.html`, `celix.html`, `spirits.html`, `wines.html` and the seasonal page that becomes active), and the same in their Romanian versions (`menu-ro.html` and the others link to `winter-ro.html` or `seasonal-ro.html`, labelled `INFUZII DE IARNĂ` or `BĂUTURI DE SEZON`). Then replace both seasonal page URLs (English and Romanian) in `sitemap.xml`.
 
 ### Check local links
 
@@ -220,7 +224,6 @@ photo-gallery-ro.html
 Possible future improvements:
 
 - consider a simple static build script for shared header and footer partials;
-- create a Romanian version of the menu (the language switcher on the menu already links to it as `#`);
 - add a lightbox experience for menu product images;
 - use the four photo sizes on the contact page too.
 

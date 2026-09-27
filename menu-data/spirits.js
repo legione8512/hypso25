@@ -8,8 +8,14 @@ module.exports = {
     // Left column
     [
       {
-        title: "TOP SHELF SPIRITS",
-        intro: "<b>A curated selection of rare, aged, and ultra-premium spirits crafted for the discerning palate.</b>",
+        title: {
+          en: "TOP SHELF SPIRITS",
+          ro: "SPIRTOASE DE TOP",
+        },
+        intro: {
+          en: "<b>A curated selection of rare, aged, and ultra-premium spirits crafted for the discerning palate.</b>",
+          ro: "<b>O selecție atentă de spirtoase rare, învechite și ultra-premium, pentru cunoscători.</b>",
+        },
         items: [
           {
             name: "Aberlour 18y whiskey", ml: 40, price: 65,
@@ -48,8 +54,14 @@ module.exports = {
         ],
       },
       {
-        title: "PREMIUM SELECTION",
-        intro: "<b>Crafted to deliver taste and balance, this collection features spirits that are a cut above the ordinary — ideal for sipping or mixing with class.</b>",
+        title: {
+          en: "PREMIUM SELECTION",
+          ro: "SELECȚIA PREMIUM",
+        },
+        intro: {
+          en: "<b>Crafted to deliver taste and balance, this collection features spirits that are a cut above the ordinary — ideal for sipping or mixing with class.</b>",
+          ro: "<b>Gândită pentru gust și echilibru, această colecție reunește spirtoase peste medie — ideale de savurat simple sau în combinații elegante.</b>",
+        },
         items: [
           {
             name: "The Glenlivet 15y whiskey", ml: 40, price: 40,
@@ -68,7 +80,10 @@ module.exports = {
           {
             name: "Aberlour 12y", ml: 40, price: 40,
             photo: "spirits/Aberlour_12.webp",
-            alt: "Aberlour 12y whiskey at Hypso25",
+            alt: {
+              en: "Aberlour 12y whiskey at Hypso25",
+              ro: "Aberlour 12y whiskey la Hypso25",
+            },
           },
           {
             name: "Grey Goose vodka", ml: 40, price: 40,
@@ -127,38 +142,70 @@ module.exports = {
           {
             name: "Mamaia Aperitiv", ml: 40, price: 40,
             photo: "missing.webp",
-            allergens: "Sulphites",
+            allergens: {
+              en: "Sulphites",
+              ro: "Sulfiți",
+            },
           },
           {
             name: "Mamaia Vermut", ml: 40, price: 40,
             photo: "missing.webp",
-            allergens: "Sulphites",
+            allergens: {
+              en: "Sulphites",
+              ro: "Sulfiți",
+            },
           },
         ],
       },
       {
-        title: "ROMANIAN SPIRITS",
-        intro: "<b>A celebration of Romanian distilling traditions — strong, aromatic, and deeply rooted in our local culture.</b>",
+        title: {
+          en: "ROMANIAN SPIRITS",
+          ro: "SPIRTOASE ROMÂNEȘTI",
+        },
+        intro: {
+          en: "<b>A celebration of Romanian distilling traditions — strong, aromatic, and deeply rooted in our local culture.</b>",
+          ro: "<b>O celebrare a tradiției românești a distilării — tari, aromate și adânc înrădăcinate în cultura noastră.</b>",
+        },
         look: { heading: "pt-4 mb-0" },
         items: [
           {
-            name: "Tuica Bran", ml: 40, price: 30,
+            name: {
+              en: "Tuica Bran",
+              ro: "Țuică Bran",
+            },
+            ml: 40, price: 30,
             photo: "spirits/Tuica_bran_ico.webp",
           },
           {
-            name: "Visinata Bran", ml: 40, price: 30,
+            name: {
+              en: "Visinata Bran",
+              ro: "Vișinată Bran",
+            },
+            ml: 40, price: 30,
             photo: "spirits/Visinata_Bran.webp",
           },
           {
-            name: "Afinata Bran", ml: 40, price: 30,
+            name: {
+              en: "Afinata Bran",
+              ro: "Afinată Bran",
+            },
+            ml: 40, price: 30,
             photo: "spirits/Afinata_Bran.webp",
           },
           {
-            name: "Capsunata Bran", ml: 40, price: 30,
+            name: {
+              en: "Capsunata Bran",
+              ro: "Căpșunată Bran",
+            },
+            ml: 40, price: 30,
             photo: "spirits/Capsunata_Bran.webp",
           },
           {
-            name: "Caisata Bran", ml: 40, price: 30,
+            name: {
+              en: "Caisata Bran",
+              ro: "Caisată Bran",
+            },
+            ml: 40, price: 30,
             photo: "spirits/Caisata_Bran.webp",
           },
           {
@@ -171,8 +218,14 @@ module.exports = {
     // Right column
     [
       {
-        title: "STANDARD PICKS",
-        intro: "<b>A selection of well-known, go-to spirits that offer comfort, familiarity, and crowd-pleasing character at a great value.</b>",
+        title: {
+          en: "STANDARD PICKS",
+          ro: "ALEGERI CLASICE",
+        },
+        intro: {
+          en: "<b>A selection of well-known, go-to spirits that offer comfort, familiarity, and crowd-pleasing character at a great value.</b>",
+          ro: "<b>O selecție de spirtoase cunoscute și de încredere, pe gustul tuturor, la un preț foarte bun.</b>",
+        },
         items: [
           {
             name: "Jack Daniel's Tennessee whiskey", ml: 40, price: 25,
@@ -199,7 +252,10 @@ module.exports = {
           {
             name: "Havana Club 7y", ml: 40, price: 25,
             photo: "spirits/Havana_Club_7.webp",
-            alt: "Havana Club 7y rum at Hypso25",
+            alt: {
+              en: "Havana Club 7y rum at Hypso25",
+              ro: "Havana Club 7y rum la Hypso25",
+            },
           },
           {
             name: "Beefeater Blood Orange gin", ml: 40, price: 25,
@@ -216,86 +272,143 @@ module.exports = {
           {
             name: "Grappa", ml: 40, price: 25,
             photo: "spirits/Grappa.webp",
-            alt: "Grappa - 40ml at Hypso25",
+            alt: {
+              en: "Grappa - 40ml at Hypso25",
+              ro: "Grappa la Hypso25",
+            },
           },
         ],
       },
       {
-        title: "LIQUEURS & DIGESTIFS",
-        intro: "<b>A curated selection of refined liqueurs and digestifs — perfect to sip, savour, and settle the palate after a meal.</b>",
+        title: {
+          en: "LIQUEURS & DIGESTIFS",
+          ro: "LICHIORURI ȘI DIGESTIVE",
+        },
+        intro: {
+          en: "<b>A curated selection of refined liqueurs and digestifs — perfect to sip, savour, and settle the palate after a meal.</b>",
+          ro: "<b>O selecție atentă de lichioruri și digestive rafinate — perfecte de savurat după masă.</b>",
+        },
         look: { heading: "pt-4 mb-0" },
         items: [
           {
             name: "Ramazzotti Amaro", ml: 40, price: 25,
             photo: "spirits/Ramazzotti_Amaro.webp",
-            alt: "Ramazzotti Amaro - 40ml at Hypso25",
+            alt: {
+              en: "Ramazzotti Amaro - 40ml at Hypso25",
+              ro: "Ramazzotti Amaro la Hypso25",
+            },
           },
           {
             name: "Sambuca", ml: 40, price: 25,
             photo: "spirits/Sambuca_Molinari.webp",
-            alt: "Sambuca - 40ml at Hypso25",
+            alt: {
+              en: "Sambuca - 40ml at Hypso25",
+              ro: "Sambuca la Hypso25",
+            },
           },
           {
             name: "Jägermeister", ml: 40, price: 25,
             photo: "spirits/Jagermeister.webp",
-            alt: "Jägermeister - 40ml at Hypso25",
+            alt: {
+              en: "Jägermeister - 40ml at Hypso25",
+              ro: "Jägermeister la Hypso25",
+            },
           },
           {
             name: "Disaronno Amaretto", ml: 40, price: 25,
             photo: "spirits/Disaronno_Amaretto.webp",
-            alt: "Disaronno Amaretto - 40ml at Hypso25",
+            alt: {
+              en: "Disaronno Amaretto - 40ml at Hypso25",
+              ro: "Disaronno Amaretto la Hypso25",
+            },
           },
           {
             name: "Cointreau liqueur", ml: 40, price: 25,
             photo: "spirits/Cointreau_liqueur.webp",
-            alt: "Cointreau liqueur - 40ml at Hypso25",
+            alt: {
+              en: "Cointreau liqueur - 40ml at Hypso25",
+              ro: "Cointreau liqueur la Hypso25",
+            },
           },
           {
             name: "Antica Formula Vermouth", ml: 40, price: 25,
             photo: "spirits/Antica_Formula.webp",
-            alt: "Antica Formula Vermouth - 40ml at Hypso25",
-            allergens: "Sulphites",
+            alt: {
+              en: "Antica Formula Vermouth - 40ml at Hypso25",
+              ro: "Antica Formula Vermouth la Hypso25",
+            },
+            allergens: {
+              en: "Sulphites",
+              ro: "Sulfiți",
+            },
           },
           {
             name: "Aperol", ml: 40, price: 25,
             photo: "spirits/Aperol.webp",
-            alt: "Aperol - 40ml at Hypso25",
+            alt: {
+              en: "Aperol - 40ml at Hypso25",
+              ro: "Aperol la Hypso25",
+            },
           },
           {
             name: "Frangelico liqueur", ml: 40, price: 25,
             photo: "spirits/Frangelico.webp",
-            alt: "Frangelico liqueur - 40ml at Hypso25",
+            alt: {
+              en: "Frangelico liqueur - 40ml at Hypso25",
+              ro: "Frangelico liqueur la Hypso25",
+            },
           },
           {
             name: "Luxardo", ml: 40, price: 25,
             photo: "spirits/Luxardo.webp",
-            alt: "Luxardo - 40ml at Hypso25",
+            alt: {
+              en: "Luxardo - 40ml at Hypso25",
+              ro: "Luxardo la Hypso25",
+            },
           },
           {
             name: "Peachtree liqueur", ml: 40, price: 25,
             photo: "spirits/Peachtree.webp",
-            alt: "Peachtree liqueur - 40ml at Hypso25",
+            alt: {
+              en: "Peachtree liqueur - 40ml at Hypso25",
+              ro: "Peachtree liqueur la Hypso25",
+            },
           },
           {
             name: "Kahlua", ml: 40, price: 25,
             photo: "spirits/Kahlua.webp",
-            alt: "Kahlua - 40ml at Hypso25",
+            alt: {
+              en: "Kahlua - 40ml at Hypso25",
+              ro: "Kahlua la Hypso25",
+            },
           },
           {
             name: "Baileys Irish Cream liqueur", ml: 40, price: 25,
             photo: "spirits/Baileys_Irish_Cream.webp",
-            alt: "Baileys Irish Cream liqueur - 40ml at Hypso25",
-            allergens: "Milk",
+            alt: {
+              en: "Baileys Irish Cream liqueur - 40ml at Hypso25",
+              ro: "Baileys Irish Cream liqueur la Hypso25",
+            },
+            allergens: {
+              en: "Milk",
+              ro: "Lapte",
+            },
           },
           {
             name: "Campari", ml: 40, price: 25,
             photo: "spirits/Campari.webp",
-            alt: "Campari - 40ml at Hypso25",
+            alt: {
+              en: "Campari - 40ml at Hypso25",
+              ro: "Campari la Hypso25",
+            },
           },
           {
             name: "Grand Marnier", ml: 40, price: 25,
             photo: "spirits/Grand_Marnier.webp",
-            alt: "Grand Marnier - 40ml at Hypso25",
+            alt: {
+              en: "Grand Marnier - 40ml at Hypso25",
+              ro: "Grand Marnier la Hypso25",
+            },
           },
         ],
       },

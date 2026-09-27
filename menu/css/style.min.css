@@ -58,9 +58,9 @@ body {
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
-  color: #555;
+  color: #000;
   text-align: left;
-  background-color: #fffbf2;
+  background-color: #eeedeb;
 }
 h1,
 h2,
@@ -178,7 +178,7 @@ h6,
   font-variant-numeric: lining-nums;
   font-weight: 500;
   line-height: 1.2;
-  color: #33211d;
+  color: #000;
 }
 h1,
 .h1 {
@@ -1048,4 +1048,11 @@ h6,
     top: 0.75rem;
     right: 1rem;
   }
+}
+
+/* Page titles on the light page background: a darker copper than the template colour, so the big
+   title stays readable (4.7:1 on the page grey instead of 2.2:1). The octopus, the price bubbles
+   and the buttons keep the lighter copper. */
+.section-title .text-primary {
+  color: #8f5f2c !important;
 }

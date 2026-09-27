@@ -6,6 +6,7 @@
 //
 // Each menu page has one generated block, between the two marker comments below. Everything
 // outside the markers (page header, page title, footer) is still edited by hand in the page.
+// Every page is built in English and, when its "-ro.html" page exists, in Romanian.
 // Needs Node.js only, no packages.
 
 "use strict";
@@ -23,20 +24,45 @@ const END = "<!-- End of generated products -->";
 const ICONS = "img/icons_watermarked/webp/";
 const PHOTOS = "img/big_watermarked/webp/";
 
-const TEXT = {
-  ingredients: "Ingredients:",
-  nutrition: "Nutritional values per product:",
-  energy: "Energy (kJ/kcal):",
-  fat: "Fat (g):",
-  saturates: "– of which saturates (g):",
-  carbs: "Carbohydrates (g):",
-  sugars: "– of which sugars (g):",
-  protein: "Protein (g):",
-  salt: "Salt (g):",
-  allergens: "Allergens:",
-  glass: "Glass",
-  currency: "ron",
-  photoAlt: "at Hypso25",
+const LANGUAGES = {
+  en: {
+    suffix: "",
+    decimal: ".",
+    text: {
+      ingredients: "Ingredients:",
+      nutrition: "Nutritional values per product:",
+      energy: "Energy (kJ/kcal):",
+      fat: "Fat (g):",
+      saturates: "– of which saturates (g):",
+      carbs: "Carbohydrates (g):",
+      sugars: "– of which sugars (g):",
+      protein: "Protein (g):",
+      salt: "Salt (g):",
+      allergens: "Allergens:",
+      glass: "Glass",
+      currency: "ron",
+      photoAlt: "at Hypso25",
+    },
+  },
+  ro: {
+    suffix: "-ro",
+    decimal: ",",
+    text: {
+      ingredients: "Ingrediente:",
+      nutrition: "Valori nutriționale per produs:",
+      energy: "Valoare energetică (kJ/kcal):",
+      fat: "Grăsimi (g):",
+      saturates: "– din care acizi grași saturați (g):",
+      carbs: "Glucide (g):",
+      sugars: "– din care zaharuri (g):",
+      protein: "Proteine (g):",
+      salt: "Sare (g):",
+      allergens: "Alergeni:",
+      glass: "Pahar",
+      currency: "ron",
+      photoAlt: "la Hypso25",
+    },
+  },
 };
 
 // ---------------------------------------------------------------- HTML helpers
@@ -72,26 +98,54 @@ function small(content) {
   return `<p class="m-0" style="font-size: small">${content}</p>`;
 }
 
-// ---------------------------------------------------------------- page parts
+// ---------------------------------------------------------------- languages
 
-function productName(product) {
-  return html(product.name) + (product.ml ? ` - ${product.ml}ml` : "");
+// A text is either the same in every language ("Espresso") or has one version per language
+// ({ en: "milk", ro: "lapte" }). A text without the page's language shows the English one and
+// is reported, except names, which usually stay the same.
+function translate(value, lang, where, isName) {
+  if (value == null || typeof value === "number") {
+    return value;
+  }
+  if (typeof value === "string") {
+    if (lang.code !== "en" && !isName) {
+      lang.untranslated.add(`${where}: "${value.slice(0, 50)}"`);
+    }
+    return value;
+  }
+  if (value[lang.code] != null) {
+    return value[lang.code];
+  }
+  lang.untranslated.add(`${where}: "${String(value.en).slice(0, 50)}"`);
+  return value.en;
 }
 
-function priceBubble(product, look) {
+function number(value, lang) {
+  return String(value).replace(".", lang.decimal);
+}
+
+function englishName(item) {
+  return typeof item.name === "string" ? item.name : item.name.en;
+}
+
+// ---------------------------------------------------------------- page parts
+
+function priceBubble(product, look, lang) {
   return [
     `<p class="menu-price h5 font-weight-normal${look.price ? " " + look.price : ""}"${styleAttr(look.priceStyle)}>`,
-    `  <b>${product.price}</b> <span style="font-size: small"><b>${TEXT.currency}</b></span>`,
+    `  <b>${product.price}</b> <span style="font-size: small"><b>${lang.text.currency}</b></span>`,
     "</p>",
   ];
 }
 
-function nutritionLines(n, layout) {
-  const energy = `<b>${TEXT.energy}</b> ${n.kj} / ${n.kcal}`;
-  const fat = `<b>${TEXT.fat}</b> ${n.fat} <b>${TEXT.saturates}</b> ${n.saturates}`;
-  const carbs = `<b>${TEXT.carbs}</b> ${n.carbs} <b>${TEXT.sugars}</b> ${n.sugars}`;
-  const protein = `<b>${TEXT.protein}</b> ${n.protein}; <b>${TEXT.salt}</b> ${n.salt}`;
-  const header = small(`<b>${TEXT.nutrition}</b>`);
+function nutritionLines(n, layout, lang) {
+  const t = lang.text;
+  const v = (key) => number(n[key], lang);
+  const energy = `<b>${t.energy}</b> ${v("kj")} / ${v("kcal")}`;
+  const fat = `<b>${t.fat}</b> ${v("fat")} <b>${t.saturates}</b> ${v("saturates")}`;
+  const carbs = `<b>${t.carbs}</b> ${v("carbs")} <b>${t.sugars}</b> ${v("sugars")}`;
+  const protein = `<b>${t.protein}</b> ${v("protein")}; <b>${t.salt}</b> ${v("salt")}`;
+  const header = small(`<b>${t.nutrition}</b>`);
 
   if (layout === "compact") {
     return [header, small(`${energy}; ${fat}`), small(`${carbs}; ${protein}`)];
@@ -99,39 +153,42 @@ function nutritionLines(n, layout) {
   return [header, small(energy), small(fat), small(carbs), small(protein)];
 }
 
-// A line under the product name: "text" is a normal paragraph, { tight: "text" } has no space
-// below it, { small: "text" } is in the small print used for ingredients.
-function freeLine(line) {
-  if (typeof line === "string") {
-    return `<p>${html(line)}</p>`;
+// A line under the product name: a normal paragraph, or with tight: true no space below it,
+// or with small: true in the small print used for ingredients.
+function freeLine(line, lang, where) {
+  const text = html(translate(line, lang, where));
+  const kind = typeof line === "object" ? line : {};
+  if (kind.tight) {
+    return `<p class="m-0">${text}</p>`;
   }
-  if ("tight" in line) {
-    return `<p class="m-0">${html(line.tight)}</p>`;
+  if (kind.small) {
+    return small(text);
   }
-  if ("small" in line) {
-    return small(html(line.small));
-  }
-  throw new Error("Unknown line: " + JSON.stringify(line));
+  return `<p>${text}</p>`;
 }
 
-function productDetails(product, look) {
-  const lines = [`<h4${classAttr([look.name ?? "mb-0"])}>${productName(product)}</h4>`];
+function productDetails(product, look, lang) {
+  const t = lang.text;
+  const where = englishName(product);
+  const tr = (value, field) => translate(value, lang, `${where} (${field})`);
+  const name = html(translate(product.name, lang, where, true)) + (product.ml ? ` - ${product.ml}ml` : "");
+  const lines = [`<h4${classAttr([look.name ?? "mb-0"])}>${name}</h4>`];
 
-  (product.lines || []).forEach((line) => lines.push(freeLine(line)));
+  (product.lines || []).forEach((line) => lines.push(freeLine(line, lang, `${where} (lines)`)));
   if (product.glass) {
-    lines.push(`<p class="m-0">${TEXT.glass} ${product.glass.ml}ml: ${product.glass.price} ${TEXT.currency}</p>`);
+    lines.push(`<p class="m-0">${t.glass} ${product.glass.ml}ml: ${product.glass.price} ${t.currency}</p>`);
   }
   if (product.ingredients) {
-    lines.push(small(`<b>${TEXT.ingredients}</b> ${html(product.ingredients)}`));
+    lines.push(small(`<b>${t.ingredients}</b> ${html(tr(product.ingredients, "ingredients"))}`));
   }
   if (product.nutrition) {
-    lines.push(...nutritionLines(product.nutrition, look.nutrition));
+    lines.push(...nutritionLines(product.nutrition, look.nutrition, lang));
   }
   if (product.note) {
-    lines.push(small(html(product.note)));
+    lines.push(small(html(tr(product.note, "note"))));
   }
   if (product.allergens) {
-    lines.push(small(`<b>${TEXT.allergens}</b> ${html(product.allergens)}`));
+    lines.push(small(`<b>${t.allergens}</b> ${html(tr(product.allergens, "allergens"))}`));
   }
   if (lines.length === 1 && look.emptyLine != null) {
     lines.push(`<p${classAttr([look.emptyLine])}></p>`);
@@ -139,23 +196,27 @@ function productDetails(product, look) {
   return lines;
 }
 
-function productRow(product, look, space) {
+function productRow(product, look, space, lang) {
   if (!product.photo) {
     // Price-only row, without a photo.
     const row = look.row || `row container align-items-center${space ? " mb-5" : ""} pr-0`;
     return [
       `<div class="${row}"${styleAttr(look.rowStyle)}>`,
       `  <div class="${look.priceColumn || "col-1"}" style="margin-left: 20px">`,
-      ...indent(priceBubble(product, look), 4),
+      ...indent(priceBubble(product, look, lang), 4),
       "  </div>",
       '  <div class="col">',
-      ...indent(productDetails(product, look), 4),
+      ...indent(productDetails(product, look, lang), 4),
       "  </div>",
       "</div>",
     ];
   }
 
-  const alt = product.alt || `${plain(product.name)} ${TEXT.photoAlt}`;
+  const where = englishName(product);
+  const name = translate(product.name, lang, where, true);
+  const alt = product.alt
+    ? translate(product.alt, lang, `${where} (alt)`)
+    : `${plain(name)} ${lang.text.photoAlt}`;
   const image = `<img class="w-100 rounded-circle mb-3 mb-sm-0" src="${ICONS}${product.photo}" alt="${attr(alt)}" />`;
   // No space between the link and the photo, so nothing but the photo is inside the link.
   const photo = product.big
@@ -166,62 +227,67 @@ function productRow(product, look, space) {
     `<div class="row align-items-center${space ? " mb-5" : ""}">`,
     '  <div class="col-4 col-sm-3">',
     ...indent(photo, 4),
-    ...indent(priceBubble(product, look), 4),
+    ...indent(priceBubble(product, look, lang), 4),
     "  </div>",
     '  <div class="col-8 col-sm-9">',
-    ...indent(productDetails(product, look), 4),
+    ...indent(productDetails(product, look, lang), 4),
     "  </div>",
     "</div>",
   ];
 }
 
 // A named list without a price, like the syrup flavours on the coffee page.
-function listRow(item, last) {
+function listRow(item, last, lang) {
+  const where = typeof item.list === "string" ? item.list : item.list.en;
+  const tr = (value, field) => html(translate(value, lang, `${where} (${field})`));
   return [
     '<div class="row align-items-center">',
     '  <div class="col-1"></div>',
     '  <div class="col">',
-    `    <h4 class="mb-0">${html(item.list)}</h4>`,
-    `    <p class="${last ? "mb-5" : "mb-0"}">${html(item.text)}</p>`,
-    ...(item.allergens ? ["    " + small(`<b>${TEXT.allergens}</b> ${html(item.allergens)}`)] : []),
+    `    <h4 class="mb-0">${tr(item.list, "list")}</h4>`,
+    `    <p class="${last ? "mb-5" : "mb-0"}">${tr(item.text, "text")}</p>`,
+    ...(item.allergens ? ["    " + small(`<b>${lang.text.allergens}</b> ${tr(item.allergens, "allergens")}`)] : []),
     "  </div>",
     "</div>",
   ];
 }
 
-function sectionLines(section, pageLook, lastSection) {
+function sectionLines(section, pageLook, lastSection, lang) {
   const look = { ...pageLook, ...section.look };
-  const lines = [`<h3${classAttr(["h2 font-weight-bold", look.heading ?? "mb-0"])}>${html(section.title)}</h3>`];
+  const where = typeof section.title === "string" ? section.title : section.title.en;
+  const title = html(translate(section.title, lang, `section ${where}`));
+  const lines = [`<h3${classAttr(["h2 font-weight-bold", look.heading ?? "mb-0"])}>${title}</h3>`];
 
   const intro = [].concat(section.intro || []);
   intro.forEach((text, i) => {
     const last = i === intro.length - 1;
-    lines.push(`<p${classAttr([last ? look.intro ?? "mb-5" : "mb-0"])}>${html(text)}</p>`);
+    const content = html(translate(text, lang, `section ${where} (intro)`));
+    lines.push(`<p${classAttr([last ? look.intro ?? "mb-5" : "mb-0"])}>${content}</p>`);
   });
 
   const items = section.items || [];
   const lastList = items.map((item) => Boolean(item.list)).lastIndexOf(true);
   items.forEach((item, i) => {
     if (item.list) {
-      lines.push(...listRow(item, i === lastList));
+      lines.push(...listRow(item, i === lastList, lang));
       return;
     }
     const itemLook = { ...look, ...item.look };
     const lastOnPage = lastSection && i === items.length - 1;
     const space = itemLook.space ?? !(lastOnPage && !look.spaceAfterLast);
-    lines.push(...productRow(item, itemLook, space));
+    lines.push(...productRow(item, itemLook, space, lang));
   });
   return lines;
 }
 
-function pageBlock(data) {
+function pageBlock(data, lang) {
   const columnClass = data.columns.length === 1 ? "col-lg-12" : "col-lg-6";
   const lines = ['<div class="row">'];
   data.columns.forEach((sections, c) => {
     lines.push(`  <div class="${columnClass}">`);
     sections.forEach((section, s) => {
       const lastSection = c === data.columns.length - 1 && s === sections.length - 1;
-      lines.push(...indent(sectionLines(section, data.look || {}, lastSection), 4));
+      lines.push(...indent(sectionLines(section, data.look || {}, lastSection, lang), 4));
     });
     lines.push("  </div>");
   });
@@ -252,7 +318,7 @@ function findProduct(pages, name) {
   for (const data of pages) {
     for (const sections of data.columns) {
       for (const section of sections) {
-        const product = (section.items || []).find((item) => item.name === name);
+        const product = (section.items || []).find((item) => item.name && englishName(item) === name);
         if (product) {
           return product;
         }
@@ -268,7 +334,7 @@ function updateHomepage(source, prices) {
   let result = source;
   for (const [label, total] of Object.entries(prices)) {
     const escaped = html(label).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-    const pattern = new RegExp(`(<dt>${escaped}</dt>\\s*<dd>)\\d+( ${TEXT.currency}</dd>)`, "g");
+    const pattern = new RegExp(`(<dt>${escaped}</dt>\\s*<dd>)\\d+( ron</dd>)`, "g");
     const count = (result.match(pattern) || []).length;
     if (count !== 1) {
       throw new Error(`homepage price "${label}" found ${count} times`);
@@ -283,14 +349,23 @@ function main() {
   const dataFiles = fs.readdirSync(DATA_DIR).filter((name) => name.endsWith(".js")).sort();
   const pages = dataFiles.map((name) => ({ ...require(path.join(DATA_DIR, name)), dataFile: name }));
   const outputs = [];
+  const untranslated = [];
 
   for (const data of pages) {
-    const file = path.join(MENU_DIR, data.page);
-    const source = fs.readFileSync(file, "utf8");
-    try {
-      outputs.push({ file, source, result: replaceBlock(source, data.dataFile, pageBlock(data)) });
-    } catch (error) {
-      throw new Error(`menu/${data.page}: ${error.message}`);
+    for (const [code, settings] of Object.entries(LANGUAGES)) {
+      const page = data.page.replace(/\.html$/, `${settings.suffix}.html`);
+      const file = path.join(MENU_DIR, page);
+      if (code !== "en" && !fs.existsSync(file)) {
+        continue;
+      }
+      const lang = { ...settings, code, untranslated: new Set() };
+      const source = fs.readFileSync(file, "utf8");
+      try {
+        outputs.push({ file, source, result: replaceBlock(source, data.dataFile, pageBlock(data, lang)) });
+      } catch (error) {
+        throw new Error(`menu/${page}: ${error.message}`);
+      }
+      lang.untranslated.forEach((text) => untranslated.push(`menu-data/${data.dataFile} (${code}) ${text}`));
     }
   }
 
@@ -318,6 +393,9 @@ function main() {
   }
   if (!changed.length) {
     console.log("All menu pages match the data.");
+  }
+  if (untranslated.length) {
+    console.log(`\nNot translated yet (the page shows the English text):\n  ${untranslated.join("\n  ")}`);
   }
   if (check && changed.length) {
     process.exitCode = 1;

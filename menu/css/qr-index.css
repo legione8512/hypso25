@@ -1,13 +1,13 @@
 /* QR landing page improvements for menu/index.html */
 
 .qr-intro {
-  background: #fffbf2;
+  background: #eeedeb;
 }
 
 .qr-intro__text {
   font-weight: 700;
   max-width: 760px;
-  color: #33211d;
+  color: #000;
   font-size: 1.4rem;
   line-height: 1.8;
   opacity: 0.9;
@@ -69,12 +69,17 @@
 }
 
 .qr-reviews {
-  background: #fffbf2;
+  background: #eeedeb;
+}
+
+/* "Guest Reviews" above the cards: the same darker copper as the menu page titles. */
+.qr-reviews .text-primary {
+  color: #8f5f2c !important;
 }
 
 .qr-reviews__intro {
   max-width: 720px;
-  color: #33211d;
+  color: #000;
   line-height: 1.8;
   opacity: 0.9;
 }

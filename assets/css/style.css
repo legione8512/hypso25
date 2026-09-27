@@ -15,7 +15,7 @@
   --colour-muted: #757263;
   --colour-black: #000000;
   --colour-white: #ffffff;
-  --colour-gold: #c8a46a; /* Only on dark backgrounds: too light for the light footer */
+  --colour-gold: #c8a46a; /* Only on dark backgrounds (header, hero, footer): too light on the light page */
 
   /* Practical colours */
   --colour-text: var(--colour-black);
@@ -216,6 +216,7 @@ button {
 /* The muted outline disappears on the dark photos and black sections, so I use gold there. */
 .site-header :focus-visible,
 .hero :focus-visible,
+.site-footer :focus-visible,
 .policy-page :focus-visible {
   outline-color: var(--colour-gold);
 }
@@ -1151,95 +1152,133 @@ address {
 }
 /* =========================================================
    23. Footer / Contact section
-   I style the footer for large desktop first.
-   Tablet and mobile rules are in sections 27-32 below.
+   The footer has the menu footer's look: dark brown over coffee beans, a torn-paper top edge
+   and three columns (contact, social links, opening hours), then the privacy policy link.
+   Tablet and mobile rules are in sections 27 and 32 below.
    ========================================================= */
 
 .site-footer {
-  padding: clamp(5.5rem, 6vw, 8.5rem) var(--page-padding) clamp(5rem, 5vw, 7rem);
-  background: var(--colour-light);
-  color: var(--colour-black);
+  position: relative;
+  padding: 7rem var(--page-padding) 3rem;
+  /* The coffee-bean photo is the menu footer's own image, so both share one cached file. */
+  background:
+    linear-gradient(rgba(51, 33, 29, 0.9), rgba(51, 33, 29, 0.9)),
+    url("../../menu/img/bg.jpg") top / cover no-repeat;
+  color: var(--colour-white);
 }
 
-/* I recreate the original footer layout: contact on the left, socials on the right. */
-.site-footer__container {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  align-items: start;
-  gap: 4rem;
+/* Torn-paper top edge, in the white of the section above the footer. */
+.site-footer::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: 0;
   width: 100%;
-  max-width: var(--container-wide);
+  height: 15px;
+  background: url("../images/footer-edge.png");
+}
+
+/* On the homepage the footer follows the bar photo, so it starts with a straight edge. */
+.site-footer--straight::before {
+  display: none;
+}
+
+.site-footer__columns {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 3rem;
+  max-width: var(--container-medium);
   margin-inline: auto;
 }
 
-/* I keep the contact block simple and aligned left. */
-.site-footer__contact {
-  max-width: 520px;
-}
-
-/* I style the Hypso25 footer title like the original h4 block. */
-.site-footer__brand {
+.site-footer__heading {
+  margin: 0 0 1.5rem;
   font-family: var(--font-heading);
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   font-weight: 500;
-  line-height: 1.4;
-  color: var(--colour-black);
+  line-height: 1.2;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  /* White here: the site's heading colour is for the light page. */
+  color: var(--colour-white);
 }
 
-/* I keep address and phone small, like the original footer text. */
-.site-footer__address,
-.site-footer__phone,
-.site-footer__email {
-  margin-bottom: 0.8rem;
-  font-size: 0.9rem;
-  font-weight: 300;
-  line-height: 1.6;
-  color: var(--colour-black);
-}
-.site-footer__address {
-  padding-top: 1rem;
-  line-height: 2;
-}
-
-.site-footer__phone a,
-.site-footer__email a {
-  color: var(--colour-black);
-}
-
-/* I align social links to the right, like the original footer icon block. */
-.site-footer__socials {
+.site-footer__line {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
-  gap: 1rem;
-  padding-top: 0.4rem;
+  gap: 0.6rem;
+  margin: 0 0 1rem;
 }
 
-/* Footer social links use the SVG icons styled in section 25. */
+.site-footer__icon {
+  flex: none;
+  width: 1.1em;
+  height: 1.1em;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.site-footer__text {
+  margin: 0 0 1rem;
+  line-height: 1.6;
+}
+
+.site-footer__socials {
+  display: flex;
+  gap: 0.5rem;
+}
+
 .site-footer__social-link {
-  font-size: 0.85rem;
-  font-weight: 300;
-  color: var(--colour-black);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border: 1px solid var(--colour-white);
+  transition:
+    background-color var(--transition-fast),
+    color var(--transition-fast);
 }
 
 .site-footer__social-link:hover {
-  opacity: 0.65;
+  background: var(--colour-white);
+  color: #33211d;
+  opacity: 1;
+}
+
+.site-footer__hours {
+  margin: 0;
+}
+
+.site-footer__day {
+  margin: 0 0 0.4rem;
+  font-family: var(--font-heading);
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.site-footer__time {
+  margin: 0 0 1rem;
 }
 
 .site-footer__privacy {
-  margin: 8px 0 0;
+  margin: 3rem 0 0;
+  font-size: 0.9rem;
+  text-align: center;
 }
 
 .site-footer__privacy a {
   text-decoration: underline;
   text-underline-offset: 4px;
-  /* I keep the footer link dark because gold is hard to read on the light footer. */
-  color: var(--colour-black);
 }
 /* =========================================================
    25. Social icons
    I style the SVG social icons separately for header, footer and mobile menu.
-   The icons use currentColor, so header icons stay white and footer/mobile icons follow their parent colour.
+   The icons use currentColor, so header icons stay white and mobile menu icons follow their parent colour.
    ========================================================= */
 
 .social-icon {
@@ -1251,8 +1290,7 @@ address {
 
 /* I keep all social links aligned nicely around the SVG icons. */
 .header-actions__social-link,
-.mobile-menu__social-link,
-.site-footer__social-link {
+.mobile-menu__social-link {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -1270,13 +1308,6 @@ address {
 /* I control the spacing between the header social icons. */
 .header-actions__social-link + .header-actions__social-link {
   margin-right: 0.4rem;
-}
-
-/* Footer social icons.
-   I keep these slightly larger than the original, based on your current preference. */
-.site-footer .social-icon {
-  width: 30px;
-  height: 30px;
 }
 
 /* Mobile menu social icons.
@@ -1423,6 +1454,11 @@ address {
    ========================================================= */
 
 @media (min-width: 768px) and (max-width: 1024px) {
+  /* Footer: two columns, opening hours below */
+  .site-footer__columns {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   /* Header */
   .site-header__inner {
     padding-top: 3.5rem;
@@ -1700,12 +1736,6 @@ address {
   /* Atmosphere */
   .atmosphere__media {
     height: clamp(520px, 40vw, 620px);
-  }
-
-  /* Footer */
-  .site-footer {
-    padding-top: 7.5rem;
-    padding-bottom: 6.5rem;
   }
 }
 /* =========================================================
@@ -2039,47 +2069,14 @@ address {
     height: clamp(300px, 70vw, 430px);
   }
 
-  /* Footer */
+  /* Footer: one column */
   .site-footer {
-    padding-top: 4.8rem;
-    padding-right: 7vw;
-    padding-bottom: 5rem;
-    padding-left: 7vw;
+    padding: 5.5rem 7vw 2.5rem;
   }
 
-  .site-footer__container {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
-    align-items: start;
-    gap: 1.5rem;
-    max-width: 100%;
-  }
-
-  .site-footer__contact {
-    max-width: 100%;
-    min-width: 0;
-  }
-
-  .site-footer__brand {
-    font-size: 1.5rem;
-  }
-
-  .site-footer__address,
-  .site-footer__phone,
-  .site-footer__email {
-    font-size: 0.9rem;
-    line-height: 1.75;
-  }
-
-  .site-footer__socials {
-    justify-content: flex-end;
-    gap: 1rem;
-    padding-top: 0.4rem;
-  }
-
-  .site-footer .social-icon {
-    width: 30px;
-    height: 30px;
+  .site-footer__columns {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
   }
 }
 
