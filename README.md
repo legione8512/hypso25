@@ -31,6 +31,7 @@ Main goals of the project:
 - Menu product lists, prices and nutrition values generated from data files
 - Photo gallery page
 - Gallery lightbox with previous and next controls
+- Large menu product photos open over the page, like the gallery, instead of in a new tab
 - Contact page with a map that loads from Google Maps only after a click
 - Responsive photos: each large photo comes in four sizes and the browser picks the right one
 - Self-hosted fonts, no cookies and no third-party requests when a page loads
@@ -106,6 +107,7 @@ hypso25/
 │   ├── js/
 │   │   ├── main.js
 │   │   ├── carousel.js
+│   │   ├── photo-viewer.js      opens the large product photos over the page
 │   │   ├── reviews-data.js
 │   │   └── reviews-random.js
 │   └── img/
@@ -224,7 +226,6 @@ photo-gallery-ro.html
 Possible future improvements:
 
 - consider a simple static build script for shared header and footer partials;
-- add a lightbox experience for menu product images;
 - use the four photo sizes on the contact page too.
 
 ## Author

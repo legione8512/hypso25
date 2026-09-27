@@ -1056,3 +1056,107 @@ h6,
 .section-title .text-primary {
   color: #8f5f2c !important;
 }
+
+/* Large product photos open over the page (js/photo-viewer.js), with the look of the
+   site's photo gallery lightbox. */
+a[href*="img/big_watermarked/"] {
+  cursor: zoom-in;
+}
+.photo-viewer {
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  max-height: none;
+  margin: 0;
+  padding: clamp(1.2rem, 4vw, 4rem);
+  border: 0;
+  background: rgba(0, 0, 0, 0.88);
+  color: #fff;
+}
+.photo-viewer[open] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: photo-viewer-in 0.3s ease;
+}
+.photo-viewer::backdrop {
+  background: transparent;
+}
+.photo-viewer__figure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 100%;
+  margin: 0;
+}
+.photo-viewer__image {
+  display: block;
+  max-width: min(100%, 1500px);
+  max-height: 80vh;
+  object-fit: contain;
+  box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.45);
+  transition: opacity 0.2s ease;
+}
+.photo-viewer__image.is-loading {
+  opacity: 0;
+}
+.photo-viewer__caption {
+  margin-top: 1rem;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.4rem;
+  font-variant-numeric: lining-nums;
+  text-align: center;
+}
+.photo-viewer__close {
+  position: absolute;
+  top: clamp(1rem, 3vw, 2.4rem);
+  right: clamp(1rem, 3vw, 2.4rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #fff;
+  font-size: 2.4rem;
+  font-weight: 300;
+  line-height: 1;
+  cursor: pointer;
+}
+.photo-viewer__close:hover {
+  opacity: 0.7;
+}
+.photo-viewer :focus-visible {
+  outline: 2px solid #c8a46a;
+  outline-offset: 4px;
+}
+html.photo-viewer-open {
+  overflow: hidden;
+}
+@keyframes photo-viewer-in {
+  from {
+    opacity: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .photo-viewer[open] {
+    animation: none;
+  }
+}
+@media (max-width: 767px) {
+  .photo-viewer {
+    padding: 1rem;
+  }
+  .photo-viewer__image {
+    max-height: 75vh;
+  }
+  .photo-viewer__close {
+    top: 0.75rem;
+    right: 0.75rem;
+    width: 2.6rem;
+    height: 2.6rem;
+    font-size: 2rem;
+  }
+}
