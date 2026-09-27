@@ -43,10 +43,27 @@ document.addEventListener("DOMContentLoaded", function () {
   document.body.appendChild(viewer);
 
   let opener = null;
+  let original = "";
+
+  // Phones and normal screens get the 1200 px copy (img/big_watermarked/webp/1200/), about a
+  // quarter of the size; large high-density screens get the original photo.
+  function photoUrl(link) {
+    const longSide = Math.max(window.innerWidth, window.innerHeight) * (window.devicePixelRatio || 1);
+    return longSide <= 2600
+      ? link.href.replace("/big_watermarked/webp/", "/big_watermarked/webp/1200/")
+      : link.href;
+  }
 
   // The photo stays hidden until it has loaded, so the previous one never shows.
   image.addEventListener("load", function () {
     image.classList.remove("is-loading");
+  });
+
+  // If a copy is missing, the original is shown instead.
+  image.addEventListener("error", function () {
+    if (original && image.src !== original) {
+      image.src = original;
+    }
   });
 
   function openViewer(link) {
@@ -56,7 +73,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     opener = link;
     image.classList.add("is-loading");
-    image.src = link.href;
+    original = link.href;
+    image.src = photoUrl(link);
     image.alt = thumbnail ? thumbnail.alt : "";
     caption.textContent = name ? name.textContent.trim() : "";
 
