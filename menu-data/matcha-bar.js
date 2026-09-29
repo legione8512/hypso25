@@ -227,13 +227,13 @@ module.exports = {
               },
             ],
             ingredients: {
-              en: "fruit of your choice, lemon juice, sugar syrup (sugar, water), water, matcha, ice",
-              ro: "fructe la alegere, suc de lămâie, sirop de zahăr (zahăr, apă), apă, matcha, gheață",
+              en: "peach compote, frozen mango, passion fruit puree or strawberry puree (your choice), lemon juice, sugar syrup (sugar, water), water, matcha, ice",
+              ro: "compot de piersici, mango congelat, piure de fructul pasiunii sau piure de căpșuni (la alegere), suc de lămâie, sirop de zahăr (zahăr, apă), apă, matcha, gheață",
             },
             nutrition: { kj: 674, kcal: 159, fat: 0.2, saturates: 0, carbs: 37, sugars: 35, protein: 1, salt: 0 },
             note: {
-              en: "<b>Values above: peach.</b> Mango: 689 / 162 kJ/kcal, sugars 35 g.",
-              ro: "<b>Valorile de mai sus: piersici.</b> Mango: 689 / 162 kJ/kcal, zaharuri 35 g.",
+              en: "<b>Values above: peach.</b> Mango: 689 / 162 kJ/kcal, sugars 35 g. Passionfruit: 665 / 157 kJ/kcal, sugars 34 g. Strawberry: 668 / 157 kJ/kcal, sugars 34 g.",
+              ro: "<b>Valorile de mai sus: piersici.</b> Mango: 689 / 162 kJ/kcal, zaharuri 35 g. Fructul pasiunii: 665 / 157 kJ/kcal, zaharuri 34 g. Căpșuni: 668 / 157 kJ/kcal, zaharuri 34 g.",
             },
           },
         ],
