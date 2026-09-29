@@ -12,6 +12,7 @@ The product lists of the menu pages, in English and in Romanian, are written fro
 | `wines-and-beers.js` | `menu/wines.html` | `menu/wines-ro.html` |
 | `summer-seasonal.js` | `menu/seasonal.html` | `menu/seasonal-ro.html` |
 | `winter-seasonal.js` | `menu/winter.html` | `menu/winter-ro.html` |
+| `matcha-bar.js` | `menu/matcha.html` | `menu/matcha-ro.html` |
 
 `coffee.js` also sets the coffee prices on the homepage (`index.html` and `ro.html`). The menu start pages (`menu/index.html` and `menu/ro.html`) have no product list.
 

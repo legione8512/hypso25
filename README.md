@@ -67,9 +67,10 @@ menu/spirits.html       Spirits
 menu/wines.html         Wines and beer
 menu/winter.html        Winter seasonal drinks (Winter Spirit Infusions)
 menu/seasonal.html      Summer seasonal drinks (Heatwave Elixirs)
+menu/matcha.html        Matcha Bar (the matcha side menu)
 ```
 
-Each menu page has a Romanian version: `menu/ro.html` (landing page), `menu/menu-ro.html`, `menu/sdrinks-ro.html`, `menu/vcock-ro.html`, `menu/celix-ro.html`, `menu/spirits-ro.html`, `menu/wines-ro.html`, `menu/winter-ro.html` and `menu/seasonal-ro.html`. The Romanian pages of the main website link to the Romanian menu.
+Each menu page has a Romanian version: `menu/ro.html` (landing page), `menu/menu-ro.html`, `menu/sdrinks-ro.html`, `menu/vcock-ro.html`, `menu/celix-ro.html`, `menu/spirits-ro.html`, `menu/wines-ro.html`, `menu/winter-ro.html`, `menu/seasonal-ro.html` and `menu/matcha-ro.html`. The Romanian pages of the main website link to the Romanian menu.
 
 ## Project Structure
 
@@ -99,7 +100,7 @@ hypso25/
 │       └── ro.svg
 ├── menu/
 │   ├── index.html, ro.html
-│   ├── menu.html, sdrinks.html, vcock.html, celix.html, spirits.html, wines.html, seasonal.html, winter.html
+│   ├── menu.html, sdrinks.html, vcock.html, celix.html, spirits.html, wines.html, seasonal.html, winter.html, matcha.html
 │   ├── menu-ro.html, sdrinks-ro.html, … (the Romanian version of each page)
 │   ├── css/
 │   │   ├── style.min.css        Bootstrap 4 (only the rules the menu uses) and the menu styles
