@@ -226,8 +226,7 @@ photo-gallery-ro.html
 
 Possible future improvements:
 
-- consider a simple static build script for shared header and footer partials;
-- use the four photo sizes on the contact page too.
+- consider a simple static build script for shared header and footer partials.
 
 ## Author
 
