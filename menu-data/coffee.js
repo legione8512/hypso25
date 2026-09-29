@@ -371,7 +371,7 @@ module.exports = {
             name: "Combo", price: 45,
             photo: "Combo.webp", big: "Combo.webp",
             alt: {
-              en: "Classic coffee combo at Hypso25",
+              en: "Combo coffee tasting set at Hypso25",
               ro: "Setul de degustare Combo la Hypso25",
             },
             lines: [
@@ -402,7 +402,7 @@ module.exports = {
             name: "V60", ml: 250, price: 20,
             photo: "V60.webp", big: "V60_big.webp",
             alt: {
-              en: "Coffee combo at Hypso25",
+              en: "V60 filter coffee at Hypso25",
               ro: "Cafea filtru V60 la Hypso25",
             },
             lines: [
@@ -417,7 +417,7 @@ module.exports = {
             name: "Cold Brew", ml: 250, price: 20,
             photo: "Cold_brew_ico.webp", big: "Cold_brew_big.webp",
             alt: {
-              en: "V60 filter coffee at Hypso25",
+              en: "Cold brew coffee at Hypso25",
               ro: "Cold brew la Hypso25",
             },
             lines: [
